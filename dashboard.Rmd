@@ -127,24 +127,52 @@ Bedingte relative Häufigkeiten lassen sich mit Hilfe von **Häufigkeitsbäumen*
 Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gibt:
 
 - eine **Wurzel** - einen Ausgangspunkt des Baumdiagramms,
-- **Zweige** - Abspaltungen aus den Knotenpunkten, die eine Bedingung oder Entscheidung widerspiegeln, die zu einem bestimmten Ereignis führt,
+- **Äste** oder **Zweige** - Abspaltungen aus den Knotenpunkten, die eine Bedingung oder Entscheidung widerspiegeln, die zu einem bestimmten Ereignis führt,
 - und schließlich **Blätter** - finale Ergebnisse, zu denen eine Reihe von verschiedenen möglichen Ereignissen geführt hat.
 
 Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Zweige werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
 
-```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik ... ."}
-knitr::include_graphics("images/bsp_hbaum.png")
+```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
+knitr::include_graphics("images/class_treemap.png")
 ```
 
 Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
 
 ## Häufigkeitsbäume lesen
 
-Einleitung - Bild - Aufgaben
+Einleitung
+
+```{r fig2, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach Geschlecht und dann die Überlebungsquote."}
+knitr::include_graphics("images/sex_treemap.png")
+```
+
+Aufgaben
 
 ## Häufigkeitsbäume erstellen
 
-Einleitung - Bild - Aufgaben
+Einleitung
+
+```{r fig3, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
+knitr::include_graphics("images/age_treemap_gaps.png")
+```
+
+!!! Exercise!!!
+
+Aufgaben
+
+```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+knitr::include_graphics("images/age_treemap.png")                                # aufklappbar machen
+```
+
+In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden?
+
+```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Passagierklasse und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen ohne zum Abschnitt 'Häufigkeitsbäume' zu gehen?"}
+knitr::include_graphics("images/class_gaps.png")                                 # Cheating verhindern!
+```
+
+```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+knitr::include_graphics("images/class_treemap.png")                              # aufklappbar machen
+```
 
 ## Mosaikplot
 
