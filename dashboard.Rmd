@@ -142,8 +142,8 @@ Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
 
 Einleitung
 
-```{r fig2, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach Geschlecht und dann die Überlebungsquote."}
-knitr::include_graphics("images/sex_treemap.png")
+```{r fig2, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
+knitr::include_graphics("images/class_age_treemap.png")
 ```
 
 Aufgaben
@@ -166,12 +166,12 @@ knitr::include_graphics("images/age_treemap.png")                               
 
 In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden?
 
-```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Passagierklasse und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen ohne zum Abschnitt 'Häufigkeitsbäume' zu gehen?"}
-knitr::include_graphics("images/class_gaps.png")                                 # Cheating verhindern!
+```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
+knitr::include_graphics("images/sex_treemap_gaps.png")
 ```
 
 ```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/class_treemap.png")                              # aufklappbar machen
+knitr::include_graphics("images/sex_treemap.png")                                # aufklappbar machen
 ```
 
 ## Mosaikplot
