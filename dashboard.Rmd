@@ -113,9 +113,9 @@ Am 15. April 1912 ist das vermeintlich sicherste Schiff der Epoche *Titanic* auf
 
 Man kann das Überleben einiger Passagiere zwar mit ihrem Glück verbinden, es konnte aber bestimmte Umstände geben, unter denen die eine oder andere Person mehr Überlebenschancen hatte als andere. Diese Hypothese kann anhand des folgenden Datensatzes überprüft werden.
 
-Führe den Code unten aus, um mehr über die Tabelle zu erfahren, die wir des Weiteren benutzen werden.
+Führe den Code unten aus, um mehr über die Tabelle zu erfahren, die wir des Weiteren benutzen werden. Sei frei, auch weitere Befehle zu schreiben und auszuführen, z.B. $head(Titanic)$, um den Datensatz noch besser kennenzulernen.
 
-```{r dataset}
+```{r dataset, exercise = TRUE}
 summary(Titanic)  # achte auf die Anzahl der Reihen und Spalten
 str(Titanic)  # ein Überblick von Spaltennamen und Ausprägungen der Werte
 ```
@@ -133,7 +133,7 @@ Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gib
 Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Zweige werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
 
 ```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
-knitr::include_graphics("images/class_treemap.png")
+knitr::include_graphics("images/sex_tree.png")
 ```
 
 Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
@@ -180,7 +180,9 @@ Eine weitere graphische Darstellung von bedingten relativen Häufigkeiten sind *
 
 ...
 
-Bild
+```{r fig7, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
+knitr::include_graphics("images/class_treemap.png")
+```
 
 ...
 
@@ -197,8 +199,27 @@ Einleitung - Bild - Aufgaben + R Code
 ## Zusammenfassung
 
 ## Quiz
+Teste jetzt deine Kenntnisse!
+
+```{r quiz1, echo=FALSE}
+quiz(caption = "1. Definition",
+     question_radio("Was sind bedingte relative Häufigkeiten?",
+                    answer_fn()))
+```
+
+```{r quiz2, echo=FALSE}
+quiz(caption = "2. Anwendungsbereiche",
+     question_checkbox("In welchen Fällen werden bedingte relative Häufigkeiten angewendet?",
+                       answer_fn()))
+```
+
+(praktische Aufgaben 3-6)
 
 ## Programmieraufgaben
 
 ## Feedback
+Danke erstmal für die Benutzung dieser E-Learning Plattform, hoffentlich kannst du das Thema bedingte relative Häufigkeiten nun deutlich besser verstehen.
 
+Damit deine Erfahrung mit der upgradeten Version dieser oder mit einer weiteren Plattform noch besser wird, möchte ich dich bitten, zum Abschluss an einer kleinen Umfrage teilzunehmen. Die Umfrage ist anonym und die erhobenen Daten werden ausschließlich zu Forschungszwecken verwendet.
+
+(klick auf Start)
