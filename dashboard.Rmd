@@ -202,15 +202,16 @@ Einleitung - Bild - Aufgaben + R Code
 Teste jetzt deine Kenntnisse!
 
 ```{r quiz1, echo=FALSE}
-quiz(caption = "1. Definition",
-     question_radio("Was sind bedingte relative Häufigkeiten?",
-                    answer_fn()))
+#quiz(caption = "1. Definition",
+#     question_radio("Was sind bedingte relative Häufigkeiten?",
+#                    answer_fn("a", correct = TRUE, message = "richtig"),
+#                    answer_fn("b", correct = FALSE, message = "falsch")))
 ```
 
 ```{r quiz2, echo=FALSE}
-quiz(caption = "2. Anwendungsbereiche",
-     question_checkbox("In welchen Fällen werden bedingte relative Häufigkeiten angewendet?",
-                       answer_fn()))
+#quiz(caption = "2. Anwendungsbereiche",
+#     question_checkbox("In welchen Fällen werden bedingte relative Häufigkeiten angewendet?",
+#                       answer_fn("a", correct = TRUE)))
 ```
 
 (praktische Aufgaben 3-6)
@@ -223,3 +224,20 @@ Danke erstmal für die Benutzung dieser E-Learning Plattform, hoffentlich kannst
 Damit deine Erfahrung mit der upgradeten Version dieser oder mit einer weiteren Plattform noch besser wird, möchte ich dich bitten, zum Abschluss an einer kleinen Umfrage teilzunehmen. Die Umfrage ist anonym und die erhobenen Daten werden ausschließlich zu Forschungszwecken verwendet.
 
 (klick auf Start)
+
+
+
+```{r saveanswers, echo=FALSE}
+library(readr)
+
+# Get user's answers
+answers <- c(
+  0,#question1 = input$question1, 
+  1,#question2 = input$question2,
+  2#question3 = input$question3
+)
+answers_dt <- data.frame(answers)
+
+# Save answers to a CSV file
+write_csv(answers_dt, "answers.csv")
+```
