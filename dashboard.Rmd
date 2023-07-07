@@ -258,7 +258,7 @@ quiz(question("c. Mosaikplots",
 
 ```
 
-2) Interpretaionsfrage zu einem H/baum
+2) Interpretationsfrage zu einem H/baum 
 
 ```{r calculations-2, exercise=TRUE}
 # Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
@@ -266,7 +266,7 @@ quiz(question("c. Mosaikplots",
 
 ```
 
-3) Interpretationsfrage zu einem Mosaikplot
+3) Interpretationsfrage zu einem Mosaikplot / erzeugen lassen
 
 ```{r calculations-3, exercise=TRUE}
 # Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
@@ -287,21 +287,14 @@ Danke erstmal für die Benutzung dieser E-Learning Plattform, hoffentlich kannst
 
 Damit deine Erfahrung mit der upgradeten Version dieser oder mit einer weiteren Plattform noch besser wird, möchte ich dich bitten, zum Abschluss an einer kleinen Umfrage teilzunehmen. Die Umfrage ist anonym und die erhobenen Daten werden ausschließlich zu Forschungszwecken verwendet.
 
-(klick auf Start)
+Die Umfrage befindet sich auf einer externen Webseite. Beim Klick auf **Start** wirst du dahin weitergeleitet.
 
+```{js, echo=FALSE}
+function redirect() {
+  window.location.href = 'https://survey.lamapoll.de/Feedback-zum-Lerndashboard';
+}
+```
 
-
-```{r saveanswers, echo=FALSE}
-library(readr)
-
-# Get user's answers
-answers <- c(
-  0,#question1 = input$question1, 
-  1,#question2 = input$question2,
-  2#question3 = input$question3
-)
-answers_dt <- data.frame(answers)
-
-# Save answers to a CSV file
-write_csv(answers_dt, "answers.csv")
+```{r, echo=FALSE}
+HTML('<button onclick="redirect()">Start</button>')
 ```
