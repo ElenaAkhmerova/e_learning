@@ -130,7 +130,7 @@ Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gib
 - **Äste** - Abspaltungen aus den Knotenpunkten, die eine Bedingung oder Entscheidung widerspiegeln, die zu einem bestimmten Ereignis führt,
 - und schließlich **Blätter** - finale Ergebnisse, zu denen eine Reihe von verschiedenen möglichen Ereignissen geführt hat.
 
-Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Zweige werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
+Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Äste werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
 
 ```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
 knitr::include_graphics("images/sex_tree.png")
@@ -176,9 +176,11 @@ knitr::include_graphics("images/sex_treemap.png")                               
 
 ## Mosaikplot
 
-Eine weitere graphische Darstellung von bedingten relativen Häufigkeiten sind **Mosaikplots**.
+Eine weitere graphische Darstellung von bedingten relativen Häufigkeiten sind **Mosaikplots**, auch als **Mosaikdiagramme** oder **Mosaikgrafiken** bezeichnet.
 
-...
+Im Mosaikplot wird eine rechteckige Fläche in Rechtecke aufgeteilt. Die Größe dieser Rechtecke ist proportional zur relativen Häufigkeit der entsprechenden Kategorie. Die größeren Rechtecke des Mosaikplots werden in Segmente unterteilt, die die Kategorien der beiden Variablen darstellen. Damit zusätzliche Informationen noch anschaulicher sind, können die Segmente farblich markiert oder schattiert werden.
+
+Wenn man auf die Achsen der Grafik schaut, repräsentiert die horizontale Achse eine unabhängige und die vertikale Achse eine abhängige Variable. *Zur Erinnerung: Eine abhängige Variable ist eine Variable, die sich durch die Veränderung der unabhängigen Variable auch ändert. Und eine unabhängige Variable ist dementsprechend von der anderen Variable unabhängig.*
 
 ```{r fig7, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
 knitr::include_graphics("images/class_treemap.png")
