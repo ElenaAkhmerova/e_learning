@@ -127,7 +127,7 @@ Bedingte relative Häufigkeiten lassen sich mit Hilfe von **Häufigkeitsbäumen*
 Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gibt:
 
 - eine **Wurzel** - einen Ausgangspunkt des Baumdiagramms,
-- **Äste** oder **Zweige** - Abspaltungen aus den Knotenpunkten, die eine Bedingung oder Entscheidung widerspiegeln, die zu einem bestimmten Ereignis führt,
+- **Äste** - Abspaltungen aus den Knotenpunkten, die eine Bedingung oder Entscheidung widerspiegeln, die zu einem bestimmten Ereignis führt,
 - und schließlich **Blätter** - finale Ergebnisse, zu denen eine Reihe von verschiedenen möglichen Ereignissen geführt hat.
 
 Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Zweige werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
@@ -199,24 +199,88 @@ Einleitung - Bild - Aufgaben + R Code
 ## Zusammenfassung
 
 ## Quiz
-Teste jetzt deine Kenntnisse!
+Teste jetzt deine Kenntnisse! Hier findest du 5 kurze Verständnisfragen und im nächsten Abschnitt **Programmieraufgaben** kannst du dann deine praktischen Fähigkeiten unter Beweis stellen.
 
 ```{r quiz1, echo=FALSE}
-#quiz(caption = "1. Definition",
-#     question_radio("Was sind bedingte relative Häufigkeiten?",
-#                    answer_fn("a", correct = TRUE, message = "richtig"),
-#                    answer_fn("b", correct = FALSE, message = "falsch")))
+quiz(caption = "1. Definition",
+     question("Was sind bedingte relative Häufigkeiten?",
+              answer("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle."),
+              answer("Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist."),
+              answer("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist.", correct = TRUE),
+              allow_retry = TRUE))
 ```
 
 ```{r quiz2, echo=FALSE}
-#quiz(caption = "2. Anwendungsbereiche",
-#     question_checkbox("In welchen Fällen werden bedingte relative Häufigkeiten angewendet?",
-#                       answer_fn("a", correct = TRUE)))
+quiz(caption = "2. Anwendungsbereiche",
+     question("Wo werden bedingte relative Häufigkeiten angewendet? Wähle alle passenden Antworten.",
+              answer("In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", correct = TRUE),
+              answer("Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang."),
+              answer("In der Market Basket Analyse, um bestimmte Kaufregeln festzustellen.", correct = TRUE),
+              answer("Bei der Wahrscheinlichkeitsprognose des Eintritts von Zukunftsereignissen unter bestimmten Bedingungen.", correct = TRUE),
+              allow_retry = TRUE))
 ```
 
-(praktische Aufgaben 3-6)
+```{r quiz3, echo=FALSE}
+library(magrittr)
+library(sortable)
+
+quiz(caption = "3. Visualisierungsformen",
+     question("a. Wie kann man bedingte relative Häufigkeiten grafisch darstellen?",
+              answer("a"),
+              answer("b", correct = TRUE),
+              allow_retry = TRUE))#, # Lücken ausfüllen
+
+elements <- c("Äste", "Blätter", "Wurzel")
+question_rank("b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der gleichen Reihenfolge wie deren Funktionen:
+              - eine Bedingung oder Entscheidung widerspiegeln,
+              - Endereignis repräsentieren,
+              - Ausgangssituation darstellen.",
+              answer(elements, correct = TRUE),
+              answer(rev(elements), correct = FALSE, message = "Falsche Reihenfolge"),
+              allow_retry = TRUE)#,
+```
+
+```{r quiz4, echo=FALSE}
+quiz(question("c. Mosaikplots",
+              answer("a"),
+              answer("b", correct = TRUE),
+              allow_retry = TRUE)
+     ) 
+```
 
 ## Programmieraufgaben
+
+(4 praktische Aufgaben): 1) Lücken in einem H/baum befüllen (labels - Text, values - Zahlen) - alle Lücken werden nummeriert und es werden 4-5 Antwortoptionen gegeben mit unterschiedlicher Reihenfolge und unterschiedlichen Werten
+
+```{r calculations-1, exercise=TRUE}
+# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
+# ...
+
+```
+
+2) Interpretaionsfrage zu einem H/baum
+
+```{r calculations-2, exercise=TRUE}
+# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
+# ...
+
+```
+
+3) Interpretationsfrage zu einem Mosaikplot
+
+```{r calculations-3, exercise=TRUE}
+# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
+# ...
+
+```
+
+4) Lücken in einem Mosaikplot befüllt - ähnlich zum Punkt 1
+
+```{r calculations-4, exercise=TRUE}
+# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
+# ...
+
+```
 
 ## Feedback
 Danke erstmal für die Benutzung dieser E-Learning Plattform, hoffentlich kannst du das Thema bedingte relative Häufigkeiten nun deutlich besser verstehen.
