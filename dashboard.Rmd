@@ -114,11 +114,15 @@ Am 15. April 1912 ist das vermeintlich sicherste Schiff der Epoche *Titanic* auf
 
 Man kann das Überleben einiger Passagiere zwar mit ihrem Glück verbinden, es konnte aber bestimmte Umstände geben, unter denen die eine oder andere Person mehr Überlebenschancen hatte als andere. Diese Hypothese kann anhand des folgenden Datensatzes überprüft werden.
 
-Führe den Code unten aus, um mehr über die Tabelle zu erfahren, die wir des Weiteren benutzen werden. Sei frei, auch weitere Befehle zu schreiben und auszuführen, z.B. $head(Titanic)$, um den Datensatz noch besser kennenzulernen.
+Führe den Code unten aus, um mehr über die Tabelle zu erfahren, die wir des Weiteren benutzen werden. Sei frei, auch weitere Befehle zu schreiben und auszuführen, z.B. $head(titanic\_dt)$, um den Datensatz noch besser kennenzulernen.
 
-```{r dataset, exercise = TRUE}
-summary(Titanic)  # achte auf die Anzahl der Reihen und Spalten
-str(Titanic)  # ein Überblick von Spaltennamen und Ausprägungen der Werte
+```{r dataset, exercise=TRUE}
+# .csv-Datei einlesen
+titanic_dt <- read.csv("data/titanic.csv")
+
+# Grundinformationen ausgeben lassen
+summary(titanic_dt)  # achte auf die Anzahl der Reihen und Spalten
+str(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte
 ```
 
 ## Häufigkeitsbäume
@@ -184,18 +188,6 @@ Im Mosaikplot wird eine rechteckige Fläche in Rechtecke aufgeteilt. Die Größe
 ```{r, echo=FALSE}
 # Read a .csv file
 titanic_dt <- read.csv2("data/titanic.csv", sep = ",")
-
-# Prepare the data.frame
-titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
-titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
-titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
-titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
-titanic_dt$Age[titanic_dt$Age < 20] <- "Kind"
-titanic_dt$Age[titanic_dt$Age >= 20] <- "Erwachsene/r"
-titanic_dt$Embarked[titanic_dt$Embarked == "S"] <- "Southampton"
-titanic_dt$Embarked[titanic_dt$Embarked == "C"] <- "Cherbourg"
-titanic_dt$Embarked[titanic_dt$Embarked == "Q"] <- "Queenstown"
-titanic_dt$Embarked[titanic_dt$Embarked == ""] <- "unbekannt"
 
 # Create mosaic plots
 tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))

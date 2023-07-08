@@ -114,19 +114,19 @@ if (window.hljs) {
 <div id="section-einführung" class="section level2">
 <h2>Einführung</h2>
 <div class="tabbable">
-<ul class="nav nav-tabs shiny-tab-input" id="myAccordion" data-tabsetid="6461">
+<ul class="nav nav-tabs shiny-tab-input" id="myAccordion" data-tabsetid="7111">
 <li class="active">
-<a href="#tab-6461-1" data-toggle="tab" data-bs-toggle="tab" data-value="panel1">Start</a>
+<a href="#tab-7111-1" data-toggle="tab" data-bs-toggle="tab" data-value="panel1">Start</a>
 </li>
 <li>
-<a href="#tab-6461-2" data-toggle="tab" data-bs-toggle="tab" data-value="panel2">Zusammenhänge zwischen Produkten</a>
+<a href="#tab-7111-2" data-toggle="tab" data-bs-toggle="tab" data-value="panel2">Zusammenhänge zwischen Produkten</a>
 </li>
 <li>
-<a href="#tab-6461-3" data-toggle="tab" data-bs-toggle="tab" data-value="panel3">Panel 3</a>
+<a href="#tab-7111-3" data-toggle="tab" data-bs-toggle="tab" data-value="panel3">Panel 3</a>
 </li>
 </ul>
-<div class="tab-content" data-tabsetid="6461">
-<div class="tab-pane active" data-value="panel1" id="tab-6461-1">
+<div class="tab-content" data-tabsetid="7111">
+<div class="tab-pane active" data-value="panel1" id="tab-7111-1">
       <p>Das Einkaufsteam einer Edinburger Bäckerei hat bei der Einkaufsplanung und Überprüfung gemerkt, dass bestimmte Produktgruppen in den letzten Monaten deutlich öfter als andere nachgekauft werden müssen, während andere ab und zu verderben bzw. weggeworfen werden müssen, weil sie schon über dem Verfalldatum sind. Dadurch entstehen Kosten und die Bäckerei verliert das Geld, das sonst dem Modernisierungswunsch des Geschäftsführers zufolge in die Erneuerung der Innenausstattung investiert werden könnte.</p>
       <p>Das Einkaufsteam hat in Kooperation mit dem Verkaufsteam bestimmte Verhaltensmuster der Käufer/innen vermutet und möchte ihre Behauptungen nun überprüfen. Zum Glück haben die Bäckereimitarbeiter/innen alle Transaktionen sorgfältig im Transaktionsmanagement-System abgespeichert, so dass alle Daten zu den Transaktionen zwischen dem 01.11.2016 und 30.03.2017 zur Verfügung stehen und zwar:</p>
       <ul>
@@ -139,7 +139,7 @@ if (window.hljs) {
       
       <p>Überlege dir, wie die Bäckereimitarbeiter/innen ihre Analyse durchführen und nach Kaufmustern suchen könnten und klicke dann auf die Reiter, um Einblicke in den Analyseprozess vom Einkaufsteam zu bekommen.</p>
     </div>
-<div class="tab-pane" data-value="panel2" id="tab-6461-2">
+<div class="tab-pane" data-value="panel2" id="tab-7111-2">
       <p>This is the content for Panel 2.</p>
       
       <ol>
@@ -162,7 +162,7 @@ if (window.hljs) {
         </li>
       </ul>
     </div>
-<div class="tab-pane" data-value="panel3" id="tab-6461-3">
+<div class="tab-pane" data-value="panel3" id="tab-7111-3">
       <p>This is the content for Panel 3.</p>
       
       <blockquote>
@@ -235,12 +235,17 @@ Hypothese kann anhand des folgenden Datensatzes überprüft werden.</p>
 <p>Führe den Code unten aus, um mehr über die Tabelle zu erfahren, die
 wir des Weiteren benutzen werden. Sei frei, auch weitere Befehle zu
 schreiben und auszuführen, z.B. <span
-class="math inline">\(head(Titanic)\)</span>, um den Datensatz noch
+class="math inline">\(head(titanic\_dt)\)</span>, um den Datensatz noch
 besser kennenzulernen.</p>
 <div class="tutorial-exercise" data-label="dataset" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>summary(Titanic)  # achte auf die Anzahl der Reihen und Spalten
-str(Titanic)  # ein Überblick von Spaltennamen und Ausprägungen der Werte</code></pre>
+<pre class="text"><code>library(readr)
+# .csv-Datei einlesen
+titanic_dt &lt;- read_csv(&quot;data/titanic.csv&quot;, show_col_types = FALSE)
+
+# Grundinformationen ausgeben lassen
+summary(titanic_dt)  # achte auf die Anzahl der Reihen und Spalten
+str(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -583,7 +588,7 @@ output$`tutorial-exercise-dataset-output` <- renderUI({
 learnr:::store_exercise_cache(structure(list(label = "dataset", global_setup = structure(c("library(learnr)", 
 "library(graphics)", "knitr::opts_chunk$set(echo = TRUE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "dataset", code = "summary(Titanic)  # achte auf die Anzahl der Reihen und Spalten\nstr(Titanic)  # ein Überblick von Spaltennamen und Ausprägungen der Werte", 
+    list(label = "dataset", code = "library(readr)\n# .csv-Datei einlesen\ntitanic_dt <- read_csv(\"data/titanic.csv\", show_col_types = FALSE)\n\n# Grundinformationen ausgeben lassen\nsummary(titanic_dt)  # achte auf die Anzahl der Reihen und Spalten\nstr(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte", 
         opts = list(label = "\"dataset\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -603,9 +608,10 @@ learnr:::store_exercise_cache(structure(list(label = "dataset", global_setup = s
         message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, label = "dataset", exercise = TRUE, 
-        code = c("summary(Titanic)  # achte auf die Anzahl der Reihen und Spalten", 
-        "str(Titanic)  # ein Überblick von Spaltennamen und Ausprägungen der Werte"
-        ), out.width.px = 624, out.height.px = 384, params.src = "dataset, exercise = TRUE", 
+        code = c("library(readr)", "# .csv-Datei einlesen", "titanic_dt <- read_csv(\"data/titanic.csv\", show_col_types = FALSE)", 
+        "", "# Grundinformationen ausgeben lassen", "summary(titanic_dt)  # achte auf die Anzahl der Reihen und Spalten", 
+        "str(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte"
+        ), out.width.px = 624, out.height.px = 384, params.src = "dataset, exercise=TRUE", 
         fig.num = 0, exercise.df_print = "paged", exercise.checker = "NULL"), 
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
 )))
@@ -664,17 +670,17 @@ learnr:::store_exercise_cache(structure(list(label = "bsp1", global_setup = stru
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz1-1", question = structure("Was sind bedingte relative Häufigkeiten?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_dc1fcde", 
+"character")), answers = list(structure(list(id = "lnr_ans_43dd77b", 
     option = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle.", 
     value = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle.", 
     label = structure("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis \\(A\\) auftritt, unter der Bedingung, dass ein anderes Ereignis \\(B\\) bereits eingetreten ist, an der Gesamtanzahl der Fälle.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a363db2", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6e270d2", 
     option = "Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.", 
     value = "Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.", 
     label = structure("Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_42abd44", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_836588c", 
     option = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist.", 
     value = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist.", 
     label = structure("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis \\(A\\) auftritt, unter der Bedingung, dass ein anderes Ereignis \\(B\\) bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis \\(B\\) eingetreten ist.", html = TRUE, class = c("html", 
@@ -686,7 +692,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz1-1-answer", question = "quiz1-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1225233202.42946, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1509278018.79719, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -694,22 +700,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz2-1", question = structure("Wo werden bedingte relative Häufigkeiten angewendet? Wähle alle passenden Antworten.", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_832f66e", 
+"character")), answers = list(structure(list(id = "lnr_ans_b63289f", 
     option = "In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", 
     value = "In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", 
     label = structure("In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a0d49d", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4eb33fc", 
     option = "Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang.", 
     value = "Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang.", 
     label = structure("Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3b1b9d6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7c4967a", 
     option = "In der Market Basket Analyse, um bestimmte Kaufregeln festzustellen.", 
     value = "In der Market Basket Analyse, um bestimmte Kaufregeln festzustellen.", 
     label = structure("In der Market Basket Analyse, um bestimmte Kaufregeln festzustellen.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dede36e", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_796486f", 
     option = "Bei der Wahrscheinlichkeitsprognose des Eintritts von Zukunftsereignissen unter bestimmten Bedingungen.", 
     value = "Bei der Wahrscheinlichkeitsprognose des Eintritts von Zukunftsereignissen unter bestimmten Bedingungen.", 
     label = structure("Bei der Wahrscheinlichkeitsprognose des Eintritts von Zukunftsereignissen unter bestimmten Bedingungen.", html = TRUE, class = c("html", 
@@ -721,17 +727,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz2-1-answer", question = "quiz2-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1028681137.02098, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1539171985.78327, 
     options = list()), class = c("learnr_checkbox", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz3-1", question = structure("a. Wie kann man bedingte relative Häufigkeiten grafisch darstellen?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_2064394", 
+"character")), answers = list(structure(list(id = "lnr_ans_a91620c", 
     option = "a", value = "a", label = structure("a", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ec894eb", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_d67667c", 
     option = "b", value = "b", label = structure("b", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -741,7 +747,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz3-1-answer", question = "quiz3-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 158506008.92619, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1599866828.755, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -749,11 +755,11 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label = "quiz4", question = structure("<strong>b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der gleichen Reihenfolge wie deren Funktionen:<\u002fstrong><\u002fp>\n<pre><code>          - eine Bedingung oder Entscheidung widerspiegeln,\n\n          - Endereignis repräsentieren,\n\n          - Ausgangssituation darstellen.\n<\u002fcode><\u002fpre>\n", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_e4ff4c2", 
+"character")), answers = list(structure(list(id = "lnr_ans_beeea27", 
     option = c("Äste", "Blätter", "Wurzel"), value = c("Äste", 
     "Blätter", "Wurzel"), label = structure("Äste\nBlätter\nWurzel", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cc9cf30", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6e7c05f", 
     option = c("Wurzel", "Blätter", "Äste"), value = c("Wurzel", 
     "Blätter", "Äste"), label = structure("Wurzel\nBlätter\nÄste", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("Falsche Reihenfolge", html = TRUE, class = c("html", 
@@ -766,16 +772,16 @@ learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz4-answer", question = "quiz4"), loading = structure("<p><strong>Loading:<\u002fstrong>\n<strong>b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der gleichen Reihenfolge wie deren Funktionen:<\u002fstrong><\u002fp>\n<pre><code>          - eine Bedingung oder Entscheidung widerspiegeln,\n\n          - Endereignis repräsentieren,\n\n          - Ausgangssituation darstellen.\n<\u002fcode><\u002fpre>\n<p><br/><br/><br/><\u002fp>\n", html = TRUE, class = c("html", 
 "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1767443519.17697, options = structure(list(), class = "sortable_options")), class = c("sortable_rank", 
+    seed = 1405406398.84556, options = structure(list(), class = "sortable_options")), class = c("sortable_rank", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz5-1", question = structure("c. Mosaikplots", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_213b4d4", 
+"character")), answers = list(structure(list(id = "lnr_ans_e93ca51", 
     option = "a", value = "a", label = structure("a", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c62c047", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1b7f9e9", 
     option = "b", value = "b", label = structure("b", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -785,7 +791,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz5-1-answer", question = "quiz5-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 287735849.366013, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 324945121.348686, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
