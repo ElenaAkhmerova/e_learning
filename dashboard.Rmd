@@ -11,6 +11,7 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(learnr)
+library(graphics)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -133,7 +134,7 @@ Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gib
 Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Äste werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
 
 ```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
-knitr::include_graphics("images/sex_tree.png")
+#knitr::include_graphics("images/class_tree.png")
 ```
 
 Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
@@ -171,16 +172,80 @@ knitr::include_graphics("images/sex_treemap_gaps.png")
 ```
 
 ```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/sex_treemap.png")                                # aufklappbar machen
+knitr::include_graphics("images/sex_tree.png")                                # aufklappbar machen
 ```
 
 ## Mosaikplot
 
 Eine weitere graphische Darstellung von bedingten relativen Häufigkeiten sind **Mosaikplots**, auch als **Mosaikdiagramme** oder **Mosaikgrafiken** bezeichnet.
 
-Im Mosaikplot wird eine rechteckige Fläche in Rechtecke aufgeteilt. Die Größe dieser Rechtecke ist proportional zur relativen Häufigkeit der entsprechenden Kategorie. Die größeren Rechtecke des Mosaikplots werden in Segmente unterteilt, die die Kategorien der beiden Variablen darstellen. Damit zusätzliche Informationen noch anschaulicher sind, können die Segmente farblich markiert oder schattiert werden.
+Im Mosaikplot wird eine rechteckige Fläche in Rechtecke aufgeteilt. Die Größe dieser Rechtecke ist proportional zur relativen Häufigkeit der entsprechenden Kategorie. Die größeren Rechtecke des Mosaikplots werden in Segmente unterteilt, die die Kategorien der beiden Variablen darstellen.
+
+```{r, echo=FALSE}
+# Read a .csv file
+titanic_dt <- read.csv2("data/titanic.csv", sep = ",")
+
+# Prepare the data.frame
+titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
+titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
+titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
+titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
+titanic_dt$Age[titanic_dt$Age < 20] <- "Kind"
+titanic_dt$Age[titanic_dt$Age >= 20] <- "Erwachsene/r"
+titanic_dt$Embarked[titanic_dt$Embarked == "S"] <- "Southampton"
+titanic_dt$Embarked[titanic_dt$Embarked == "C"] <- "Cherbourg"
+titanic_dt$Embarked[titanic_dt$Embarked == "Q"] <- "Queenstown"
+titanic_dt$Embarked[titanic_dt$Embarked == ""] <- "unbekannt"
+
+# Create mosaic plots
+tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
+mosaicplot(tbl1)
+```
+
+Damit zusätzliche Informationen noch anschaulicher sind, können die Segmente farblich markiert oder schattiert werden.
+
+```{r, echo=FALSE}
+mosaicplot(tbl1, color = TRUE)
+```
 
 Wenn man auf die Achsen der Grafik schaut, repräsentiert die horizontale Achse eine unabhängige und die vertikale Achse eine abhängige Variable. *Zur Erinnerung: Eine abhängige Variable ist eine Variable, die sich durch die Veränderung der unabhängigen Variable auch ändert. Und eine unabhängige Variable ist dementsprechend von der anderen Variable unabhängig.*
+
+So ist hier das Geschlecht die unabhängige und das Überleben die abhängige Variable. Tatsächlich sieht man, dass die meisten Männer ums Leben gekommen sind, während die meisten Frauen überlebt haben. Doch man sieht gleichzeitig, dass der männliche Segment per se größer ist als der weibliche - liegt also eine solche Verteilung tatsächlich am Geschlecht und nicht an der Tatsache, dass es mehr Männer als Frauen an Bord gab? Überprüfen wir das mal.
+
+```{r init-var, echo=FALSE}
+maenner <- nrow(titanic_dt[titanic_dt$Sex == "männlich",])
+frauen <- nrow(titanic_dt[titanic_dt$Sex == "weiblich",])
+n_total <- nrow(titanic_dt)
+
+maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "männlich") 
+                                     & (titanic_dt$Survived == "überlebt"),])
+maenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "männlich") 
+                                     & (titanic_dt$Survived == "nicht überlebt"),])
+frauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "weiblich") 
+                                     & (titanic_dt$Survived == "überlebt"),])
+frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "weiblich") 
+                                     & (titanic_dt$Survived == "nicht überlebt"),])
+```
+
+```{r bsp1, exercise = TRUE}
+# Führe den Code aus. Alle absoluten Variablen wurden schon definiert.
+
+anteil_maenner <- maenner / n_total # Gesamtanteil der Männer
+anteil_frauen <- frauen / n_total # Gesamtanteil der Frauen
+
+anteil_maenner_ueberlebt <- maenner_ueberlebt / maenner # Anteil Überlebender an Männern
+anteil_maenner_gestorben <- maenner_gestorben / maenner # Anteil Gestorbener an Männern
+anteil_frauen_ueberlebt <- frauen_ueberlebt / frauen # Anteil Überlebender an Frauen
+anteil_frauen_gestorben <- frauen_gestorben / frauen # Anteil Gestorbener an Frauen
+
+print(paste0(anteil_maenner_ueberlebt * anteil_maenner * 100, 
+             "% der Passagiere haben überlebt, wenn sie männlich waren. ", 
+             anteil_maenner_gestorben * anteil_maenner * 100, 
+             "% der Passagiere sind hingegen gestorben, wenn sie männlich waren. ",
+             "Dabei sind ", anteil_frauen_ueberlebt * anteil_frauen * 100, 
+             "% überlebt und ", anteil_frauen_gestorben * anteil_frauen * 100, 
+             "% gestorben, wenn sie Frauen waren."))
+```
 
 ```{r fig7, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
 knitr::include_graphics("images/class_treemap.png")
@@ -192,16 +257,46 @@ Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
 
 ## Mosaikplot lesen
 
-Einleitung - Bild - Aufgaben
+Einleitung
+
+```{r fig8, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
+knitr::include_graphics("images/class_age_treemap.png")
+```
+
+Aufgaben
 
 ## Mosaikplot erstellen
 
-Einleitung - Bild - Aufgaben + R Code
+Einleitung
+
+```{r fig9, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
+knitr::include_graphics("images/age_treemap_gaps.png")
+```
+
+!!! Exercise!!!
+
+Aufgaben
+
+```{r fig10, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+knitr::include_graphics("images/age_treemap.png")                                # aufklappbar machen
+```
+
+In dieser Übung wurden nicht alle Segmente beschriftet. Wie wäre es, wenn nicht alle Prozentwerte angegeben werden?
+
+```{r fig11, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
+knitr::include_graphics("images/sex_treemap_gaps.png")
+```
+
+```{r fig12, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+knitr::include_graphics("images/sex_treemap.png")                                # aufklappbar machen
+```
+
++ R Code
 
 ## Zusammenfassung
 
 ## Quiz
-Teste jetzt deine Kenntnisse! Hier findest du 5 kurze Verständnisfragen und im nächsten Abschnitt **Programmieraufgaben** kannst du dann deine praktischen Fähigkeiten unter Beweis stellen.
+Teste jetzt deine Kenntnisse! Hier findest du 7 kurze Verständnisfragen und im nächsten Abschnitt **Programmieraufgaben** kannst du dann deine praktischen Fähigkeiten unter Beweis stellen.
 
 ```{r quiz1, echo=FALSE}
 quiz(caption = "1. Definition",
@@ -231,23 +326,36 @@ quiz(caption = "3. Visualisierungsformen",
               answer("a"),
               answer("b", correct = TRUE),
               allow_retry = TRUE))#, # Lücken ausfüllen
+```
 
+```{r quiz4, echo=FALSE}
 elements <- c("Äste", "Blätter", "Wurzel")
-question_rank("b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der gleichen Reihenfolge wie deren Funktionen:
-              - eine Bedingung oder Entscheidung widerspiegeln,
-              - Endereignis repräsentieren,
+question_rank("**b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der gleichen Reihenfolge wie deren Funktionen:**\n
+              - eine Bedingung oder Entscheidung widerspiegeln,\n
+              - Endereignis repräsentieren,\n
               - Ausgangssituation darstellen.",
               answer(elements, correct = TRUE),
               answer(rev(elements), correct = FALSE, message = "Falsche Reihenfolge"),
               allow_retry = TRUE)#,
 ```
 
-```{r quiz4, echo=FALSE}
-quiz(question("c. Mosaikplots",
+```{r quiz5, echo=FALSE}
+quiz(caption = "",
+     question("c. Mosaikplots",
               answer("a"),
               answer("b", correct = TRUE),
               allow_retry = TRUE)
      ) 
+```
+
+```{r quiz6, echo=FALSE}
+# Interpretationsfrage zu HB
+
+```
+
+```{r quiz7, echo=FALSE}
+# Interpretationsfrage zu einem Mosaikplot
+
 ```
 
 ## Programmieraufgaben
@@ -260,15 +368,7 @@ quiz(question("c. Mosaikplots",
 
 ```
 
-2) Interpretationsfrage zu einem H/baum 
-
-```{r calculations-2, exercise=TRUE}
-# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
-# ...
-
-```
-
-3) Interpretationsfrage zu einem Mosaikplot / erzeugen lassen
+2) Mosaikplot erzeugen lassen
 
 ```{r calculations-3, exercise=TRUE}
 # Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
