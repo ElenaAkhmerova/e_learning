@@ -165,7 +165,7 @@ knitr::include_graphics("images/age_treemap_gaps.png")
 
 Aufgaben
 
-```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung", collapse=TRUE}
 knitr::include_graphics("images/age_treemap.png")                                # aufklappbar machen
 ```
 
@@ -189,63 +189,72 @@ Im Mosaikplot wird eine rechteckige Fläche in Rechtecke aufgeteilt. Die Größe
 # Read a .csv file
 titanic_dt <- read.csv2("data/titanic.csv", sep = ",")
 
+# Prepare the data.frame
+titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
+titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
+titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
+titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
+titanic_dt$Age[titanic_dt$Age < 20] <- "Kind"
+titanic_dt$Age[titanic_dt$Age >= 20] <- "Erwachsene/r"
+titanic_dt$Embarked[titanic_dt$Embarked == "S"] <- "Southampton"
+titanic_dt$Embarked[titanic_dt$Embarked == "C"] <- "Cherbourg"
+titanic_dt$Embarked[titanic_dt$Embarked == "Q"] <- "Queenstown"
+titanic_dt$Embarked[titanic_dt$Embarked == ""] <- "unbekannt"
+
 # Create mosaic plots
 tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
-mosaicplot(tbl1)
+mosaicplot(tbl1, main = "Überleben | Geschlecht")
 ```
 
 Damit zusätzliche Informationen noch anschaulicher sind, können die Segmente farblich markiert oder schattiert werden.
 
 ```{r, echo=FALSE}
-mosaicplot(tbl1, color = TRUE)
+mosaicplot(tbl1, color = TRUE, main = "Überleben | Geschlecht")
 ```
 
 Wenn man auf die Achsen der Grafik schaut, repräsentiert die horizontale Achse eine unabhängige und die vertikale Achse eine abhängige Variable. *Zur Erinnerung: Eine abhängige Variable ist eine Variable, die sich durch die Veränderung der unabhängigen Variable auch ändert. Und eine unabhängige Variable ist dementsprechend von der anderen Variable unabhängig.*
 
-So ist hier das Geschlecht die unabhängige und das Überleben die abhängige Variable. Tatsächlich sieht man, dass die meisten Männer ums Leben gekommen sind, während die meisten Frauen überlebt haben. Doch man sieht gleichzeitig, dass der männliche Segment per se größer ist als der weibliche - liegt also eine solche Verteilung tatsächlich am Geschlecht und nicht an der Tatsache, dass es mehr Männer als Frauen an Bord gab? Überprüfen wir das mal.
-
-```{r init-var, echo=FALSE}
-maenner <- nrow(titanic_dt[titanic_dt$Sex == "männlich",])
-frauen <- nrow(titanic_dt[titanic_dt$Sex == "weiblich",])
-n_total <- nrow(titanic_dt)
-
-maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "männlich") 
-                                     & (titanic_dt$Survived == "überlebt"),])
-maenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "männlich") 
-                                     & (titanic_dt$Survived == "nicht überlebt"),])
-frauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "weiblich") 
-                                     & (titanic_dt$Survived == "überlebt"),])
-frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "weiblich") 
-                                     & (titanic_dt$Survived == "nicht überlebt"),])
-```
+So ist hier das Geschlecht die unabhängige und das Überleben die abhängige Variable. Tatsächlich sieht man, dass die meisten Männer ums Leben gekommen sind, während die meisten Frauen überlebt haben. Schauen wir mal, wie das in Zahlen aussieht. Führe dafür den Code unten aus.
 
 ```{r bsp1, exercise = TRUE}
-# Führe den Code aus. Alle absoluten Variablen wurden schon definiert.
+# Daten einlesen und Variablen definieren
+titanic_dt <- read.csv("data/titanic.csv")
 
+# Absolute Häufigkeiten
+maenner <- nrow(titanic_dt[titanic_dt$Sex == "male",])
+frauen <- nrow(titanic_dt[titanic_dt$Sex == "female",])
+n_total <- nrow(titanic_dt)
+
+maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "male") 
+                                     & (titanic_dt$Survived == 1),])
+maenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "male") 
+                                     & (titanic_dt$Survived == 0),])
+frauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
+                                     & (titanic_dt$Survived == 1),])
+frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
+                                     & (titanic_dt$Survived == 0),])
+
+# Relative Häufigkeiten
 anteil_maenner <- maenner / n_total # Gesamtanteil der Männer
 anteil_frauen <- frauen / n_total # Gesamtanteil der Frauen
 
-anteil_maenner_ueberlebt <- maenner_ueberlebt / maenner # Anteil Überlebender an Männern
-anteil_maenner_gestorben <- maenner_gestorben / maenner # Anteil Gestorbener an Männern
-anteil_frauen_ueberlebt <- frauen_ueberlebt / frauen # Anteil Überlebender an Frauen
-anteil_frauen_gestorben <- frauen_gestorben / frauen # Anteil Gestorbener an Frauen
+anteil_maenner_ueberlebt <-  # Anteil Überlebender an Männern
+anteil_maenner_gestorben <-  # Anteil Gestorbener an Männern
+anteil_frauen_ueberlebt <-  # Anteil Überlebender an Frauen
+anteil_frauen_gestorben <-  # Anteil Gestorbener an Frauen
 
-print(paste0(anteil_maenner_ueberlebt * anteil_maenner * 100, 
-             "% der Passagiere haben überlebt, wenn sie männlich waren. ", 
-             anteil_maenner_gestorben * anteil_maenner * 100, 
-             "% der Passagiere sind hingegen gestorben, wenn sie männlich waren. ",
-             "Dabei sind ", anteil_frauen_ueberlebt * anteil_frauen * 100, 
-             "% überlebt und ", anteil_frauen_gestorben * anteil_frauen * 100, 
-             "% gestorben, wenn sie Frauen waren."))
+print(paste0("Die relative Häufigkeit vom Überleben war ", 
+             round(maenner_ueberlebt / maenner * 100, 2), 
+             "%, wenn die Passagiere männlich waren, und ", 
+             round(frauen_ueberlebt / frauen * 100, 2), 
+             "%, wenn sie Frauen waren. Die relative Häufigkeit vom Sterben war ", 
+             "hingegen ", round(maenner_gestorben / maenner * 100, 2), 
+             "% unter der Bedingung, dass die Passagiere männlich waren, und ",
+             round(frauen_gestorben / frauen * 100, 2), "% unter der Bedingung, ", 
+             "dass sie weiblich waren."))
 ```
 
-```{r fig7, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
-knitr::include_graphics("images/class_treemap.png")
-```
-
-...
-
-Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
+Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
 
 ## Mosaikplot lesen
 
