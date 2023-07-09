@@ -191,13 +191,12 @@ Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
 knitr::include_graphics("images/age_tree.png")
 ```
 
-In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden? Nehmen wir dafür die Überlebensquote unter der Bedindung, dass die Person in der 1., 2. oder 3. Klasse Passagier war oder zum Team gehörte, als Beispiel.
+In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden? Nehmen wir dafür die Überlebensquote unter der Bedingung, dass die Person in der 1., 2. oder 3. Klasse Passagier war, als Beispiel.
 
 Die Häufigkeitsverteilung hinsichtlich der Passagierklasse sah so aus:
 - ... Menschen (...%) waren in der 1. Klasse (... (...%) haben überlebt und ... (...%) nicht),
 - ... Menschen (...%) waren in der 2. Klasse (... (...%) haben überlebt und ... (...%) nicht),
-- ... Menschen (...%) waren in der 3. Klasse (... (...%) haben überlebt und ... (...%) nicht) und
-- ... Menschen (...%) waren Schiffsleute (... (...%) haben überlebt und ... (...%) nicht).
+- ... Menschen (...%) waren in der 3. Klasse (... (...%) haben überlebt und ... (...%) nicht).
 
 ```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Diese Informationen findet man auf dieser Grafik wieder, aber die Äste werden nicht beschriftet. Kannst du zuordnen, welche Zahlen von links nach rechts von oben nach unten stehen sollen?"}
 knitr::include_graphics("images/class_treemap_gaps.png")
@@ -242,12 +241,6 @@ titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
 titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
 titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
 titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
-titanic_dt$Age[titanic_dt$Age < 20] <- "Kind"
-titanic_dt$Age[titanic_dt$Age >= 20] <- "Erwachsene/r"
-titanic_dt$Embarked[titanic_dt$Embarked == "S"] <- "Southampton"
-titanic_dt$Embarked[titanic_dt$Embarked == "C"] <- "Cherbourg"
-titanic_dt$Embarked[titanic_dt$Embarked == "Q"] <- "Queenstown"
-titanic_dt$Embarked[titanic_dt$Embarked == ""] <- "unbekannt"
 
 # Create mosaic plots
 tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))

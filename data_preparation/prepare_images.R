@@ -2,7 +2,9 @@
 library(data.table)
 library(treemap)
 library(riskyr)
-library(igraph)
+#library(igraph)
+library(data.tree)
+library(DiagrammeR)
 
 ### Read and explore data-------------------------------------------------------
 ## Bread basket-----------------------------------------------------------------
@@ -12,35 +14,55 @@ basket_dt <- fread("data/bread_basket.csv")
 titanic_dt <- fread("data/titanic.csv")
 n_total <- nrow(titanic_dt)
 
-# Sex
-maenner <- nrow(titanic_dt[titanic_dt$Sex == "male",])
-frauen <- nrow(titanic_dt[titanic_dt$Sex == "female",])
+# Prepare the data.frame
+titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
+titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
+titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
+titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
+titanic_dt$Age[titanic_dt$Age < 20] <- "Kind"
+titanic_dt$Age[titanic_dt$Age >= 20] <- "Erwachsene/r"
+titanic_dt$Pclass[titanic_dt$Pclass == 1] <- "1. Klasse"
+titanic_dt$Pclass[titanic_dt$Pclass == 2] <- "2. Klasse"
+titanic_dt$Pclass[titanic_dt$Pclass == 3] <- "3. Klasse"
+titanic_dt$Embarked[titanic_dt$Embarked == "S"] <- "Southampton"
+titanic_dt$Embarked[titanic_dt$Embarked == "C"] <- "Cherbourg"
+titanic_dt$Embarked[titanic_dt$Embarked == "Q"] <- "Queenstown"
+titanic_dt$Embarked[titanic_dt$Embarked == ""] <- "unbekannt"
 
-maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "male") 
-                                     & (titanic_dt$Survived == 1),])
-#maenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "male") 
-#                                     & (titanic_dt$Survived == 0),])
-#frauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
-#                                    & (titanic_dt$Survived == 1),])
-frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
-                                    & (titanic_dt$Survived == 0),])
+# Sex
+maenner <- nrow(titanic_dt[titanic_dt$Sex == "männlich",])
+frauen <- nrow(titanic_dt[titanic_dt$Sex == "weiblich",])
+
+maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "männlich") 
+                                     & (titanic_dt$Survived == "überlebt"),])
+frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "weiblich") 
+                                    & (titanic_dt$Survived == "nicht überlebt"),])
 
 anteil_maenner <- maenner / n_total # prev
 anteil_maenner_ueberlebt <- maenner_ueberlebt / maenner # sens
 anteil_frauen_gestorben <- frauen_gestorben / frauen # spec
 
 # Age
-children <- nrow(titanic_dt[titanic_dt$Age < 20,])
-adults <- nrow(titanic_dt[titanic_dt$Age >= 20,])
+children <- nrow(titanic_dt[titanic_dt$Age == "Kind",])
+adults <- nrow(titanic_dt[titanic_dt$Age == "Erwachsene/r",])
 
-children_survived <- nrow(titanic_dt[(titanic_dt$Age < 20)
-                                     & (titanic_dt$Survived == 1),])
-adults_deceased <- nrow(titanic_dt[(titanic_dt$Age >= 20)
-                                   & (titanic_dt$Survived == 0),])
+children_survived <- nrow(titanic_dt[(titanic_dt$Age == "Kind")
+                                     & (titanic_dt$Survived == "überlebt"),])
+adults_deceased <- nrow(titanic_dt[(titanic_dt$Age == "Erwachsene/r")
+                                   & (titanic_dt$Survived == "nicht überlebt"),])
 
 anteil_kinder <- children / n_total # prev
 anteil_kinder_ueberlebt <- children_survived / children # sens
 anteil_adults_deceased <- adults_deceased / adults # spec
+
+# Passenger Class
+class1 <- nrow(titanic_dt[titanic_dt$Pclass == "1. Klasse",])
+class2 <- nrow(titanic_dt[titanic_dt$Pclass == "2. Klasse",])
+class3 <- nrow(titanic_dt[titanic_dt$Pclass == "3. Klasse",])
+
+anteil_class1 <- class1 / n_total
+anteil_class2 <- class2 / n_total
+anteil_class3 <- class3 / n_total
 
 ### Create frequency trees------------------------------------------------------
 ## Explanation------------------------------------------------------------------
@@ -56,16 +78,16 @@ dev.off()
 
 
 ## Reading training-------------------------------------------------------------
-png("images/class_age_treemap.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
-class_age_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                           Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen", 
-                                              "Kind", "Erwachsen", "Kind", "Erwachsen"),
-                           Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                   "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                           Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
-class_age_treemap <- treemap(class_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-                             vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
+# png("images/class_age_treemap.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
+# class_age_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
+#                            Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen", 
+#                                               "Kind", "Erwachsen", "Kind", "Erwachsen"),
+#                            Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
+#                                                    "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
+#                            Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
+# class_age_treemap <- treemap(class_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
+#                              vSize = "Häufigkeit", vColor = "Kategorie")
+# dev.off()
 
 ## Creating training------------------------------------------------------------
 # Empty nodes-------------------------------------------------------------------
@@ -98,12 +120,9 @@ class_treemap_gaps <- treemap(class_gaps_dt, index = c("Kategorie", "Unterkatego
 dev.off()
 
 png("images/class_tree.png", width = 800, height = 600, res = 120)               # Zahlen anpassen!!!
-class_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                   Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                      "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                   Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))                 # Zahlen anpassen!!!
-class_treemap <- treemap(class_dt, index = c("Kategorie", "Unterkategorie"), 
-                         vSize = "Häufigkeit", vColor = "Kategorie")
+# do it step by step and add labels to edges!
+titanic_dt$pathString <- paste("N", titanic_dt$Pclass, titanic_dt$Survived, sep = "/")
+plot(as.Node(titanic_dt))
 dev.off()
 
 ## Quiz-------------------------------------------------------------------------
