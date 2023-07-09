@@ -161,28 +161,42 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 Neben Geschlecht und Passagierklasse gab es noch ein Merkmal, das theoretisch bei den Überlebungschancen mitspielen könnte und zwar das Alter. Ob Kinder und Jugendliche als Erste ihre Plätze in den Rettungsbooten finden konnten, werden wir jetzt untersuchen.
 
+Von den 891 Passagieren und Schiffsleuten waren ... (...%) unter 20 Jahren und ... (... %) 20 Jahre alt oder älter. Von der ersten Gruppen haben ...% (... Menschen) überlebt und entsprechend sind ...% (...) ums Leben gekommen. Und von den Erwachsenen sind ...% (...) am Leben geblieben und ...% (...) gestorben.
 
+Schauen wir jetzt, wie sich diese Informationen mit einem Häufigkeitsbaum veranschaulichen lassen, und versuchen wir die fehlenden Informationen zu vervollständigen.
 
-```{r fig3, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt."}
+```{r fig3, echo = FALSE, out.width = "100%"}
 knitr::include_graphics("images/age_tree_gaps.png")
 ```
+
+Versuche das erstmals selbst zu lösen.
 
 ```{r ex1, echo = FALSE}
 quiz(caption = "",
      question("Was soll laut der Beschreibung oben in den Lücken stehen?",
-              answer("1 - Erwachsene/r, 2 - Nicht Überlebt, 3 - Überlebt"),
-              answer("1 - Erwachsene/r, 2 - Überlebt, 3 - Nicht Überlebt", 
+              answer("1 - Erwachsene/r, 2 - Kind, 3 - Nicht Überlebt, 4 - Überlebt"),
+              answer("1 - Kind, 2 - Erwachsene/r, 3 - Überlebt, 4 - Nicht Überlebt", 
                      correct = TRUE),
-              answer("1 - Nicht Überlebt, 2 - Erwachsene/r, 3 - Überlebt"),
-              answer("1 - Überlebt, 2 - Nicht Überlebt, 3 - Erwachsene/r"),
+              answer("1 - Kind, 2 - Erwachsene/r, 3 - Nicht Überlebt, 4 - Überlebt"),
+              answer("1 - Erwachsene/r, 2 - Kind, 3 - Überlebt, 4 - Nicht Überlebt "),
               allow_retry = TRUE))
 ```
 
-```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+.
+.
+.
+```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "An den Ästen wurden schon die Prozentwerte geschrieben. ...% aller Menschen waren unter 20 und ...% Erwachsene, deswegen soll im Kasten links \"Kind\" und im Kasten rechts \"Erwachsene/r\" stehen. Und von den Erwachsenen sind ...% gestorben und ...% wurden gerettet. Von daher soll unten links \"Überlebt\" und unten rechts \"Nicht Überlebt\" stehen."}
 knitr::include_graphics("images/age_tree.png")
 ```
 
-In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden?
+In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden? Nehmen wir dafür die Überlebensquote unter der Bedindung, dass die Person in der 1., 2. oder 3. Klasse Passagier war oder zum Team gehörte, als Beispiel.
+
+Die Häufigkeitsverteilung hinsichtlich der Passagierklasse sah so aus:
+- ... Menschen (...%) waren in der 1. Klasse (... (...%) haben überlebt und ... (...%) nicht)
+- ... Menschen (...%) waren in der 2. Klasse (... (...%) haben überlebt und ... (...%) nicht)
+- ... Menschen (...%) waren in der 3. Klasse (... (...%) haben überlebt und ... (...%) nicht)
+- ... Menschen (...%) waren Schiffsleute (... (...%) haben überlebt und ... (...%) nicht)
 
 ```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat, aber diesmal fehlen einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
 knitr::include_graphics("images/class_treemap_gaps.png")

@@ -44,7 +44,7 @@ anteil_adults_deceased <- adults_deceased / adults # spec
 
 ### Create frequency trees------------------------------------------------------
 ## Explanation------------------------------------------------------------------
-png("images/sex_tree.png", width = 800, height = 600, res = 120)              # Zahlen anpassen!!!
+png("images/sex_tree.png", width = 800, height = 600, res = 120)
 my_txt <- init_txt(cond_true_lbl = "Männlich", cond_false_lbl = "Weiblich",
                    hi_lbl = "Überlebt", mi_lbl = "Nicht Überlebt", 
                    fa_lbl = "Überlebt", cr_lbl = "Nicht Überlebt")
@@ -69,16 +69,16 @@ dev.off()
 
 ## Creating training------------------------------------------------------------
 # Empty nodes-------------------------------------------------------------------
-png("images/age_tree_gaps.png", width = 800, height = 600, res = 120)         # Zahlen anpassen!!!
-my_txt <- init_txt(cond_true_lbl = "Kind", cond_false_lbl = "(1)______",
+png("images/age_tree_gaps.png", width = 800, height = 600, res = 120)
+my_txt <- init_txt(cond_true_lbl = "(1)______", cond_false_lbl = "(2)______",
                    hi_lbl = "Überlebt", mi_lbl = "Nicht Überlebt", 
-                   fa_lbl = "(2)______", cr_lbl = "(3)______")
+                   fa_lbl = "(3)______", cr_lbl = "(4)______")
 age_tree_gaps <- plot_prism(prev = anteil_kinder, sens = anteil_kinder_ueberlebt, 
                             spec = anteil_adults_deceased, by = "cd", f_lbl = "nam", 
                             lbl_txt = my_txt, f_lwd = .5, arr_c = 2)
 dev.off()
 
-png("images/age_tree.png", width = 800, height = 600, res = 120)              # Zahlen anpassen!!!
+png("images/age_tree.png", width = 800, height = 600, res = 120)
 my_txt <- init_txt(cond_true_lbl = "Kind", cond_false_lbl = "Erwachsene/r",
                    hi_lbl = "Überlebt", mi_lbl = "Nicht Überlebt", 
                    fa_lbl = "Überlebt", cr_lbl = "Nicht Überlebt")
