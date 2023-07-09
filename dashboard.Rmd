@@ -302,19 +302,34 @@ Teste jetzt deine Kenntnisse! Hier findest du 7 kurze Verständnisfragen und im 
 ```{r quiz1, echo=FALSE}
 quiz(caption = "1. Definition",
      question("Was sind bedingte relative Häufigkeiten?",
-              answer("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle."),
-              answer("Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist."),
-              answer("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist.", correct = TRUE),
+              answer(paste0("Bedingte relative Häufigkeiten bezeichnen den Anteil ",
+              "der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der ",
+              "Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an ",
+              "der Gesamtanzahl der Fälle.")),
+              answer(paste0("Bedingte relative Häufigkeiten geben an, wie groß der ",
+              "Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl ",
+              "eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.")),
+              answer(paste0("Bedingte relative Häufigkeiten bezeichnen den Anteil ",
+              "der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der ",
+              "Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an ",
+              "der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist."), 
+              correct = TRUE),
               allow_retry = TRUE))
 ```
 
 ```{r quiz2, echo=FALSE}
 quiz(caption = "2. Anwendungsbereiche",
-     question("Wo werden bedingte relative Häufigkeiten angewendet? Wähle alle passenden Antworten.",
-              answer("In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", correct = TRUE),
-              answer("Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang."),
-              answer("In der Market Basket Analyse, um bestimmte Kaufregeln festzustellen.", correct = TRUE),
-              answer("Bei der Wahrscheinlichkeitsprognose des Eintritts von Zukunftsereignissen unter bestimmten Bedingungen.", correct = TRUE),
+     question(paste0("Wo werden bedingte relative Häufigkeiten angewendet? Wähle ",
+     "alle passenden Antworten."),
+              answer(paste0("In der Medizin, z.B. zum Testen der Effizienz eines ",
+              "neuen Wirkstoffes unter bestimmten Bedingungen."), correct = TRUE),
+              answer(paste0("Beim Vergleich der Häufigkeitsverteilungen in mehreren ",
+              "Gruppen unabhängig von deren Umfang.")),
+              answer(paste0("Bei der Analyse des Verbraucherverhaltens bezüglich ",
+              "bestimmter Produkte oder Produktgruppen."), correct = TRUE),
+              answer(paste0("In soziologischen Studien bei der Untersuchung, ob ",
+              "bestimmte soziodemografische Faktoren zu gewissen Handlungen, z.B. ",
+              "zur Steuerkriminalität, führen können."), correct = TRUE),
               allow_retry = TRUE))
 ```
 
@@ -323,30 +338,37 @@ library(magrittr)
 library(sortable)
 
 quiz(caption = "3. Visualisierungsformen",
-     question("a. Wie kann man bedingte relative Häufigkeiten grafisch darstellen?",
-              answer("a"),
-              answer("b", correct = TRUE),
-              allow_retry = TRUE))#, # Lücken ausfüllen
+     question(paste0("a. Welche grafische Darstellungsformen gibt es für bedingte ",
+     "relative Häufigkeiten ?"),
+              answer("Histogramme"),
+              answer("Häufigkeitsbäume", correct = TRUE),
+              answer("Kreisdiagramme"),
+              answer("Mosaikdiagramme", correct = TRUE),
+              answer("Kontingenztabelle", correct = TRUE),
+              allow_retry = TRUE))
 ```
 
 ```{r quiz4, echo=FALSE}
 elements <- c("Äste", "Blätter", "Wurzel")
-question_rank("**b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der gleichen Reihenfolge wie deren Funktionen:**\n
-              - eine Bedingung oder Entscheidung widerspiegeln,\n
-              - Endereignis repräsentieren,\n
-              - Ausgangssituation darstellen.",
+question_rank(paste0("**b. Häufigkeitsbäume haben eine baumähnliche Struktur. **",
+                     "**Sortiere die Namen der Elemente von Baumdiagrammen in der **",
+                     "** gleichen Reihenfolge wie deren Funktionen:**\n",
+                     "- eine Bedingung oder Entscheidung widerspiegeln,\n",
+                     "- Endereignis repräsentieren,\n",
+                     "- Ausgangssituation darstellen."),
               answer(elements, correct = TRUE),
               answer(rev(elements), correct = FALSE, message = "Falsche Reihenfolge"),
-              allow_retry = TRUE)#,
+              allow_retry = TRUE)
 ```
 
 ```{r quiz5, echo=FALSE}
-quiz(caption = "",
-     question("c. Mosaikplots",
-              answer("a"),
-              answer("b", correct = TRUE),
+variables <- c("abhängige Variable", "unabhängige Variable")
+question_rank(paste0("**c. Sortiere die Variablentypen in der gleichen **",
+              "**Reihenfolge wie die folgenden Achsen eines Mosaikplots:**\n",
+              "- X-Achse,\n- Y-Achse"),
+              answer(variaables, correct = TRUE),
+              answer(rev(elements), correct = FALSE, message = "Falsche Reihenfolge"),
               allow_retry = TRUE)
-     ) 
 ```
 
 ```{r quiz6, echo=FALSE}
