@@ -152,7 +152,8 @@ Bleiben wir am besten bei demselben Diagramm
 knitr::include_graphics("images/sex_tree.png")
 ```
 
-!!! Wie schon im vorherigen Abschnitt angedeutet ... - Lesen und interpretieren.
+!!! Wie schon im vorherigen Abschnitt angedeutet ... "Von den 891 Menschen, die an Bord waren, waren 577 Männer (ca. 64,8%) und 314 Frauen (ca. 35,2%). 81,1% der Männer (468 Menschen) sind ums Leben gekommen, unter Frauen waren das hingegen nur 25,8% (81). Die Überlebensquote von Frauen war also 74,2% (233) und von Männern 18,9% (109)." - Lesen und interpretieren.
+
 Aufgaben
 
 Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke weiter, um nun zu lernen, wie sie erstellt werden.
@@ -161,7 +162,7 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 Neben Geschlecht und Passagierklasse gab es noch ein Merkmal, das theoretisch bei den Überlebungschancen mitspielen könnte und zwar das Alter. Ob Kinder und Jugendliche als Erste ihre Plätze in den Rettungsbooten finden konnten, werden wir jetzt untersuchen.
 
-Von den 891 Passagieren und Schiffsleuten waren ... (...%) unter 20 Jahren und ... (... %) 20 Jahre alt oder älter. Von der ersten Gruppen haben ...% (... Menschen) überlebt und entsprechend sind ...% (...) ums Leben gekommen. Und von den Erwachsenen sind ...% (...) am Leben geblieben und ...% (...) gestorben.
+Von den 891 Passagieren und Schiffsleuten waren 164 (18,4%) unter 20 Jahren und 727 (81,6%) 20 Jahre alt oder älter. Von der ersten Gruppe haben 48,2% (79 Menschen) überlebt und entsprechend sind 51,8% (85) ums Leben gekommen. Und von den Erwachsenen sind 38,4% (279) am Leben geblieben und 61,6% (448) gestorben. Also hatten die jüngeren Menschen anscheinend doch etwas mehr Überlebenschancen als die älteren.
 
 Schauen wir jetzt, wie sich diese Informationen mit einem Häufigkeitsbaum veranschaulichen lassen, und versuchen wir die fehlenden Informationen zu vervollständigen.
 
@@ -186,7 +187,7 @@ Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
 .
 .
 .
-```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "An den Ästen wurden schon die Prozentwerte geschrieben. ...% aller Menschen waren unter 20 und ...% Erwachsene, deswegen soll im Kasten links \"Kind\" und im Kasten rechts \"Erwachsene/r\" stehen. Und von den Erwachsenen sind ...% gestorben und ...% wurden gerettet. Von daher soll unten links \"Überlebt\" und unten rechts \"Nicht Überlebt\" stehen."}
+```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "An den Ästen wurden schon die Prozentwerte geschrieben. 18,4% aller Menschen waren unter 20 und 81,6% Erwachsene, deswegen soll im Kasten links \"Kind\" und im Kasten rechts \"Erwachsene/r\" stehen. Und von den Erwachsenen sind 61,6% gestorben und 38,4% wurden gerettet. Von daher soll unten links \"Überlebt\" und unten rechts \"Nicht Überlebt\" stehen."}
 knitr::include_graphics("images/age_tree.png")
 ```
 

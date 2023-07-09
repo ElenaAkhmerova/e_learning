@@ -9,34 +9,34 @@ library(igraph)
 basket_dt <- fread("data/bread_basket.csv")
 
 ## Titanic----------------------------------------------------------------------
-titanic_dt <- fread("titanic.csv")
+titanic_dt <- fread("data/titanic.csv")
 n_total <- nrow(titanic_dt)
 
 # Sex
-maenner <- nrow(titanic_dt[titanic_dt$Sex == "männlich",])#"male",])
-frauen <- nrow(titanic_dt[titanic_dt$Sex == "weiblich",])#"female",])
+maenner <- nrow(titanic_dt[titanic_dt$Sex == "male",])
+frauen <- nrow(titanic_dt[titanic_dt$Sex == "female",])
 
-maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "männlich")#"male") 
-                                     & (titanic_dt$Survived == "überlebt"),])#1),])
+maenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "male") 
+                                     & (titanic_dt$Survived == 1),])
 #maenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "male") 
 #                                     & (titanic_dt$Survived == 0),])
 #frauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
 #                                    & (titanic_dt$Survived == 1),])
-frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "weiblich")#"female") 
-                                    & (titanic_dt$Survived == "nicht überlebt"),])#0),])
+frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
+                                    & (titanic_dt$Survived == 0),])
 
 anteil_maenner <- maenner / n_total # prev
 anteil_maenner_ueberlebt <- maenner_ueberlebt / maenner # sens
 anteil_frauen_gestorben <- frauen_gestorben / frauen # spec
 
 # Age
-children <- nrow(titanic_dt[titanic_dt$Age == "Kind",]) #< 20,])
-adults <- nrow(titanic_dt[titanic_dt$Age == "Erwachsene/r",]) #>= 20,])
+children <- nrow(titanic_dt[titanic_dt$Age < 20,])
+adults <- nrow(titanic_dt[titanic_dt$Age >= 20,])
 
-children_survived <- nrow(titanic_dt[(titanic_dt$Age == "Kind") #< 20)
-                                     & (titanic_dt$Survived == "überlebt"),])#1),])
-adults_deceased <- nrow(titanic_dt[(titanic_dt$Age == "Erwachsene/r") #>= 20)
-                                   & (titanic_dt$Survived == "nicht überlebt"),])#0),])
+children_survived <- nrow(titanic_dt[(titanic_dt$Age < 20)
+                                     & (titanic_dt$Survived == 1),])
+adults_deceased <- nrow(titanic_dt[(titanic_dt$Age >= 20)
+                                   & (titanic_dt$Survived == 0),])
 
 anteil_kinder <- children / n_total # prev
 anteil_kinder_ueberlebt <- children_survived / children # sens
