@@ -193,18 +193,38 @@ knitr::include_graphics("images/age_tree.png")
 In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden? Nehmen wir dafür die Überlebensquote unter der Bedindung, dass die Person in der 1., 2. oder 3. Klasse Passagier war oder zum Team gehörte, als Beispiel.
 
 Die Häufigkeitsverteilung hinsichtlich der Passagierklasse sah so aus:
-- ... Menschen (...%) waren in der 1. Klasse (... (...%) haben überlebt und ... (...%) nicht)
-- ... Menschen (...%) waren in der 2. Klasse (... (...%) haben überlebt und ... (...%) nicht)
-- ... Menschen (...%) waren in der 3. Klasse (... (...%) haben überlebt und ... (...%) nicht)
-- ... Menschen (...%) waren Schiffsleute (... (...%) haben überlebt und ... (...%) nicht)
+- ... Menschen (...%) waren in der 1. Klasse (... (...%) haben überlebt und ... (...%) nicht),
+- ... Menschen (...%) waren in der 2. Klasse (... (...%) haben überlebt und ... (...%) nicht),
+- ... Menschen (...%) waren in der 3. Klasse (... (...%) haben überlebt und ... (...%) nicht) und
+- ... Menschen (...%) waren Schiffsleute (... (...%) haben überlebt und ... (...%) nicht).
 
-```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat, aber diesmal fehlen einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
+```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Diese Informationen findet man auf dieser Grafik wieder, aber die Äste werden nicht beschriftet. Kannst du zuordnen, welche Zahlen von links nach rechts von oben nach unten stehen sollen?"}
 knitr::include_graphics("images/class_treemap_gaps.png")
 ```
 
-```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/class_treemap.png")                                # aufklappbar machen
+Versuche das erstmals selbst zu lösen.
+
+```{r ex2, echo = FALSE}
+quiz(caption = "",
+     question("Was soll laut der Beschreibung oben in den Lücken stehen?",
+              answer("... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ..."),
+              answer("... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ..."),
+              answer("... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ...", 
+                     correct = TRUE),
+              answer("... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ..."),
+              answer("... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ... - ..."),
+              allow_retry = TRUE))
 ```
+
+Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+.
+.
+.
+```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Bei der Lösung fangen wir von oben an und schauen, wie viel Prozent bei welcher Kategorie angegeben wurde. Das gleiche machen wir auf der unteren Ebene. Eine etwas schwierigere Aufgabe wäre, die Prozentwerte bei den Unterkategorien anhand absoluter Werte selbst zu berechnen, dazu kommen wir aber ein bisschen später."}
+knitr::include_graphics("images/class_treemap.png")
+```
+
+Nun kannst du schon Häufigkeitsbäume selbst lesen, interpretieren und erstellen und kannst zum nächsten Thema **Mosaikplots** übergehen.
 
 ## Mosaikplot
 
