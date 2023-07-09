@@ -366,7 +366,7 @@ variables <- c("abhängige Variable", "unabhängige Variable")
 question_rank(paste0("**c. Sortiere die Variablentypen in der gleichen **",
               "**Reihenfolge wie die folgenden Achsen eines Mosaikplots:**\n",
               "- X-Achse,\n- Y-Achse"),
-              answer(variaables, correct = TRUE),
+              answer(variables, correct = TRUE),
               answer(rev(elements), correct = FALSE, message = "Falsche Reihenfolge"),
               allow_retry = TRUE)
 ```
