@@ -12,6 +12,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(graphics)
+library(sortable)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -137,46 +138,58 @@ Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gib
 
 Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Äste werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
 
-```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat."}
-#knitr::include_graphics("images/class_tree.png")
+```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Von den 891 Menschen, die an Bord waren, waren 577 Männer (ca. 64,8%) und 314 Frauen (ca. 35,2%). 81,1% der Männer (468 Menschen) sind ums Leben gekommen, unter Frauen waren das hingegen nur 25,8% (81). Die Überlebensquote von Frauen war also 74,2% (233) und von Männern 18,9% (109)."}
+knitr::include_graphics("images/sex_tree.png")
 ```
 
-Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
+Klicke nun weiter, um zu lernen, wie man diese Informationen interpretieren kann und wie man Häufigkeitsbäume überhaupt liest.
 
 ## Häufigkeitsbäume lesen
 
-Einleitung
+Bleiben wir am besten bei demselben Diagramm
 
-```{r fig2, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
-knitr::include_graphics("images/class_age_treemap.png")
+```{r fig2, echo = FALSE, out.width = "100%", fig.cap = "ALs kurze Erinnerung sieht man hier die Verteilung der Passagiere und Schiffsleute nach dem Geschlecht und deren Überlebungsquote."}
+knitr::include_graphics("images/sex_tree.png")
 ```
 
+!!! Wie schon im vorherigen Abschnitt angedeutet ... - Lesen und interpretieren.
 Aufgaben
+
+Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke weiter, um nun zu lernen, wie sie erstellt werden.
 
 ## Häufigkeitsbäume erstellen
 
-Einleitung
+Neben Geschlecht und Passagierklasse gab es noch ein Merkmal, das theoretisch bei den Überlebungschancen mitspielen könnte und zwar das Alter. Ob Kinder und Jugendliche als Erste ihre Plätze in den Rettungsbooten finden konnten, werden wir jetzt untersuchen.
 
-```{r fig3, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
-knitr::include_graphics("images/age_treemap_gaps.png")
+
+
+```{r fig3, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt."}
+knitr::include_graphics("images/age_tree_gaps.png")
 ```
 
-!!! Exercise!!!
+```{r ex1, echo = FALSE}
+quiz(caption = "",
+     question("Was soll laut der Beschreibung oben in den Lücken stehen?",
+              answer("1 - Erwachsene/r, 2 - Nicht Überlebt, 3 - Überlebt"),
+              answer("1 - Erwachsene/r, 2 - Überlebt, 3 - Nicht Überlebt", 
+                     correct = TRUE),
+              answer("1 - Nicht Überlebt, 2 - Erwachsene/r, 3 - Überlebt"),
+              answer("1 - Überlebt, 2 - Nicht Überlebt, 3 - Erwachsene/r"),
+              allow_retry = TRUE))
+```
 
-Aufgaben
-
-```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung", collapse=TRUE}
-knitr::include_graphics("images/age_treemap.png")                                # aufklappbar machen
+```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+knitr::include_graphics("images/age_tree.png")
 ```
 
 In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es, wenn nicht alle Prozentwerte bei den Ästen angegeben werden?
 
-```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
-knitr::include_graphics("images/sex_treemap_gaps.png")
+```{r fig5, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat, aber diesmal fehlen einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
+knitr::include_graphics("images/class_treemap_gaps.png")
 ```
 
 ```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/sex_tree.png")                                # aufklappbar machen
+knitr::include_graphics("images/class_treemap.png")                                # aufklappbar machen
 ```
 
 ## Mosaikplot
@@ -246,7 +259,7 @@ print(paste0("Die relative Häufigkeit vom Überleben war ",
              "dass sie weiblich waren."))
 ```
 
-Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest und erstellt.
+Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest.
 
 ## Mosaikplot lesen
 
@@ -257,6 +270,8 @@ knitr::include_graphics("images/class_age_treemap.png")
 ```
 
 Aufgaben
+
+Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke weiter, um nun zu lernen, wie sie erstellt werden.
 
 ## Mosaikplot erstellen
 
@@ -326,9 +341,6 @@ quiz(caption = "2. Anwendungsbereiche",
 ```
 
 ```{r quiz3, echo=FALSE}
-library(magrittr)
-library(sortable)
-
 quiz(caption = "3. Visualisierungsformen",
      question(paste0("a. Welche grafische Darstellungsformen gibt es für bedingte ",
      "relative Häufigkeiten ?"),
@@ -342,9 +354,9 @@ quiz(caption = "3. Visualisierungsformen",
 
 ```{r quiz4, echo=FALSE}
 elements <- c("Äste", "Blätter", "Wurzel")
-question_rank(paste0("**b. Häufigkeitsbäume haben eine baumähnliche Struktur. **",
-                     "**Sortiere die Namen der Elemente von Baumdiagrammen in der **",
-                     "** gleichen Reihenfolge wie deren Funktionen:**\n",
+question_rank(paste0("**b. Häufigkeitsbäume haben eine baumähnliche Struktur. ",
+                     "Sortiere die Namen der Elemente von Baumdiagrammen in der ",
+                     " gleichen Reihenfolge wie deren Funktionen:**\n",
                      "- eine Bedingung oder Entscheidung widerspiegeln,\n",
                      "- Endereignis repräsentieren,\n",
                      "- Ausgangssituation darstellen."),
@@ -355,11 +367,12 @@ question_rank(paste0("**b. Häufigkeitsbäume haben eine baumähnliche Struktur.
 
 ```{r quiz5, echo=FALSE}
 variables <- c("abhängige Variable", "unabhängige Variable")
-question_rank(paste0("**c. Sortiere die Variablentypen in der gleichen **",
-              "**Reihenfolge wie die folgenden Achsen eines Mosaikplots:**\n",
-              "- X-Achse,\n- Y-Achse"),
+question_rank(paste0("**c. Sortiere die Variablentypen in der gleichen ",
+              "Reihenfolge wie die folgenden Achsen eines Mosaikplots, ",
+              "die sie repräsentieren:**\n- X-Achse,\n- Y-Achse"),
               answer(variables, correct = TRUE),
-              answer(rev(elements), correct = FALSE, message = "Falsche Reihenfolge"),
+              answer(rev(variables), correct = FALSE, 
+                     message = "Falsche Reihenfolge"),
               allow_retry = TRUE)
 ```
 

@@ -114,19 +114,19 @@ if (window.hljs) {
 <div id="section-einführung" class="section level2">
 <h2>Einführung</h2>
 <div class="tabbable">
-<ul class="nav nav-tabs shiny-tab-input" id="myAccordion" data-tabsetid="2389">
+<ul class="nav nav-tabs shiny-tab-input" id="myAccordion" data-tabsetid="5323">
 <li class="active">
-<a href="#tab-2389-1" data-toggle="tab" data-bs-toggle="tab" data-value="panel1">Start</a>
+<a href="#tab-5323-1" data-toggle="tab" data-bs-toggle="tab" data-value="panel1">Start</a>
 </li>
 <li>
-<a href="#tab-2389-2" data-toggle="tab" data-bs-toggle="tab" data-value="panel2">Zusammenhänge zwischen Produkten</a>
+<a href="#tab-5323-2" data-toggle="tab" data-bs-toggle="tab" data-value="panel2">Zusammenhänge zwischen Produkten</a>
 </li>
 <li>
-<a href="#tab-2389-3" data-toggle="tab" data-bs-toggle="tab" data-value="panel3">Panel 3</a>
+<a href="#tab-5323-3" data-toggle="tab" data-bs-toggle="tab" data-value="panel3">Panel 3</a>
 </li>
 </ul>
-<div class="tab-content" data-tabsetid="2389">
-<div class="tab-pane active" data-value="panel1" id="tab-2389-1">
+<div class="tab-content" data-tabsetid="5323">
+<div class="tab-pane active" data-value="panel1" id="tab-5323-1">
       <p>Das Einkaufsteam einer Edinburger Bäckerei hat bei der Einkaufsplanung und Überprüfung gemerkt, dass bestimmte Produktgruppen in den letzten Monaten deutlich öfter als andere nachgekauft werden müssen, während andere ab und zu verderben bzw. weggeworfen werden müssen, weil sie schon über dem Verfalldatum sind. Dadurch entstehen Kosten und die Bäckerei verliert das Geld, das sonst dem Modernisierungswunsch des Geschäftsführers zufolge in die Erneuerung der Innenausstattung investiert werden könnte.</p>
       <p>Das Einkaufsteam hat in Kooperation mit dem Verkaufsteam bestimmte Verhaltensmuster der Käufer/innen vermutet und möchte ihre Behauptungen nun überprüfen. Zum Glück haben die Bäckereimitarbeiter/innen alle Transaktionen sorgfältig im Transaktionsmanagement-System abgespeichert, so dass alle Daten zu den Transaktionen zwischen dem 01.11.2016 und 30.03.2017 zur Verfügung stehen und zwar:</p>
       <ul>
@@ -139,7 +139,7 @@ if (window.hljs) {
       
       <p>Überlege dir, wie die Bäckereimitarbeiter/innen ihre Analyse durchführen und nach Kaufmustern suchen könnten und klicke dann auf die Reiter, um Einblicke in den Analyseprozess vom Einkaufsteam zu bekommen.</p>
     </div>
-<div class="tab-pane" data-value="panel2" id="tab-2389-2">
+<div class="tab-pane" data-value="panel2" id="tab-5323-2">
       <p>This is the content for Panel 2.</p>
       
       <ol>
@@ -162,7 +162,7 @@ if (window.hljs) {
         </li>
       </ul>
     </div>
-<div class="tab-pane" data-value="panel3" id="tab-2389-3">
+<div class="tab-pane" data-value="panel3" id="tab-5323-3">
       <p>This is the content for Panel 3.</p>
       
       <blockquote>
@@ -272,8 +272,13 @@ hat.</li>
 vorherige Ereignisse zustande gekommen sind, und die Äste werden mit
 prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine
 oder das andere Szenario ist.</p>
-<p>Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest und
-erstellt.</p>
+<div class="figure">
+<img src="images/sex_tree.png" alt="..." width="100%" />
+<p class="caption">
+…
+</p>
+</div>
+<p>Klicke weiter, um zu lernen, wie man Häufigkeitsbäume liest.</p>
 </div>
 <div id="section-häufigkeitsbäume-lesen" class="section level2">
 <h2>Häufigkeitsbäume lesen</h2>
@@ -286,22 +291,34 @@ Alterskategorie und dann die Überlebungsquote.
 </p>
 </div>
 <p>Aufgaben</p>
+<p>Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann.
+Klicke weiter, um nun zu lernen, wie sie erstellt werden.</p>
 </div>
 <div id="section-häufigkeitsbäume-erstellen" class="section level2">
 <h2>Häufigkeitsbäume erstellen</h2>
-<p>Einleitung</p>
+<p>Neben Geschlecht und Passagierklasse gab es noch ein Merkmal, das
+theoretisch bei den Überlebungschancen mitspielen könnte und zwar das
+Alter. Ob Kinder und Jugendliche als Erste ihre Plätze in den
+Rettungsbooten finden konnten, werden wir jetzt untersuchen.</p>
+<p>Es waren insgesamt</p>
 <div class="figure">
-<img src="images/age_treemap_gaps.png" alt="Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?" width="100%" />
+<img src="images/age_tree_gaps.png" alt="Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt." width="100%" />
 <p class="caption">
 Auf dieser Grafik werden die Verteilung nach Alter und die
-Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den
-Lücken stehen?
+Überlebungsquote gezeigt.
 </p>
 </div>
-<p>!!! Exercise!!!</p>
-<p>Aufgaben</p>
+<div class="panel-heading tutorial-quiz-title"></div>
+<div class="panel panel-default tutorial-question-container">
+<div data-label="ex1-1" class="tutorial-question panel-body">
+<div id="ex1-1-answer_container" class="shiny-html-output"></div>
+<div id="ex1-1-message_container" class="shiny-html-output"></div>
+<div id="ex1-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div>
 <div class="figure">
-<img src="images/age_treemap.png" alt="Lösungserklärung" width="100%" />
+<img src="images/age_tree.png" alt="Lösungserklärung" width="100%" />
 <p class="caption">
 Lösungserklärung
 </p>
@@ -309,15 +326,17 @@ Lösungserklärung
 <p>In dieser Übung wurden nicht alle Knoten beschriftet. Wie wäre es,
 wenn nicht alle Prozentwerte bei den Ästen angegeben werden?</p>
 <div class="figure">
-<img src="images/sex_treemap_gaps.png" alt="Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?" width="100%" />
+<img src="images/class_treemap_gaps.png" alt="Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die Kategorien nach der Passagierklasse verteilt haben und welcher Prozent von der jeweiligen Kategorie überlebt oder nicht überlebt hat, aber diesmal fehlen einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?" width="100%" />
 <p class="caption">
-Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die
-Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu
-Häufigkeiten. Kannst du die Lücken ausfüllen?
+Auf dieser Grafik sieht man, wie sich alle Menschen auf Titanic in die
+Kategorien nach der Passagierklasse verteilt haben und welcher Prozent
+von der jeweiligen Kategorie überlebt oder nicht überlebt hat, aber
+diesmal fehlen einige Angaben zu Häufigkeiten. Kannst du die Lücken
+ausfüllen?
 </p>
 </div>
 <div class="figure">
-<img src="images/sex_tree.png" alt="Lösungserklärung" width="100%" />
+<img src="images/class_treemap.png" alt="Lösungserklärung" width="100%" />
 <p class="caption">
 Lösungserklärung
 </p>
@@ -367,6 +386,7 @@ frauen_ueberlebt &lt;- nrow(titanic_dt[(titanic_dt$Sex == &quot;female&quot;)
 frauen_gestorben &lt;- nrow(titanic_dt[(titanic_dt$Sex == &quot;female&quot;) 
                                      &amp; (titanic_dt$Survived == 0),])
 
+# Ausgabe von Erkenntnissen
 print(paste0(&quot;Die relative Häufigkeit vom Überleben war &quot;, 
              round(maenner_ueberlebt / maenner * 100, 2), 
              &quot;%, wenn die Passagiere männlich waren, und &quot;, 
@@ -378,8 +398,7 @@ print(paste0(&quot;Die relative Häufigkeit vom Überleben war &quot;,
              &quot;dass sie weiblich waren.&quot;))</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<p>Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest und
-erstellt.</p>
+<p>Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest.</p>
 </div>
 <div id="section-mosaikplot-lesen" class="section level2">
 <h2>Mosaikplot lesen</h2>
@@ -392,6 +411,8 @@ Alterskategorie und dann die Überlebungsquote.
 </p>
 </div>
 <p>Aufgaben</p>
+<p>Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann.
+Klicke weiter, um nun zu lernen, wie sie erstellt werden.</p>
 </div>
 <div id="section-mosaikplot-erstellen" class="section level2">
 <h2>Mosaikplot erstellen</h2>
@@ -550,6 +571,7 @@ function redirect() {
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 library(graphics)
+library(sortable)
 knitr::opts_chunk$set(echo = TRUE)
 </script>
  
@@ -583,9 +605,9 @@ output$`tutorial-exercise-dataset-output` <- renderUI({
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "dataset", global_setup = structure(c("library(learnr)", 
-"library(graphics)", "knitr::opts_chunk$set(echo = TRUE)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "dataset", code = "# .csv-Datei einlesen\ntitanic_dt <- read.csv(\"data/titanic.csv\")\n\n# Grundinformationen ausgeben lassen\nsummary(titanic_dt)  # achte auf die Anzahl der Reihen und Spalten\nstr(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte", 
+"library(graphics)", "library(sortable)", "knitr::opts_chunk$set(echo = TRUE)"
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "dataset", code = "# .csv-Datei einlesen\ntitanic_dt <- read.csv(\"data/titanic.csv\")\n\n# Grundinformationen ausgeben lassen\nsummary(titanic_dt)  # achte auf die Anzahl der Reihen und Spalten\nstr(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte", 
         opts = list(label = "\"dataset\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -615,18 +637,52 @@ learnr:::store_exercise_cache(structure(list(label = "dataset", global_setup = s
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "ex1-1", question = structure("Was soll laut der Beschreibung oben in den Lücken stehen?", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_c3d0200", 
+    option = "1 - Erwachsen, 2 - Nicht Überlebt, 3 - Überlebt", 
+    value = "1 - Erwachsen, 2 - Nicht Überlebt, 3 - Überlebt", 
+    label = structure("1 - Erwachsen, 2 - Nicht Überlebt, 3 - Überlebt", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c2f2f2c", 
+    option = "1 - Erwachsen, 2 - Überlebt, 3 - Nicht Überlebt", 
+    value = "1 - Erwachsen, 2 - Überlebt, 3 - Nicht Überlebt", 
+    label = structure("1 - Erwachsen, 2 - Überlebt, 3 - Nicht Überlebt", html = TRUE, class = c("html", 
+    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5693fab", 
+    option = "1 - Nicht Überlebt, 2 - Erwachsen, 3 - Überlebt", 
+    value = "1 - Nicht Überlebt, 2 - Erwachsen, 3 - Überlebt", 
+    label = structure("1 - Nicht Überlebt, 2 - Erwachsen, 3 - Überlebt", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3ebf8a1", 
+    option = "1 - Überlebt, 2 - Nicht Überlebt, 3 - Erwachsen", 
+    value = "1 - Überlebt, 2 - Nicht Überlebt, 3 - Erwachsen", 
+    label = structure("1 - Überlebt, 2 - Nicht Überlebt, 3 - Erwachsen", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
+"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
+"character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
+"character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), message = NULL, post_message = NULL), ids = list(
+    answer = "ex1-1-answer", question = "ex1-1"), loading = NULL, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 54805964.474479, 
+    options = list()), class = c("learnr_radio", "tutorial_question"
+)), session = session)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-bsp1-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-bsp1-code-editor`)), session)
 output$`tutorial-exercise-bsp1-output` <- renderUI({
   `tutorial-exercise-bsp1-result`()
 })
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "bsp1", global_setup = structure(c("library(learnr)", 
-"library(graphics)", "knitr::opts_chunk$set(echo = TRUE)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "bsp1", code = "# Daten einlesen und Variablen definieren\ntitanic_dt <- read.csv(\"data/titanic.csv\")\n\n# Absolute Häufigkeiten\nmaenner <- nrow(titanic_dt[titanic_dt$Sex == \"male\",])\nfrauen <- nrow(titanic_dt[titanic_dt$Sex == \"female\",])\nn_total <- nrow(titanic_dt)\n\nmaenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == \"male\") \n                                     & (titanic_dt$Survived == 1),])\nmaenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == \"male\") \n                                     & (titanic_dt$Survived == 0),])\nfrauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == \"female\") \n                                     & (titanic_dt$Survived == 1),])\nfrauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == \"female\") \n                                     & (titanic_dt$Survived == 0),])\n\nprint(paste0(\"Die relative Häufigkeit vom Überleben war \", \n             round(maenner_ueberlebt / maenner * 100, 2), \n             \"%, wenn die Passagiere männlich waren, und \", \n             round(frauen_ueberlebt / frauen * 100, 2), \n             \"%, wenn sie Frauen waren. Die relative Häufigkeit vom Sterben war \", \n             \"hingegen \", round(maenner_gestorben / maenner * 100, 2), \n             \"% unter der Bedingung, dass die Passagiere männlich waren, und \",\n             round(frauen_gestorben / frauen * 100, 2), \"% unter der Bedingung, \", \n             \"dass sie weiblich waren.\"))", 
+"library(graphics)", "library(sortable)", "knitr::opts_chunk$set(echo = TRUE)"
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "bsp1", code = "# Daten einlesen und Variablen definieren\ntitanic_dt <- read.csv(\"data/titanic.csv\")\n\n# Absolute Häufigkeiten\nmaenner <- nrow(titanic_dt[titanic_dt$Sex == \"male\",])\nfrauen <- nrow(titanic_dt[titanic_dt$Sex == \"female\",])\nn_total <- nrow(titanic_dt)\n\nmaenner_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == \"male\") \n                                     & (titanic_dt$Survived == 1),])\nmaenner_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == \"male\") \n                                     & (titanic_dt$Survived == 0),])\nfrauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == \"female\") \n                                     & (titanic_dt$Survived == 1),])\nfrauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == \"female\") \n                                     & (titanic_dt$Survived == 0),])\n\n# Ausgabe von Erkenntnissen\nprint(paste0(\"Die relative Häufigkeit vom Überleben war \", \n             round(maenner_ueberlebt / maenner * 100, 2), \n             \"%, wenn die Passagiere männlich waren, und \", \n             round(frauen_ueberlebt / frauen * 100, 2), \n             \"%, wenn sie Frauen waren. Die relative Häufigkeit vom Sterben war \", \n             \"hingegen \", round(maenner_gestorben / maenner * 100, 2), \n             \"% unter der Bedingung, dass die Passagiere männlich waren, und \",\n             round(frauen_gestorben / frauen * 100, 2), \"% unter der Bedingung, \", \n             \"dass sie weiblich waren.\"))", 
         opts = list(label = "\"bsp1\"", exercise = "TRUE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
@@ -657,7 +713,7 @@ learnr:::store_exercise_cache(structure(list(label = "bsp1", global_setup = stru
         "                                     & (titanic_dt$Survived == 1),])", 
         "frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == \"female\") ", 
         "                                     & (titanic_dt$Survived == 0),])", 
-        "", "print(paste0(\"Die relative Häufigkeit vom Überleben war \", ", 
+        "", "# Ausgabe von Erkenntnissen", "print(paste0(\"Die relative Häufigkeit vom Überleben war \", ", 
         "             round(maenner_ueberlebt / maenner * 100, 2), ", 
         "             \"%, wenn die Passagiere männlich waren, und \", ", 
         "             round(frauen_ueberlebt / frauen * 100, 2), ", 
@@ -671,20 +727,21 @@ learnr:::store_exercise_cache(structure(list(label = "bsp1", global_setup = stru
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
 )))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz1-1", question = structure("Was sind bedingte relative Häufigkeiten?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_fe634da", 
+"character")), answers = list(structure(list(id = "lnr_ans_b2bf3b9", 
     option = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle.", 
     value = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle.", 
     label = structure("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis \\(A\\) auftritt, unter der Bedingung, dass ein anderes Ereignis \\(B\\) bereits eingetreten ist, an der Gesamtanzahl der Fälle.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e4838", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bb1957", 
     option = "Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.", 
     value = "Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.", 
     label = structure("Bedingte relative Häufigkeiten geben an, wie groß der Anteil der absoluten Häufigkeit oder in anderen Worten der Anzahl eines bestimmten Ereignisses an der Gesamtzahl der Versuche ist.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2ac1a34", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4153bc", 
     option = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist.", 
     value = "Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist.", 
     label = structure("Bedingte relative Häufigkeiten bezeichnen den Anteil der Fälle, in denen ein bestimmtes Ereignis \\(A\\) auftritt, unter der Bedingung, dass ein anderes Ereignis \\(B\\) bereits eingetreten ist, an der Gesamtanzahl der Fälle, in denen Ereignis \\(B\\) eingetreten ist.", html = TRUE, class = c("html", 
@@ -696,30 +753,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz1-1-answer", question = "quiz1-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 893549817.583908, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1267146863.40994, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz2-1", question = structure("Wo werden bedingte relative Häufigkeiten angewendet? Wähle alle passenden Antworten.", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_f35a0bb", 
+"character")), answers = list(structure(list(id = "lnr_ans_1886ecb", 
     option = "In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", 
     value = "In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", 
     label = structure("In der Medizin, z.B. zum Testen der Effizienz eines neuen Wirkstoffes unter bestimmten Bedingungen.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b1ea32e", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7174a75", 
     option = "Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang.", 
     value = "Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang.", 
     label = structure("Beim Vergleich der Häufigkeitsverteilungen in mehreren Gruppen unabhängig von deren Umfang.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_559f2b6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8321d1", 
     option = "Bei der Analyse des Verbraucherverhaltens bezüglich bestimmter Produkte oder Produktgruppen.", 
     value = "Bei der Analyse des Verbraucherverhaltens bezüglich bestimmter Produkte oder Produktgruppen.", 
     label = structure("Bei der Analyse des Verbraucherverhaltens bezüglich bestimmter Produkte oder Produktgruppen.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dcd8b7b", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_df82edb", 
     option = "In soziologischen Studien bei der Untersuchung, ob bestimmte soziodemografische Faktoren zu gewissen Handlungen, z.B. zur Steuerkriminalität, führen können.", 
     value = "In soziologischen Studien bei der Untersuchung, ob bestimmte soziodemografische Faktoren zu gewissen Handlungen, z.B. zur Steuerkriminalität, führen können.", 
     label = structure("In soziologischen Studien bei der Untersuchung, ob bestimmte soziodemografische Faktoren zu gewissen Handlungen, z.B. zur Steuerkriminalität, führen können.", html = TRUE, class = c("html", 
@@ -731,27 +787,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz2-1-answer", question = "quiz2-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 189196850.911898, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 249298796.883911, 
     options = list()), class = c("learnr_checkbox", "tutorial_question"
 )), session = session)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "quiz3-1", question = structure("a. Welche grafische Darstellungsformen gibt es für bedingte relative Häufigkeiten ?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_7b991fb", 
+"character")), answers = list(structure(list(id = "lnr_ans_5077f7f", 
     option = "Histogramme", value = "Histogramme", label = structure("Histogramme", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_94aa4fd", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b23a112", 
     option = "Häufigkeitsbäume", value = "Häufigkeitsbäume", 
     label = structure("Häufigkeitsbäume", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_63e683a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c3185d0", 
     option = "Kreisdiagramme", value = "Kreisdiagramme", label = structure("Kreisdiagramme", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_43bfda7", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fce2ec6", 
     option = "Mosaikdiagramme", value = "Mosaikdiagramme", label = structure("Mosaikdiagramme", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_25667be", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9ff33b1", 
     option = "Kontingenztabelle", value = "Kontingenztabelle", 
     label = structure("Kontingenztabelle", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -762,19 +819,18 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "quiz3-1-answer", question = "quiz3-1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 285557800.867027, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 2074456554.03401, 
     options = list()), class = c("learnr_checkbox", "tutorial_question"
 )), session = session)
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label = "quiz4", question = structure("**b. Häufigkeitsbäume haben eine baumähnliche Struktur. **<strong>Sortiere die Namen der Elemente von Baumdiagrammen in der **** gleichen Reihenfolge wie deren Funktionen:<\u002fstrong><\u002fp>\n<ul>\n<li>eine Bedingung oder Entscheidung widerspiegeln,<\u002fli>\n<li>Endereignis repräsentieren,<\u002fli>\n<li>Ausgangssituation darstellen.<\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_9ea7ea9", 
+learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label = "quiz4", question = structure("<strong>b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der  gleichen Reihenfolge wie deren Funktionen:<\u002fstrong><\u002fp>\n<ul>\n<li>eine Bedingung oder Entscheidung widerspiegeln,<\u002fli>\n<li>Endereignis repräsentieren,<\u002fli>\n<li>Ausgangssituation darstellen.<\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_62e531", 
     option = c("Äste", "Blätter", "Wurzel"), value = c("Äste", 
     "Blätter", "Wurzel"), label = structure("Äste\nBlätter\nWurzel", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6a146b4", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_198d73e", 
     option = c("Wurzel", "Blätter", "Äste"), value = c("Wurzel", 
     "Blätter", "Äste"), label = structure("Wurzel\nBlätter\nÄste", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("Falsche Reihenfolge", html = TRUE, class = c("html", 
@@ -785,22 +841,24 @@ learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label
 "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
-    answer = "quiz4-answer", question = "quiz4"), loading = structure("<strong>Loading:<\u002fstrong>\n**b. Häufigkeitsbäume haben eine baumähnliche Struktur. **<strong>Sortiere die Namen der Elemente von Baumdiagrammen in der **** gleichen Reihenfolge wie deren Funktionen:<\u002fstrong><\u002fp>\n<ul>\n<li>eine Bedingung oder Entscheidung widerspiegeln,<\u002fli>\n<li>Endereignis repräsentieren,<\u002fli>\n<li>Ausgangssituation darstellen.\n<br/><br/><br/><\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
+    answer = "quiz4-answer", question = "quiz4"), loading = structure("<strong>Loading:<\u002fstrong>\n<strong>b. Häufigkeitsbäume haben eine baumähnliche Struktur. Sortiere die Namen der Elemente von Baumdiagrammen in der  gleichen Reihenfolge wie deren Funktionen:<\u002fstrong><\u002fp>\n<ul>\n<li>eine Bedingung oder Entscheidung widerspiegeln,<\u002fli>\n<li>Endereignis repräsentieren,<\u002fli>\n<li>Ausgangssituation darstellen.\n<br/><br/><br/><\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
 "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1042883174.01437, options = structure(list(), class = "sortable_options")), class = c("sortable_rank", 
+    seed = 1881314543.62394, options = structure(list(), class = "sortable_options")), class = c("sortable_rank", 
 "tutorial_question")), session = session)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label = "quiz5", question = structure("**c. Sortiere die Variablentypen in der gleichen **<strong>Reihenfolge wie die folgenden Achsen eines Mosaikplots:<\u002fstrong><\u002fp>\n<ul>\n<li>X-Achse,<\u002fli>\n<li>Y-Achse<\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_cd70e4c", 
+learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label = "quiz5", question = structure("<strong>c. Sortiere die Variablentypen in der gleichen Reihenfolge wie die folgenden Achsen eines Mosaikplots, die sie repräsentieren:<\u002fstrong><\u002fp>\n<ul>\n<li>X-Achse,<\u002fli>\n<li>Y-Achse<\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_8e24934", 
     option = c("abhängige Variable", "unabhängige Variable"
     ), value = c("abhängige Variable", "unabhängige Variable"
     ), label = structure("abhängige Variable\nunabhängige Variable", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_157a817", 
-    option = c("Wurzel", "Blätter", "Äste"), value = c("Wurzel", 
-    "Blätter", "Äste"), label = structure("Wurzel\nBlätter\nÄste", html = TRUE, class = c("html", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a9da6c4", 
+    option = c("unabhängige Variable", "abhängige Variable"
+    ), value = c("unabhängige Variable", "abhängige Variable"
+    ), label = structure("unabhängige Variable\nabhängige Variable", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("Falsche Reihenfolge", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
@@ -809,25 +867,25 @@ learnr:::question_prerendered_chunk(structure(list(type = "sortable_rank", label
 "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
-    answer = "quiz5-answer", question = "quiz5"), loading = structure("<strong>Loading:<\u002fstrong>\n**c. Sortiere die Variablentypen in der gleichen **<strong>Reihenfolge wie die folgenden Achsen eines Mosaikplots:<\u002fstrong><\u002fp>\n<ul>\n<li>X-Achse,<\u002fli>\n<li>Y-Achse\n<br/><br/><br/><\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
+    answer = "quiz5-answer", question = "quiz5"), loading = structure("<strong>Loading:<\u002fstrong>\n<strong>c. Sortiere die Variablentypen in der gleichen Reihenfolge wie die folgenden Achsen eines Mosaikplots, die sie repräsentieren:<\u002fstrong><\u002fp>\n<ul>\n<li>X-Achse,<\u002fli>\n<li>Y-Achse\n<br/><br/><br/><\u002fli>\n<\u002ful>\n", html = TRUE, class = c("html", 
 "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 185757967.9135, options = structure(list(), class = "sortable_options")), class = c("sortable_rank", 
+    seed = 377973346.823992, options = structure(list(), class = "sortable_options")), class = c("sortable_rank", 
 "tutorial_question")), session = session)
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-calculations-1-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-calculations-1-code-editor`)), session)
 output$`tutorial-exercise-calculations-1-output` <- renderUI({
   `tutorial-exercise-calculations-1-result`()
 })
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "calculations-1", global_setup = structure(c("library(learnr)", 
-"library(graphics)", "knitr::opts_chunk$set(echo = TRUE)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "calculations-1", code = "# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen\n# ...\n", 
+"library(graphics)", "library(sortable)", "knitr::opts_chunk$set(echo = TRUE)"
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "calculations-1", code = "# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen\n# ...\n", 
         opts = list(label = "\"calculations-1\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -854,20 +912,20 @@ learnr:::store_exercise_cache(structure(list(label = "calculations-1", global_se
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
 )))
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-calculations-3-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-calculations-3-code-editor`)), session)
 output$`tutorial-exercise-calculations-3-output` <- renderUI({
   `tutorial-exercise-calculations-3-result`()
 })
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "calculations-3", global_setup = structure(c("library(learnr)", 
-"library(graphics)", "knitr::opts_chunk$set(echo = TRUE)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "calculations-3", code = "# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen\n# ...\n", 
+"library(graphics)", "library(sortable)", "knitr::opts_chunk$set(echo = TRUE)"
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "calculations-3", code = "# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen\n# ...\n", 
         opts = list(label = "\"calculations-3\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -894,20 +952,20 @@ learnr:::store_exercise_cache(structure(list(label = "calculations-3", global_se
     engine = "r", version = "4"), class = c("r", "tutorial_exercise"
 )))
 </script>
-
-
+ 
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-calculations-4-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-calculations-4-code-editor`)), session)
 output$`tutorial-exercise-calculations-4-output` <- renderUI({
   `tutorial-exercise-calculations-4-result`()
 })
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "calculations-4", global_setup = structure(c("library(learnr)", 
-"library(graphics)", "knitr::opts_chunk$set(echo = TRUE)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "calculations-4", code = "# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen\n# ...\n", 
+"library(graphics)", "library(sortable)", "knitr::opts_chunk$set(echo = TRUE)"
+), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
+    chunks = list(list(label = "calculations-4", code = "# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen\n# ...\n", 
         opts = list(label = "\"calculations-4\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
