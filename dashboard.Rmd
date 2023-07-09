@@ -98,9 +98,9 @@ Die Häufigkeitsverteilung spielt in der Statistik eine große Rolle. Du weißt 
 **Bedingte relative Häufigkeiten werden als Verhältnis der Anzahl der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, zur Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist, definiert.** Diese Definition lässt sich durch die folgende Formel mathematisch ausdrücken:
 
 \[
-P(A \big| B) = \frac{P(A \cap B)}{P(B)},
+f_X(a_1 \big| b_j) = \frac{h_{1j}}{h_{.j}},...,f_X(a_k \big|b_j) = \frac{h_{kj}}{h_{.j}}
 \]
-wo $P(A \big| B)$ für die bedingte relative Häufigkeit von $A$ unter der Bedingung $B$, $P(A \cap B)$ für die Wahrscheinlichkeit, dass sowohl $A$ als auch $B$ eintreten und $P(B)$ für die Wahrscheinlichkeit des Eintretens von $B$ steht.
+wo $f_X(a_1 \big| b_j)$ für die bedingte relative Häufigkeit von $a_1$ unter der Bedingung $b_j$, $h_{1j}$ für die absolute Häufigkeit der Kombination von $a_i$ und $b_j$ und $h_{.j}$ für die Randhäufigheit von $b_j$ steht.
 
 Bedingte relative Häufigkeiten werden häufig für die Analyse und Interpretation von Daten verwendet. Sie helfen uns, Beziehungen zwischen Ereignissen zu untersuchen und zu bestimmen, ob bestimmte Faktoren voneinander abhängig sind oder nicht.
 
@@ -234,15 +234,7 @@ frauen_ueberlebt <- nrow(titanic_dt[(titanic_dt$Sex == "female")
 frauen_gestorben <- nrow(titanic_dt[(titanic_dt$Sex == "female") 
                                      & (titanic_dt$Survived == 0),])
 
-# Relative Häufigkeiten
-anteil_maenner <- maenner / n_total # Gesamtanteil der Männer
-anteil_frauen <- frauen / n_total # Gesamtanteil der Frauen
-
-anteil_maenner_ueberlebt <-  # Anteil Überlebender an Männern
-anteil_maenner_gestorben <-  # Anteil Gestorbener an Männern
-anteil_frauen_ueberlebt <-  # Anteil Überlebender an Frauen
-anteil_frauen_gestorben <-  # Anteil Gestorbener an Frauen
-
+# Ausgabe von Erkenntnissen
 print(paste0("Die relative Häufigkeit vom Überleben war ", 
              round(maenner_ueberlebt / maenner * 100, 2), 
              "%, wenn die Passagiere männlich waren, und ", 
