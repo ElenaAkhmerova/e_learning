@@ -60,9 +60,9 @@ class1 <- nrow(titanic_dt[titanic_dt$Pclass == "1. Klasse",])
 class2 <- nrow(titanic_dt[titanic_dt$Pclass == "2. Klasse",])
 class3 <- nrow(titanic_dt[titanic_dt$Pclass == "3. Klasse",])
 
-anteil_class1 <- class1 / n_total
-anteil_class2 <- class2 / n_total
-anteil_class3 <- class3 / n_total
+anteil_class1 <- round(class1 / n_total * 100, 2)
+anteil_class2 <- round(class2 / n_total * 100, 2)
+anteil_class3 <- round(class3 / n_total * 100, 2)
 
 ### Create frequency trees------------------------------------------------------
 ## Explanation------------------------------------------------------------------
@@ -110,19 +110,72 @@ age_tree <- plot_prism(prev = anteil_kinder, sens = anteil_kinder_ueberlebt,
 dev.off()
 
 # Empty branches----------------------------------------------------------------
-png("images/class_tree_gaps.png", width = 800, height = 600, res = 120)       # Zahlen anpassen!!!
-class_gaps_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                          Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                             "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                          Häufigkeit = c(NA, 20, 10, NA, 30, 40, NA, NA))        # Zahlen anpassen!!! NA nur in Labels
-class_treemap_gaps <- treemap(class_gaps_dt, index = c("Kategorie", "Unterkategorie"), 
-                            vSize = "Häufigkeit", vColor = "Kategorie")
+png("images/class_tree_gaps.png", width = 800, height = 600, res = 120)
+tree_class <- Node$new("N")
+  class1 <- tree_class$AddChild("1. Klasse")
+    survived1 <- class1$AddChild("Überlebt")
+    ceased1 <- class1$AddChild("Nicht Überlebt")
+  class2 <- tree_class$AddChild("2. Klasse")
+    survived2 <- class2$AddChild("Überlebt")
+    ceased2 <- class2$AddChild("Nicht Überlebt")
+  class3 <- tree_class$AddChild("3. Klasse")
+    survived3 <- class3$AddChild("Überlebt")
+    ceased3 <- class3$AddChild("Nicht Überlebt")
+
+tree_class$class1$frequency <- anteil_class1
+tree_class$class2$frequency <- anteil_class2
+tree_class$class3$frequency <- anteil_class3
+tree_class$class1$survived1$frequency <- anteil_class1
+tree_class$class1$ceased1$frequency <- anteil_class1
+tree_class$class1$survived2$frequency <- anteil_class1
+tree_class$class1$ceased2$frequency <- anteil_class1
+tree_class$class1$survived3$frequency <- anteil_class1
+tree_class$class1$ceased3$frequency <- anteil_class1
+
+# Customize edges - see "Plot with the data.tree plotting facility" in vignette
+GetEdgeLabel <- function(node) {
+  if (node$name == "1. Klasse") {
+    label = anteil_class1
+  } else if (node$name == "2. Klasse") {
+    label = anteil_class2
+  } else if (node$name == "3. Klasse") {
+    label = anteil_class3
+  } else {
+    label = "_________"
+  }
+  return (label)
+}
+SetEdgeStyle(tree_class, fontname = 'helvetica', label = GetEdgeLabel)
+SetGraphStyle(tree_class, rankdir = "LR")
+plot(tree_class)
 dev.off()
 
-png("images/class_tree.png", width = 800, height = 600, res = 120)               # Zahlen anpassen!!!
-# do it step by step and add labels to edges!
-titanic_dt$pathString <- paste("N", titanic_dt$Pclass, titanic_dt$Survived, sep = "/")
-plot(as.Node(titanic_dt))
+png("images/class_tree.png", width = 800, height = 600, res = 120)       # Zahlen anpassen!!!
+GetEdgeLabel <- function(node) {
+  if (node$name == "1. Klasse") {
+    label = anteil_class1
+  } else if (node$name == "2. Klasse") {
+    label = anteil_class2
+  } else if (node$name == "3. Klasse") {
+    label = anteil_class3
+  } else if ((node$name == "1. Klasse") && (node$child$name == "Überlebt")){
+    label = "a"
+  } else if ((node$name == "1. Klasse") && (node$child$name == "Nicht Überlebt")){
+    label = "b"
+  } else if ((node$name == "2. Klasse") && (node$child$name == "Überlebt")){
+    label = "c"
+  } else if ((node$name == "2. Klasse") && (node$child$name == "Nicht Überlebt")){
+    label = "d"
+  } else if ((node$name == "3. Klasse") && (node$child$name == "Überlebt")){
+    label = "e"
+  } else if ((node$name == "3. Klasse") && (node$child$name == "Nicht Überlebt")){
+    label = "f"
+  }
+  return (label)
+}
+SetEdgeStyle(tree_class, fontname = 'helvetica', label = GetEdgeLabel)
+SetGraphStyle(tree_class, rankdir = "LR")
+plot(tree_class)
 dev.off()
 
 ## Quiz-------------------------------------------------------------------------
