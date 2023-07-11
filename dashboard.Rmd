@@ -146,15 +146,73 @@ Klicke nun weiter, um zu lernen, wie man diese Informationen interpretieren kann
 
 ## Häufigkeitsbäume lesen
 
-Bleiben wir am besten bei demselben Diagramm
+Bleiben wir am besten bei demselben Diagramm. Wie schon im vorherigen Abschnitt angedeutet, waren von den 891 Menschen, die an Bord waren, 577 Männer und 314 Frauen. 81,1% der Männer sind ums Leben gekommen, unter Frauen waren das hingegen nur 25,8%. Lassen wir aber alle anderen Informationen direkt vom Diagramm ablesen und interpretieren:
 
-```{r fig2, echo = FALSE, out.width = "100%", fig.cap = "ALs kurze Erinnerung sieht man hier die Verteilung der Passagiere und Schiffsleute nach dem Geschlecht und deren Überlebungsquote."}
+```{r fig2, echo = FALSE, out.width = "100%"}
 knitr::include_graphics("images/sex_tree.png")
 ```
 
-!!! Wie schon im vorherigen Abschnitt angedeutet ... "Von den 891 Menschen, die an Bord waren, waren 577 Männer (ca. 64,8%) und 314 Frauen (ca. 35,2%). 81,1% der Männer (468 Menschen) sind ums Leben gekommen, unter Frauen waren das hingegen nur 25,8% (81). Die Überlebensquote von Frauen war also 74,2% (233) und von Männern 18,9% (109)." - Lesen und interpretieren.
+Fangen wir mit der Wurzel, den Knoten und den Blättern an.
+```{r hbread1, echo=FALSE}
+quiz(
+  caption = "",
+  question("Was ist die Wurzel?",
+           answer("männlich, weiblich"),
+           answer("N", correct = TRUE, message = "*N* steht für die Gesamtanzahl der Passagiere, die daraufhin in Unterkategorien aufgeteilt wird."),
+           answer("überlebt, nicht überlebt"),
+           allow_retry = TRUE),
+  question("Gehen wir weiter zu den Knoten. Wie heißen diese?",
+           answer("männlich, weiblich", correct = TRUE, message = "Die Gesamtanzahl der Passagiere wird erstmals nach Geschlecht aufgeteilt. Bei den Prozentwerten geht es an dieser Stelle noch um relative Häufigkeiten ohne jegliche Bedingung."),
+           answer("N"),
+           answer("überlebt, nicht überlebt"),
+           allow_retry = TRUE),
+  question("Und jetzt gehen wir noch weiter nach unten zu den Endknoten - den Blättern und zwar...",
+           answer("männlich, weiblich"),
+           answer("N"),
+           answer("überlebt, nicht überlebt", correct = TRUE, message = "Das sind die Endzustände, zu denen bestimmte vorherige Ereignisse oder wie hier Eigenschaften geführt haben."),
+           allow_retry = TRUE)
+)
+```
 
-Aufgaben
+Super! Jetzt bleiben nur die Ästebeschriftungen.
+```{r hblesen2, echo=FALSE}
+quiz(
+  caption = "",
+  question("35,2% der Passagiere waren Frauen. Wie viel Prozent der Passagiere waren Männer?",
+           answer("65,8%"),
+           answer("70%"),
+           answer("64,8%", correct = TRUE, message = "Auf diese Antwort kannst du kommen, nicht nur indem du von 100% 35,2% extrahierst, sondern wenn du an die Beschriftung vom Pfeil links oben schaust, der von *N* zu *Männlich* geht."),
+           allow_retry = TRUE),
+  question("Und was für eine Häufigkeit ist das?",
+           answer("relative Häufigkeit", correct = TRUE, message = "Das ist noch der Anteil der Männer an den Passagieren ohne jegliche Bedingung, also es geht um eine relative Häufigkeit."),
+           answer("bedingte relative Häufigkeit"),
+           allow_retry = TRUE),
+  question("Schaue dir jetzt die Beschriftungen der unteren Ästen an. Achte auf den Weg, über den man zum jeweiligen Endpunkt kommt. Welcher Anteil der Frauen hat überlebt?",
+           answer("25,8%"),
+           answer("74,2%", correct = TRUE, message = "So wird der Pfeil zwischen *Weiblich* und *Überlebt* beschriftet."),
+           answer("18,9%"),
+           answer("81,1%"),
+           allow_retry = TRUE),
+  question("Und welcher Anteil der Passagiere ist gestorben, wenn sie Frauen waren?",
+           answer("25,8%", correct = TRUE, message = "Die Zahl steht neben dem Ast zwischen *Weiblich* und *Gestorben*, lässt sich aber auch als 100 - 74,2 berechnen."),
+           answer("74,2%"),
+           answer("18,9%"),
+           answer("81,1%"),
+           allow_retry = TRUE),
+  question("Welcher Anteil der Passagiere hat überlebt, unter der Bedingung dass sie Männer waren?",
+           answer("25,8%"),
+           answer("74,2%"),
+           answer("18,9%", correct = TRUE, message = "Siehe die Beschriftung unten ganz links zwischen *Männlich* und *Überlebt*"),
+           answer("81,1%"),
+           allow_retry = TRUE),
+  question("Vervollständige letztlich diesen Satz: Die relative Häufigkeit der gestorbenen Passagiere, die Männer waren, beträgt _________. Es geht dabei um eine ____________ Häufigkeit.",
+           answer("81,1%, relative"),
+           answer("25,8%, bedingte relative"),
+           answer("25,8%, relative"),
+           answer("81,1%, bedingte relative", correct = TRUE, message = "Genau, an dieser Stelle gibt es schon eine Bedingung für das Überleben oder Sterben und zwar das Geschlecht. *Note:* Das muss keine kausale Bedingung sein, die Kausalität wird mithilfe anderer Instrumente bestätigt oder nicht bestätigt."),
+           allow_retry = TRUE)
+)
+```
 
 Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke weiter, um nun zu lernen, wie sie erstellt werden.
 
@@ -209,10 +267,10 @@ Die Häufigkeitsverteilung hinsichtlich der Passagierklasse sah so aus:
 knitr::include_graphics("images/class_tree_gaps.png")
 ```
 
-Versuche das erstmals selbst zu lösen.
+Versuche das erstmals selbst zu lösen. Welche Zahlen sollen in den Lücken stehen?
 
 ```{r ex2, echo = FALSE}
-quiz(caption = "Welche Zahlen sollen in den Lücken stehen?",
+quiz(caption = "",
   question("( a )______",
            answer("62.96", correct = TRUE),
            answer("67.92"),

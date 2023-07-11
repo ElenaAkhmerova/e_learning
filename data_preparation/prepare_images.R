@@ -180,7 +180,7 @@ GetEdgeLabel <- function(node) {
   } else if (node$name == "Nicht Überlebt "){
     label = paste0("(d) ", anteil_class2_deceased)
   } else if (node$name == "Überlebt"){
-    label = paste0("(e)", anteil_class3_survived)
+    label = paste0("(e) ", anteil_class3_survived)
   } else if (node$name == "Nicht Überlebt"){
     label = paste0("(f) ", anteil_class3_deceased)
   }
