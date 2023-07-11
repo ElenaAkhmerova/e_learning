@@ -64,6 +64,19 @@ anteil_class1 <- round(class1 / n_total * 100, 2)
 anteil_class2 <- round(class2 / n_total * 100, 2)
 anteil_class3 <- round(class3 / n_total * 100, 2)
 
+anteil_class1_survived <- round(nrow(titanic_dt[(titanic_dt$Pclass == "1. Klasse")
+                                                & (titanic_dt$Survived == "überlebt"),])
+                                / class1 * 100, 2)
+anteil_class1_deceased <- 100 - anteil_class1_survived
+anteil_class2_survived <- round(nrow(titanic_dt[(titanic_dt$Pclass == "2. Klasse")
+                                                & (titanic_dt$Survived == "überlebt"),])
+                                / class2 * 100, 2)
+anteil_class2_deceased <- 100 - anteil_class2_survived
+anteil_class3_survived <- round(nrow(titanic_dt[(titanic_dt$Pclass == "3. Klasse")
+                                                & (titanic_dt$Survived == "überlebt"),])
+                                / class3 * 100, 2)
+anteil_class3_deceased <- 100 - anteil_class3_survived
+
 ### Create frequency trees------------------------------------------------------
 ## Explanation------------------------------------------------------------------
 png("images/sex_tree.png", width = 800, height = 600, res = 120)
@@ -113,24 +126,14 @@ dev.off()
 png("images/class_tree_gaps.png", width = 800, height = 600, res = 120)
 tree_class <- Node$new("N")
   class1 <- tree_class$AddChild("1. Klasse")
-    survived1 <- class1$AddChild("Überlebt")
-    ceased1 <- class1$AddChild("Nicht Überlebt")
+    survived1 <- class1$AddChild(" Überlebt")
+    ceased1 <- class1$AddChild(" Nicht Überlebt")
   class2 <- tree_class$AddChild("2. Klasse")
-    survived2 <- class2$AddChild("Überlebt")
-    ceased2 <- class2$AddChild("Nicht Überlebt")
+    survived2 <- class2$AddChild("Überlebt ")
+    ceased2 <- class2$AddChild("Nicht Überlebt ")
   class3 <- tree_class$AddChild("3. Klasse")
     survived3 <- class3$AddChild("Überlebt")
     ceased3 <- class3$AddChild("Nicht Überlebt")
-
-tree_class$class1$frequency <- anteil_class1
-tree_class$class2$frequency <- anteil_class2
-tree_class$class3$frequency <- anteil_class3
-tree_class$class1$survived1$frequency <- anteil_class1
-tree_class$class1$ceased1$frequency <- anteil_class1
-tree_class$class1$survived2$frequency <- anteil_class1
-tree_class$class1$ceased2$frequency <- anteil_class1
-tree_class$class1$survived3$frequency <- anteil_class1
-tree_class$class1$ceased3$frequency <- anteil_class1
 
 # Customize edges - see "Plot with the data.tree plotting facility" in vignette
 GetEdgeLabel <- function(node) {
@@ -140,8 +143,18 @@ GetEdgeLabel <- function(node) {
     label = anteil_class2
   } else if (node$name == "3. Klasse") {
     label = anteil_class3
-  } else {
-    label = "_________"
+  } else if (node$name == " Überlebt"){
+    label = "(a)______"
+  } else if (node$name == " Nicht Überlebt"){
+    label = "(b)______"
+  } else if (node$name == "Überlebt "){
+    label = "(c)______"
+  } else if (node$name == "Nicht Überlebt "){
+    label = "(d)______"
+  } else if (node$name == "Überlebt"){
+    label = "(e)______"
+  } else if (node$name == "Nicht Überlebt"){
+    label = "(f)______"
   }
   return (label)
 }
@@ -150,7 +163,7 @@ SetGraphStyle(tree_class, rankdir = "LR")
 plot(tree_class)
 dev.off()
 
-png("images/class_tree.png", width = 800, height = 600, res = 120)       # Zahlen anpassen!!!
+png("images/class_tree.png", width = 800, height = 600, res = 120)
 GetEdgeLabel <- function(node) {
   if (node$name == "1. Klasse") {
     label = anteil_class1
@@ -158,18 +171,18 @@ GetEdgeLabel <- function(node) {
     label = anteil_class2
   } else if (node$name == "3. Klasse") {
     label = anteil_class3
-  } else if ((node$name == "1. Klasse") && (node$child$name == "Überlebt")){
-    label = "a"
-  } else if ((node$name == "1. Klasse") && (node$child$name == "Nicht Überlebt")){
-    label = "b"
-  } else if ((node$name == "2. Klasse") && (node$child$name == "Überlebt")){
-    label = "c"
-  } else if ((node$name == "2. Klasse") && (node$child$name == "Nicht Überlebt")){
-    label = "d"
-  } else if ((node$name == "3. Klasse") && (node$child$name == "Überlebt")){
-    label = "e"
-  } else if ((node$name == "3. Klasse") && (node$child$name == "Nicht Überlebt")){
-    label = "f"
+  } else if (node$name == " Überlebt"){
+    label = paste0("(a) ", anteil_class1_survived)
+  } else if (node$name == " Nicht Überlebt"){
+    label = paste0("(b) ", anteil_class1_deceased)
+  } else if (node$name == "Überlebt "){
+    label = paste0("(c) ", anteil_class2_survived)
+  } else if (node$name == "Nicht Überlebt "){
+    label = paste0("(d) ", anteil_class2_deceased)
+  } else if (node$name == "Überlebt"){
+    label = paste0("(e)", anteil_class3_survived)
+  } else if (node$name == "Nicht Überlebt"){
+    label = paste0("(f) ", anteil_class3_deceased)
   }
   return (label)
 }
