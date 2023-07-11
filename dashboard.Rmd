@@ -184,9 +184,13 @@ quiz(caption = "",
 ```
 
 Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+
 .
+
 .
+
 .
+
 ```{r fig4, echo = FALSE, out.width = "100%", fig.cap = "An den Ästen wurden schon die Prozentwerte geschrieben. 18,4% aller Menschen waren unter 20 und 81,6% Erwachsene, deswegen soll im Kasten links \"Kind\" und im Kasten rechts \"Erwachsene/r\" stehen. Und von den Erwachsenen sind 61,6% gestorben und 38,4% wurden gerettet. Von daher soll unten links \"Überlebt\" und unten rechts \"Nicht Überlebt\" stehen."}
 knitr::include_graphics("images/age_tree.png")
 ```
@@ -208,38 +212,38 @@ knitr::include_graphics("images/class_tree_gaps.png")
 Versuche das erstmals selbst zu lösen.
 
 ```{r ex2, echo = FALSE}
-quiz(
-  question("(a)",
+quiz(caption = "Welche Zahlen sollen in den Lücken stehen?",
+  question("( a )______",
            answer("62.96", correct = TRUE),
            answer("67.92"),
            answer("75.76"),
            allow_retry = TRUE
   ),
-  question("(b)",
+  question("( b )______",
            answer("52.72"),
            answer("24.24"),
            answer("37.04", correct = TRUE),
            allow_retry = TRUE
   ),
-  question("(c)",
+  question("( c )______",
            answer("52.72"),
            answer("48.38"),
            answer("47.28", correct = TRUE),
            allow_retry = TRUE
   ),
-  question("(d)",
+  question("( d )______",
            answer("52.62"),
            answer("52.72", correct = TRUE),
            answer("47.28"),
            allow_retry = TRUE
   ),
-  question("(e)",
+  question("( e )______",
            answer("23.24"),
            answer("37.04"),
            answer("24.24", correct = TRUE),
            allow_retry = TRUE
   ),
-  question("(f)",
+  question("( f )______",
            answer("75.76", correct = TRUE),
            answer("76.75"),
            answer("62.96"),
@@ -249,9 +253,13 @@ quiz(
 ```
 
 Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+
 .
+
 .
+
 .
+
 ```{r fig6, echo = FALSE, out.width = "100%", fig.cap = "Bei der Lösung fangen wir von oben an und schauen, wie viel Prozent bei welcher Kategorie angegeben wurde. Das gleiche machen wir auf der unteren Ebene. Eine etwas schwierigere Aufgabe wäre, die Prozentwerte bei den Unterkategorien anhand absoluter Werte selbst zu berechnen, dazu kommen wir aber ein bisschen später."}
 knitr::include_graphics("images/class_tree.png")
 ```

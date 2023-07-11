@@ -5,6 +5,8 @@ library(riskyr)
 #library(igraph)
 library(data.tree)
 library(DiagrammeR)
+library(DiagrammeRsvg)
+library(rsvg)
 
 ### Read and explore data-------------------------------------------------------
 ## Bread basket-----------------------------------------------------------------
@@ -123,7 +125,6 @@ age_tree <- plot_prism(prev = anteil_kinder, sens = anteil_kinder_ueberlebt,
 dev.off()
 
 # Empty branches----------------------------------------------------------------
-png("images/class_tree_gaps.png", width = 800, height = 600, res = 120)
 tree_class <- Node$new("N")
   class1 <- tree_class$AddChild("1. Klasse")
     survived1 <- class1$AddChild(" Überlebt")
@@ -160,10 +161,9 @@ GetEdgeLabel <- function(node) {
 }
 SetEdgeStyle(tree_class, fontname = 'helvetica', label = GetEdgeLabel)
 SetGraphStyle(tree_class, rankdir = "LR")
-plot(tree_class)
-dev.off()
+export_graph(ToDiagrammeRGraph(tree_class), "images/class_tree_gaps.png")  # otherwise blank png
 
-png("images/class_tree.png", width = 800, height = 600, res = 120)
+#png("images/class_tree.png", width = 800, height = 600, res = 120)
 GetEdgeLabel <- function(node) {
   if (node$name == "1. Klasse") {
     label = anteil_class1
@@ -188,8 +188,7 @@ GetEdgeLabel <- function(node) {
 }
 SetEdgeStyle(tree_class, fontname = 'helvetica', label = GetEdgeLabel)
 SetGraphStyle(tree_class, rankdir = "LR")
-plot(tree_class)
-dev.off()
+export_graph(ToDiagrammeRGraph(tree_class), "images/class_tree.png")  # otherwise blank png
 
 ## Quiz-------------------------------------------------------------------------
 # Reading exercise--------------------------------------------------------------
