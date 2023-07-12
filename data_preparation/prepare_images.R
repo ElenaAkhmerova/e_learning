@@ -21,8 +21,8 @@ titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
 titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
 titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
 titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
-titanic_dt$Age[titanic_dt$Age < 20] <- "Kind"
 titanic_dt$Age[titanic_dt$Age >= 20] <- "Erwachsene/r"
+titanic_dt$Age[titanic_dt$Age != "Erwachsene/r"] <- "Kind"
 titanic_dt$Pclass[titanic_dt$Pclass == 1] <- "1. Klasse"
 titanic_dt$Pclass[titanic_dt$Pclass == 2] <- "2. Klasse"
 titanic_dt$Pclass[titanic_dt$Pclass == 3] <- "3. Klasse"
@@ -265,8 +265,7 @@ png("images/age_mosaic_gaps.png", width = 800, height = 600, res = 120)
 ttc <- read.csv("data/titanic.csv")
 ttc$Age <- as.integer(ttc$Age)
 ttc$Age[ttc$Age >= 20] <- "a) _________"
-ttc$Age[ttc$Age < 20 | is.na(ttc$Age) 
-        | ttc$Age %in% c("4", "8", "3", "7", "5", "9", "6")] <- "b) _________"
+ttc$Age[ttc$Age < 20 | ttc$Age %in% c("4", "8", "3", "7", "5", "9", "6")] <- "b) _________"
 tbl3 <- prop.table(table(ttc$Age, ttc$Survived))
 mosaicplot(tbl3, color=TRUE, main="Überleben | Alter")
 dev.off()

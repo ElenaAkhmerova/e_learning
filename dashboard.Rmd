@@ -220,7 +220,7 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 Neben Geschlecht und Passagierklasse gab es noch ein Merkmal, das theoretisch bei den Überlebungschancen mitspielen könnte und zwar das Alter. Ob Kinder und Jugendliche als Erste ihre Plätze in den Rettungsbooten finden konnten, werden wir jetzt untersuchen.
 
-Von den 891 Passagieren und Schiffsleuten waren 164 (18,4%) unter 20 Jahren und 727 (81,6%) 20 Jahre alt oder älter. Von der ersten Gruppe haben 48,2% (79 Menschen) überlebt und entsprechend sind 51,8% (85) ums Leben gekommen. Und von den Erwachsenen sind 38,4% (279) am Leben geblieben und 61,6% (448) gestorben. Also hatten die jüngeren Menschen anscheinend doch etwas mehr Überlebenschancen als die älteren.
+Von den 891 Passagieren und Schiffsleuten waren 164 (18,4%) unter 20 Jahren und 727 (81,6%) 20 Jahre alt oder älter. Von der ersten Gruppe haben 48,2% (79 Menschen) überlebt und entsprechend sind 51,8% (85) ums Leben gekommen. Und von den Erwachsenen sind 53,4% (388) am Leben geblieben und 46,6% (339) gestorben. Also hatten die jüngeren Menschen anscheinend fast die gleichen Überlebenschancen wie die älteren, zumindest wenn man die Altersgrenze bei 20 setzt.
 
 Schauen wir jetzt, wie sich diese Informationen mit einem Häufigkeitsbaum veranschaulichen lassen, und versuchen wir die fehlenden Informationen zu vervollständigen.
 
