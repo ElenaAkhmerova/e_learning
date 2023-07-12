@@ -107,6 +107,16 @@ png("images/item_weekday_mosaic.png", width = 800, height = 600, res = 120)
 treemap_weekday <- treemap(basket3_mosaic_dt, index = c("Wochentag", "Item"), 
                         vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
 dev.off()
+
+# for the programming exercise
+n_cakes <- nrow(basket_dt[basket_dt$Item == "Cake"])
+n_bread <- nrow(basket_dt[basket_dt$Item == "Bread"])
+anteil_cake_weekend <- round(nrow(basket_dt[basket_dt$Item == "Cake" 
+                                            & basket_dt$weekday_weekend == "weekend"]) 
+                             / n_cakes * 100, 2)
+bread_weekday <- nrow(basket_dt[basket_dt$Item == "Bread" 
+                                & basket_dt$weekday_weekend == "weekday"])
+
 ## Titanic----------------------------------------------------------------------
 titanic_dt <- fread("data/titanic.csv")
 n_total <- nrow(titanic_dt)

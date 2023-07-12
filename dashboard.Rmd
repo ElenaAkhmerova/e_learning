@@ -594,28 +594,16 @@ quiz(
 
 ## Programmieraufgaben
 
-(4 praktische Aufgaben): 1) Lücken in einem H/baum befüllen (labels - Text, values - Zahlen) - alle Lücken werden nummeriert und es werden 4-5 Antwortoptionen gegeben mit unterschiedlicher Reihenfolge und unterschiedlichen Werten
+Hier kommt eine Aufgabe, die etwas tricky erscheinen kann, die aber dir zeigen kann, wie gut du das Thema bedingte relative Häufigkeiten verstanden hast.
 
-```{r calculations-1, exercise=TRUE}
-# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
-# ...
+Lese eine kurze Beschreibung und versuche daraus eine Kontigenztabelle zu erzeugen, wie im Text beschrieben.
 
-```
+**Zwischen 2016 und 2017 wurden in der Bäckerei 1025 Kuchen und 3325 Brote verkauft. 40.29% der Kuchen wurde am Wochenende verkauft und 2092 Brote haben die Kund/innen an Arbeitstagen gekauft. Wie sehen die relativen Häufigkeiten beider Produkte aus unter der Bedingung, dass sie an einem bestimmten Wochentag verkauft wurden?**
 
-2) Mosaikplot erzeugen lassen
+Für die Berechnungen benutze bitte die folgende Fläche und mache deine Berechnungen in R.
 
-```{r calculations-3, exercise=TRUE}
-# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
-# ...
-
-```
-
-4) Lücken in einem Mosaikplot befüllt - ähnlich zum Punkt 1
-
-```{r calculations-4, exercise=TRUE}
-# Hier kannst du mithilfe von R alle notwendigen Berechnungen durchführen
-# ...
-
+```{r prog, exercise=TRUE}
+# Mache deine Berechnungen hier
 ```
 
 ## Feedback
