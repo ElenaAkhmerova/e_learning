@@ -566,28 +566,28 @@ quiz(
                   "das aus denselben Daten wie der Häufigkeitsbaum entstanden ist, und ",
                   "vervollständige es mit den Angaben, die du auf der ersten Grafik findest.\n", 
                   "a. Was kommt in die Lücke *a)* rein?"),
-           antwort("Sandwich: 60.1%"),
-           antwort("Sandwich: 49.1%"),
-           antwort("Heiße Schokolade: 60.1%", correct = TRUE),
-           antwort("Heiße Schokolade: 50.9%"),
+           answer("Sandwich: 60.1%"),
+           answer("Sandwich: 49.1%"),
+           answer("Heiße Schokolade: 60.1%", correct = TRUE),
+           answer("Heiße Schokolade: 50.9%"),
            allow_retry = TRUE),
   question("b. Was kommt in die Lücke *b)* rein?",
-           antwort("49.1", correct = TRUE),
-           antwort("50.9"),
-           antwort("49.2"),
-           antwort("50.8"),
+           answer("49.1", correct = TRUE),
+           answer("50.9"),
+           answer("49.2"),
+           answer("50.8"),
            allow_retry = TRUE),
   question("c. Was kommt in die Lücke *c)* rein?",
-           antwort("Sandwich: 49.1%"),
-           antwort("Sandwich: 39.9%", correct = TRUE),
-           antwort("Heiße Schokolade: 60.1%"),
-           antwort("Heiße Schokolade: 50.9%"),
+           answer("Sandwich: 49.1%"),
+           answer("Sandwich: 39.9%", correct = TRUE),
+           answer("Heiße Schokolade: 60.1%"),
+           answer("Heiße Schokolade: 50.9%"),
            allow_retry = TRUE),
   question("d. Was kommt in die Lücke *d)* rein?",
-           antwort("49.1"),
-           antwort("50.9", correct = TRUE),
-           antwort("49.2"),
-           antwort("50.8"),
+           answer("49.1"),
+           answer("50.9", correct = TRUE),
+           answer("49.2"),
+           answer("50.8"),
            allow_retry = TRUE)
 )
 ```
@@ -605,6 +605,10 @@ Für die Berechnungen benutze bitte die folgende Fläche und mache deine Berechn
 ```{r prog, exercise=TRUE}
 # Mache deine Berechnungen hier
 
+```
+
+```{r fig16, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("images/test_dummy.png")
 ```
 
 ```{r quiz7, echo=FALSE}
