@@ -13,6 +13,7 @@ library(rsvg)
 ## Bread basket-----------------------------------------------------------------
 basket_dt <- fread("data/bread_basket.csv")
 
+# absolute values
 png("images/drink_daytime_contingency.png", width = 600, height = 300, res = 120)
 basket1 <- table(basket_dt$Item[basket_dt$Item == "Coffee" | basket_dt$Item == "Tea"], 
                  basket_dt$period_day[basket_dt$Item == "Coffee" | basket_dt$Item == "Tea"]) 
@@ -24,6 +25,13 @@ basket2 <- table(basket_dt$Item[basket_dt$Item == "Bread" | basket_dt$Item == "C
                  basket_dt$weekday_weekend[basket_dt$Item == "Bread" | basket_dt$Item == "Cake"]) 
 grid.arrange(tableGrob(addmargins(basket2)))
 dev.off()
+
+# conditional relative values - note that prop.table() divides by total N -> unsuitable
+basket1_dt <- data.table(basket1)
+names(basket1_dt) <- c("Item", "Tageszeit", "Anzahl")
+n_coffee <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Coffee"])
+n_tea <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Tea"])
+basket1_dt["Bedingte_relative_Häufigkeit"] := 
 
 ## Titanic----------------------------------------------------------------------
 titanic_dt <- fread("data/titanic.csv")
@@ -257,18 +265,17 @@ dev.off()
 ### Create mosaic plots
 ## Explanation------------------------------------------------------------------
 png("images/sex_mosaic.png", width = 800, height = 600, res = 120)
-tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
+tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))                   # redo !!!
 mosaicplot(tbl1, main = "Überleben | Geschlecht")
 dev.off()
 
 png("images/sex_mosaic_shades.png", width = 800, height = 600, res = 120)
-#tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
 mosaicplot(tbl1, color = TRUE, main = "Überleben | Geschlecht")
 dev.off()
 
 ## Reading training-------------------------------------------------------------
 png("images/class_mosaic.png", width = 800, height = 600, res = 120)
-tbl2 <- prop.table(table(titanic_dt$Pclass, titanic_dt$Survived))
+tbl2 <- prop.table(table(titanic_dt$Pclass, titanic_dt$Survived))                # redo !!!
 mosaicplot(tbl2, color=TRUE, main="Überleben | Passagierklasse")
 dev.off()
 
@@ -279,12 +286,12 @@ ttc <- read.csv("data/titanic.csv")
 ttc$Age <- as.integer(ttc$Age)
 ttc$Age[ttc$Age >= 20] <- "a) _________"
 ttc$Age[ttc$Age < 20 | ttc$Age %in% c("4", "8", "3", "7", "5", "9", "6")] <- "b) _________"
-tbl3 <- prop.table(table(ttc$Age, ttc$Survived))
+tbl3 <- prop.table(table(ttc$Age, ttc$Survived))                                 # redo !!!
 mosaicplot(tbl3, color=TRUE, main="Überleben | Alter")
 dev.off()
 
 png("images/age_mosaic.png", width = 800, height = 600, res = 120)
-tbl4 <- prop.table(table(titanic_dt$Age, titanic_dt$Survived))
+tbl4 <- prop.table(table(titanic_dt$Age, titanic_dt$Survived))                   # redo !!!
 mosaicplot(tbl4, color=TRUE, main="Überleben | Alter")
 dev.off()
 

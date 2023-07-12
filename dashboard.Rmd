@@ -376,13 +376,18 @@ Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest.
 
 ## Mosaikplot lesen
 
-Einleitung
+Schaue dir ein folgendes Mosaikplot an und probiere, auf die folgenden Fragen zu antworten.
 
-```{r fig9, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
+```{r fig9, echo = FALSE, out.width = "100%"}
 knitr::include_graphics("images/class_mosaic.png")
 ```
 
-Aufgaben
+```{r mpread, echo=FALSE}
+quiz(
+  caption = "",
+  question("")
+)
+```
 
 Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke weiter, um nun zu lernen, wie sie erstellt werden.
 
