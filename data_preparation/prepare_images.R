@@ -91,19 +91,6 @@ sex_tree <- plot_prism(prev = anteil_maenner, sens = anteil_maenner_ueberlebt,
 print(sex_tree)
 dev.off()
 
-
-## Reading training-------------------------------------------------------------
-# png("images/class_age_treemap.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
-# class_age_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-#                            Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen", 
-#                                               "Kind", "Erwachsen", "Kind", "Erwachsen"),
-#                            Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-#                                                    "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-#                            Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
-# class_age_treemap <- treemap(class_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-#                              vSize = "Häufigkeit", vColor = "Kategorie")
-# dev.off()
-
 ## Creating training------------------------------------------------------------
 # Empty nodes-------------------------------------------------------------------
 png("images/age_tree_gaps.png", width = 800, height = 600, res = 120)
@@ -202,6 +189,18 @@ sex_age_treemap <- treemap(sex_age_dt, index = c("Kategorie", "Unterkategorie", 
                            vSize = "Häufigkeit", vColor = "Kategorie")
 dev.off()
 
+## Reading training-------------------------------------------------------------
+# png("images/class_age_treemap.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
+# class_age_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
+#                            Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen", 
+#                                               "Kind", "Erwachsen", "Kind", "Erwachsen"),
+#                            Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
+#                                                    "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
+#                            Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
+# class_age_treemap <- treemap(class_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
+#                              vSize = "Häufigkeit", vColor = "Kategorie")
+# dev.off()
+
 # Creating exercise-------------------------------------------------------------
 png("images/stop_treemap_gaps.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
 stop_gaps_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                    # ersetzen!!!
@@ -242,15 +241,16 @@ stop_class_treemap <- treemap(stop_class_dt, index = c("Kategorie", "Unterkatego
                         vSize = "Häufigkeit", vColor = "Kategorie")
 dev.off()
 
-### Create mosaic plots - ? on-site ?
+### Create mosaic plots
 ## Explanation------------------------------------------------------------------
-png("images/class_treemap.png", width = 800, height = 600, res = 120)            # Zahlen anpassen!!!
-class_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                       Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                          "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                       Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))             # Zahlen anpassen!!!
-class_treemap <- treemap(class_dt, index = c("Kategorie", "Unterkategorie"), 
-                         vSize = "Häufigkeit", vColor = "Kategorie")
+png("images/sex_mosaic.png", width = 800, height = 600, res = 120)
+tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
+mosaicplot(tbl1, main = "Überleben | Geschlecht")
+dev.off()
+
+png("images/sex_mosaic_shades.png", width = 800, height = 600, res = 120)
+tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
+mosaicplot(tbl1, color = TRUE, main = "Überleben | Geschlecht")
 dev.off()
 
 ## Reading training-------------------------------------------------------------

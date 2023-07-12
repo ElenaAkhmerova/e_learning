@@ -330,25 +330,14 @@ Eine weitere graphische Darstellung von bedingten relativen Häufigkeiten sind *
 
 Im Mosaikplot wird eine rechteckige Fläche in Rechtecke aufgeteilt. Die Größe dieser Rechtecke ist proportional zur relativen Häufigkeit der entsprechenden Kategorie. Die größeren Rechtecke des Mosaikplots werden in Segmente unterteilt, die die Kategorien der beiden Variablen darstellen.
 
-```{r, echo=FALSE}
-# Read a .csv file
-titanic_dt <- read.csv2("data/titanic.csv", sep = ",")
-
-# Prepare the data.frame
-titanic_dt$Survived[titanic_dt$Survived == 0] <- "nicht überlebt"
-titanic_dt$Survived[titanic_dt$Survived == 1] <- "überlebt"
-titanic_dt$Sex[titanic_dt$Sex == "male"] <- "männlich"
-titanic_dt$Sex[titanic_dt$Sex == "female"] <- "weiblich"
-
-# Create mosaic plots
-tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
-mosaicplot(tbl1, main = "Überleben | Geschlecht")
+```{r fig7, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/sex_mosaic.png")
 ```
 
 Damit zusätzliche Informationen noch anschaulicher sind, können die Segmente farblich markiert oder schattiert werden.
 
-```{r, echo=FALSE}
-mosaicplot(tbl1, color = TRUE, main = "Überleben | Geschlecht")
+```{r fig8, echo=FALSE, out.width="100%"}
+knitr::include_graphics("images/sex_mosaic_shades.png")
 ```
 
 Wenn man auf die Achsen der Grafik schaut, repräsentiert die horizontale Achse eine unabhängige und die vertikale Achse eine abhängige Variable. *Zur Erinnerung: Eine abhängige Variable ist eine Variable, die sich durch die Veränderung der unabhängigen Variable auch ändert. Und eine unabhängige Variable ist dementsprechend von der anderen Variable unabhängig.*
@@ -391,7 +380,7 @@ Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest.
 
 Einleitung
 
-```{r fig8, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
+```{r fig9, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
 knitr::include_graphics("images/class_age_treemap.png")
 ```
 
@@ -403,7 +392,7 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 Einleitung
 
-```{r fig9, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
+```{r fig10, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
 knitr::include_graphics("images/age_treemap_gaps.png")
 ```
 
@@ -411,17 +400,17 @@ knitr::include_graphics("images/age_treemap_gaps.png")
 
 Aufgaben
 
-```{r fig10, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+```{r fig11, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
 knitr::include_graphics("images/age_treemap.png")                                # aufklappbar machen
 ```
 
 In dieser Übung wurden nicht alle Segmente beschriftet. Wie wäre es, wenn nicht alle Prozentwerte angegeben werden?
 
-```{r fig11, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
+```{r fig12, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
 knitr::include_graphics("images/sex_treemap_gaps.png")
 ```
 
-```{r fig12, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+```{r fig13, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
 knitr::include_graphics("images/sex_treemap.png")                                # aufklappbar machen
 ```
 
