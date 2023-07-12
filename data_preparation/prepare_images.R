@@ -132,17 +132,17 @@ GetEdgeLabel <- function(node) {
   } else if (node$name == "3. Klasse") {
     label = anteil_class3
   } else if (node$name == " Überlebt"){
-    label = "(a)______"
+    label = "a)______"
   } else if (node$name == " Nicht Überlebt"){
-    label = "(b)______"
+    label = "b)______"
   } else if (node$name == "Überlebt "){
-    label = "(c)______"
+    label = "c)______"
   } else if (node$name == "Nicht Überlebt "){
-    label = "(d)______"
+    label = "d)______"
   } else if (node$name == "Überlebt"){
-    label = "(e)______"
+    label = "e)______"
   } else if (node$name == "Nicht Überlebt"){
-    label = "(f)______"
+    label = "f)______"
   }
   return (label)
 }
@@ -159,17 +159,17 @@ GetEdgeLabel <- function(node) {
   } else if (node$name == "3. Klasse") {
     label = anteil_class3
   } else if (node$name == " Überlebt"){
-    label = paste0("(a) ", anteil_class1_survived)
+    label = paste0("a) ", anteil_class1_survived)
   } else if (node$name == " Nicht Überlebt"){
-    label = paste0("(b) ", anteil_class1_deceased)
+    label = paste0("b) ", anteil_class1_deceased)
   } else if (node$name == "Überlebt "){
-    label = paste0("(c) ", anteil_class2_survived)
+    label = paste0("c) ", anteil_class2_survived)
   } else if (node$name == "Nicht Überlebt "){
-    label = paste0("(d) ", anteil_class2_deceased)
+    label = paste0("d) ", anteil_class2_deceased)
   } else if (node$name == "Überlebt"){
-    label = paste0("(e) ", anteil_class3_survived)
+    label = paste0("e) ", anteil_class3_survived)
   } else if (node$name == "Nicht Überlebt"){
-    label = paste0("(f) ", anteil_class3_deceased)
+    label = paste0("f) ", anteil_class3_deceased)
   }
   return (label)
 }
@@ -249,38 +249,31 @@ mosaicplot(tbl1, main = "Überleben | Geschlecht")
 dev.off()
 
 png("images/sex_mosaic_shades.png", width = 800, height = 600, res = 120)
-tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
+#tbl1 <- prop.table(table(titanic_dt$Sex, titanic_dt$Survived))
 mosaicplot(tbl1, color = TRUE, main = "Überleben | Geschlecht")
 dev.off()
 
 ## Reading training-------------------------------------------------------------
-png("images/class_age_treemap.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
-class_age_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                           Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen", 
-                                              "Kind", "Erwachsen", "Kind", "Erwachsen"),
-                           Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                   "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                           Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
-class_age_treemap <- treemap(class_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-                             vSize = "Häufigkeit", vColor = "Kategorie")
+png("images/class_mosaic.png", width = 800, height = 600, res = 120)
+tbl2 <- prop.table(table(titanic_dt$Pclass, titanic_dt$Survived))
+mosaicplot(tbl2, color=TRUE, main="Überleben | Passagierklasse")
 dev.off()
 
 ## Creating training------------------------------------------------------------
 # Empty nodes-------------------------------------------------------------------
-png("images/age_treemap_gaps.png", width = 800, height = 600, res = 120)         # Zahlen anpassen!!!
-age_gaps_dt <- data.table(Kategorie = c(NA, "Erwachsen"),                        # for quiz mode both empty
-                          Unterkategorie = c("Überlebt", NA, NA, "Gestorben"),
-                          Häufigkeit = c(20, 15, 10, 5))                         # Zahlen anpassen!!!
-age_treemap_gaps <- treemap(age_gaps_dt, index = c("Kategorie", "Unterkategorie"), 
-                            vSize = "Häufigkeit", vColor = "Kategorie")
+png("images/age_mosaic_gaps.png", width = 800, height = 600, res = 120)
+ttc <- read.csv("data/titanic.csv")
+ttc$Age <- as.integer(ttc$Age)
+ttc$Age[ttc$Age >= 20] <- "a) _________"
+ttc$Age[ttc$Age < 20 | is.na(ttc$Age) 
+        | ttc$Age %in% c("4", "8", "3", "7", "5", "9", "6")] <- "b) _________"
+tbl3 <- prop.table(table(ttc$Age, ttc$Survived))
+mosaicplot(tbl3, color=TRUE, main="Überleben | Alter")
 dev.off()
 
-png("images/age_treemap.png", width = 800, height = 600, res = 120)              # Zahlen anpassen!!!
-age_dt <- data.table(Kategorie = c("Kind", "Erwachsen"),
-                     Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                     Häufigkeit = c(20, 15, 10, 5))                              # Zahlen anpassen!!!
-age_treemap <- treemap(age_dt, index = c("Kategorie", "Unterkategorie"), 
-                       vSize = "Häufigkeit", vColor = "Kategorie")
+png("images/age_mosaic.png", width = 800, height = 600, res = 120)
+tbl4 <- prop.table(table(titanic_dt$Age, titanic_dt$Survived))
+mosaicplot(tbl4, color=TRUE, main="Überleben | Alter")
 dev.off()
 
 # Empty branches----------------------------------------------------------------

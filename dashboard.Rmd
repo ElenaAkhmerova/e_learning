@@ -271,37 +271,37 @@ Versuche das erstmals selbst zu lösen. Welche Zahlen sollen in den Lücken steh
 
 ```{r ex2, echo = FALSE}
 quiz(caption = "",
-  question("( a )______",
+  question("a)______",
            answer("62.96", correct = TRUE),
            answer("67.92"),
            answer("75.76"),
            allow_retry = TRUE
   ),
-  question("( b )______",
+  question("b)______",
            answer("52.72"),
            answer("24.24"),
            answer("37.04", correct = TRUE),
            allow_retry = TRUE
   ),
-  question("( c )______",
+  question("c)______",
            answer("52.72"),
            answer("48.38"),
            answer("47.28", correct = TRUE),
            allow_retry = TRUE
   ),
-  question("( d )______",
+  question("d)______",
            answer("52.62"),
            answer("52.72", correct = TRUE),
            answer("47.28"),
            allow_retry = TRUE
   ),
-  question("( e )______",
+  question("e)______",
            answer("23.24"),
            answer("37.04"),
            answer("24.24", correct = TRUE),
            allow_retry = TRUE
   ),
-  question("( f )______",
+  question("f)______",
            answer("75.76", correct = TRUE),
            answer("76.75"),
            answer("62.96"),
@@ -381,7 +381,7 @@ Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest.
 Einleitung
 
 ```{r fig9, echo = FALSE, out.width = "100%", fig.cap = "Hier sieht man schon die Verteilung nach der Passagierklasse und Alterskategorie und dann die Überlebungsquote."}
-knitr::include_graphics("images/class_age_treemap.png")
+knitr::include_graphics("images/class_mosaic.png")
 ```
 
 Aufgaben
@@ -393,15 +393,23 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 Einleitung
 
 ```{r fig10, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
-knitr::include_graphics("images/age_treemap_gaps.png")
+knitr::include_graphics("images/age_mosaic_gaps.png")
 ```
 
 !!! Exercise!!!
 
 Aufgaben
 
+Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+
+.
+
+.
+
+.
+
 ```{r fig11, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/age_treemap.png")                                # aufklappbar machen
+knitr::include_graphics("images/age_mosaic.png")
 ```
 
 In dieser Übung wurden nicht alle Segmente beschriftet. Wie wäre es, wenn nicht alle Prozentwerte angegeben werden?
@@ -409,6 +417,14 @@ In dieser Übung wurden nicht alle Segmente beschriftet. Wie wäre es, wenn nich
 ```{r fig12, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
 knitr::include_graphics("images/sex_treemap_gaps.png")
 ```
+
+Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+
+.
+
+.
+
+.
 
 ```{r fig13, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
 knitr::include_graphics("images/sex_treemap.png")                                # aufklappbar machen
