@@ -70,6 +70,43 @@ treemap_test <- treemap(basket1_dt, index = c("Item", "Zeit_f"),
                         vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
 dev.off()
 
+# For the quiz------------------------------------------------------------------
+basket3_dt <- data.table(basket_dt$Item[basket_dt$Item %in% c("Hot chocolate", "Sandwich")],
+                         basket_dt$weekday_weekend[basket_dt$Item %in% c("Hot chocolate", 
+                                                                         "Sandwich")])
+items_total <- nrow(basket3_dt)
+weekday_total <- nrow(basket3_dt[basket3_dt$V2 == "weekday"])
+weekend_total <- nrow(basket3_dt[basket3_dt$V2 == "weekend"])
+sandwich_weekday <- nrow(basket3_dt[basket3_dt$V1 == "Sandwich" 
+                                    & basket3_dt$V2 == "weekday"])
+chocolate_weekend <- nrow(basket3_dt[basket3_dt$V1 == "Hot chocolate" 
+                                   & basket3_dt$V2 == "weekend"])
+anteil_weekday <- weekday_total / items_total
+anteil_sandwich_weekday <- sandwich_weekday / weekday_total
+anteil_chocolate_weekend <- chocolate_weekend / weekend_total
+# tree
+png("images/item_weekday_tree.png", width = 800, height = 600, res = 120)
+my_txt <- init_txt(cond_true_lbl = "Arbeitstag", cond_false_lbl = "Wochenende",
+                   hi_lbl = "Heiße Schokolade", mi_lbl = "Sandwich", 
+                   fa_lbl = "Heiße Schokolade", cr_lbl = "Sandwich")
+item_weekday_tree <- plot_prism(prev = anteil_weekday, sens = anteil_sandwich_weekday, 
+                       spec = anteil_chocolate_weekend, by = "cd", f_lbl = "nam", 
+                       lbl_txt = my_txt, f_lwd = .5, arr_c = 2)
+dev.off()
+# mosaic plot
+basket3_mosaic_dt <- data.table(Item = c("c) ______________", 
+                                         "d) Heiße Schokolade: _______ %", 
+                                         "a) ______________", 
+                                         "b) Sandwich: _______ %"),
+                                Wochentag = c("Arbeitstag", "Wochenende"),
+                                Bedingte_relative_Häufigkeit = c(1 - anteil_sandwich_weekday, 
+                                                                 anteil_chocolate_weekend, 
+                                                                 anteil_sandwich_weekday, 
+                                                                 1 - anteil_chocolate_weekend))
+png("images/item_weekday_mosaic.png", width = 800, height = 600, res = 120)
+treemap_weekday <- treemap(basket3_mosaic_dt, index = c("Wochentag", "Item"), 
+                        vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
+dev.off()
 ## Titanic----------------------------------------------------------------------
 titanic_dt <- fread("data/titanic.csv")
 n_total <- nrow(titanic_dt)

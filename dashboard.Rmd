@@ -394,8 +394,8 @@ quiz(
            answer("abhängige Variable", correct = TRUE),
            allow_retry = TRUE),
   question("Welche Werte nimmt die unabhängige Variable in diesem Beispiel ein?",
-           answer("1. Klasse, 2. Klasse, 3. Klasse", correct = TRUE),
-           answer("überlebt, nicht überlebt"),
+           answer("*1. Klasse, 2. Klasse, 3. Klasse*", correct = TRUE),
+           answer("*überlebt, nicht überlebt*"),
            allow_retry = TRUE),
   question("Aus welcher Klasse stammte die Mehrheit der Passagiere?",
            answer("1. Klasse", 
@@ -420,9 +420,9 @@ quiz(
            allow_retry = TRUE),
   question(paste0("Setze den Satz fort: Man hatte die geringsten Chancen zum Überleben, unter ",
                   "der Bedingung, dass man Passagier der ..."),
-           answer("1. Klasse war."),
-           answer("2. Klasse war."),
-           answer("3. Klasse war.", correct = TRUE, 
+           answer("... 1. Klasse war."),
+           answer("... 2. Klasse war."),
+           answer("... 3. Klasse war.", correct = TRUE, 
                   message = paste0("Genau dieses Rechteck hat die längste Seite, die mit ",
                   "*nicht überlebt* beschriftet wird.")),
            allow_retry = TRUE)
@@ -470,7 +470,7 @@ Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
 .
 
 ```{r fig13, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/sex_treemap.png")                                # aufklappbar machen
+knitr::include_graphics("images/sex_treemap.png")
 ```
 
 + R Code
@@ -478,7 +478,7 @@ knitr::include_graphics("images/sex_treemap.png")                               
 ## Zusammenfassung
 
 ## Quiz
-Teste jetzt deine Kenntnisse! Hier findest du 7 kurze Verständnisfragen und im nächsten Abschnitt **Programmieraufgaben** kannst du dann deine praktischen Fähigkeiten unter Beweis stellen.
+Teste jetzt deine Kenntnisse! Hier findest du kurze Verständnisfragen und im nächsten Abschnitt **Programmieraufgaben** kannst du dann deine praktischen Fähigkeiten unter Beweis stellen.
 
 ```{r quiz1, echo=FALSE}
 quiz(caption = "1. Definition",
@@ -550,14 +550,46 @@ question_rank(paste0("**c. Sortiere die Variablentypen in der gleichen ",
               allow_retry = TRUE)
 ```
 
-```{r quiz6, echo=FALSE}
-# Interpretationsfrage zu HB
 
+```{r fig14, echo = FALSE, out.width = "100%", fig.cap = "(1) Häufigkeitsbaum"}
+knitr::include_graphics("images/item_weekday_tree.png")
 ```
 
-```{r quiz7, echo=FALSE}
-# Interpretationsfrage zu einem Mosaikplot
+```{r fig15, echo = FALSE, out.width = "100%", fig.cap = "(2) Mosaikdiagramm"}
+knitr::include_graphics("images/item_weekday_mosaic.png")
+```
 
+```{r quiz6, echo=FALSE}
+quiz(
+  caption = "4. Interpretationsfragen",
+  question(paste0("Schaue dir den obigen Häufigkeitsbaum (1) und das Mosaikdiagramm (2) an, ",
+                  "das aus denselben Daten wie der Häufigkeitsbaum entstanden ist, und ",
+                  "vervollständige es mit den Angaben, die du auf der ersten Grafik findest.\n", 
+                  "a. Was kommt in die Lücke *a)* rein?"),
+           antwort("Sandwich: 60.1%"),
+           antwort("Sandwich: 49.1%"),
+           antwort("Heiße Schokolade: 60.1%", correct = TRUE),
+           antwort("Heiße Schokolade: 50.9%"),
+           allow_retry = TRUE),
+  question("b. Was kommt in die Lücke *b)* rein?",
+           antwort("49.1", correct = TRUE),
+           antwort("50.9"),
+           antwort("49.2"),
+           antwort("50.8"),
+           allow_retry = TRUE),
+  question("c. Was kommt in die Lücke *c)* rein?",
+           antwort("Sandwich: 49.1%"),
+           antwort("Sandwich: 39.9%", correct = TRUE),
+           antwort("Heiße Schokolade: 60.1%"),
+           antwort("Heiße Schokolade: 50.9%"),
+           allow_retry = TRUE),
+  question("d. Was kommt in die Lücke *d)* rein?",
+           antwort("49.1"),
+           antwort("50.9", correct = TRUE),
+           antwort("49.2"),
+           antwort("50.8"),
+           allow_retry = TRUE)
+)
 ```
 
 ## Programmieraufgaben
