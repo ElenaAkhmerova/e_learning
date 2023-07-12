@@ -598,60 +598,69 @@ Hier kommt eine Aufgabe, die etwas tricky erscheinen kann, die aber dir zeigen k
 
 Lese eine kurze Beschreibung und versuche daraus eine Kontigenztabelle zu erzeugen, wie im Text beschrieben.
 
-**Zwischen 2016 und 2017 wurden in der Bäckerei 1025 Kuchen und 3325 Brote verkauft. 40.29% der Kuchen wurde am Wochenende verkauft und 2092 Brote haben die Kund/innen an Arbeitstagen gekauft. Wie sehen die relativen Häufigkeiten beider Produkte aus unter der Bedingung, dass sie an einem bestimmten Wochentag verkauft wurden? Beachte, dass du nur 2 Summen bilden musst, die 2 anderen sind als Platzhalter da.**
+**Zwischen 2016 und 2017 wurden in der Bäckerei 1025 Kuchen und 3325 Brote verkauft. 40.29% der Kuchen wurde am Wochenende verkauft und 2092 Brote haben die Kund/innen an Arbeitstagen gekauft. Wie sehen die relativen Häufigkeiten beider Produkte unter der Bedingung, dass sie an einem bestimmten Wochentag verkauft wurden, aus? Beachte, dass du nur 2 Summen bilden musst, die 2 anderen sind als Platzhalter da.**
 
 Für die Berechnungen benutze bitte die folgende Fläche und mache deine Berechnungen in R.
 
 ```{r prog, exercise=TRUE}
 # Mache deine Berechnungen hier
+
 ```
 
 ```{r quiz7, echo=FALSE}
 quiz(
   caption = "Wähle die passende Antwort bzw. tippe die Zahl im Format 00.00 ein.",
+  question("Sage aber erstmal, was die richtige Notation für diese Häufigkeiten ist.",
+           answer("f(Produkt|Wochentag)", correct = TRUE),
+           answer("f(Wochentag|Produkt)"),
+           allow_retry = TRUE),
   question_text("(1)",
-                answer("...", correct = TRUE),
+                answer("59.71", correct = TRUE),
                 answer_fn(function(value) {
-                  if (value == "...") {
+                  if (value == "59,71") {
                     incorrect("Fast richtig! Beachte die Formatierung!")
                   }
-                })),
+                }),
+           allow_retry = TRUE),
   question_text("(2)",
-                answer("...", correct = TRUE),
+                answer("40.29", correct = TRUE),
                 answer_fn(function(value) {
-                  if (value == "...") {
+                  if (value == "40,29") {
                     incorrect("Fast richtig! Beachte die Formatierung!")
                   }
-                })),
+                }),
+           allow_retry = TRUE),
   question("(3)",
-           answer("..."),
+           answer("1", correct = TRUE),
            answer("NA"),
            allow_retry = TRUE),
   question_text("(4)",
-                answer("...", correct = TRUE),
+                answer("62.92", correct = TRUE),
                 answer_fn(function(value) {
-                  if (value == "...") {
+                  if (value == "62,92") {
                     incorrect("Fast richtig! Beachte die Formatierung!")
                   }
-                })),
+                }),
+           allow_retry = TRUE),
   question_text("(5)",
-                answer("...", correct = TRUE),
+                answer("37.08", correct = TRUE),
                 answer_fn(function(value) {
-                  if (value == "...") {
+                  if (value == "37,08") {
                     incorrect("Fast richtig! Beachte die Formatierung!")
                   }
-                })),
+                }),
+           allow_retry = TRUE),
   question("(6)",
-           answer("..."),
+           answer("1", correct = TRUE),
            answer("NA"),
            allow_retry = TRUE),
   question("(7)",
-           answer("..."),
-           answer("NA"),
+           answer("1"),
+           answer("NA", correct = TRUE),
            allow_retry = TRUE),
   question("(8)",
-           answer("..."),
-           answer("NA"),
+           answer("1"),
+           answer("NA", correct = TRUE),
            allow_retry = TRUE)
 )
 ```
