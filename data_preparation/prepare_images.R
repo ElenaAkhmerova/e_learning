@@ -31,7 +31,44 @@ basket1_dt <- data.table(basket1)
 names(basket1_dt) <- c("Item", "Tageszeit", "Anzahl")
 n_coffee <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Coffee"])
 n_tea <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Tea"])
-basket1_dt["Bedingte_relative_Häufigkeit"] := 
+basket1_dt[, "Summe" := ifelse(Item == "Coffee", n_coffee, NA)]
+basket1_dt[, "Summe" := ifelse(Item == "Tea", n_tea, Summe)]
+basket1_dt[, "Bedingte_relative_Häufigkeit" := round(basket1_dt$Anzahl 
+                                                     / basket1_dt$Summe * 100, 2)]
+coffee_tea_dt <- data.table(Item = c("Kaffee", "Tee"),
+                            Vormittag = c(basket1_dt$Bedingte_relative_Häufigkeit[
+                              basket1_dt$Item == "Coffee" & basket1_dt$Tageszeit == "morning"
+                            ],
+                            basket1_dt$Bedingte_relative_Häufigkeit[
+                              basket1_dt$Item == "Tea" & basket1_dt$Tageszeit == "morning"
+                            ]),
+                            Nachmittag = c(basket1_dt$Bedingte_relative_Häufigkeit[
+                              basket1_dt$Item == "Coffee" & basket1_dt$Tageszeit == "afternoon"
+                            ],
+                            basket1_dt$Bedingte_relative_Häufigkeit[
+                              basket1_dt$Item == "Tea" & basket1_dt$Tageszeit == "afternoon"
+                            ]),
+                            Abend = c(basket1_dt$Bedingte_relative_Häufigkeit[
+                              basket1_dt$Item == "Coffee" & basket1_dt$Tageszeit == "evening"
+                            ],
+                            basket1_dt$Bedingte_relative_Häufigkeit[
+                              basket1_dt$Item == "Tea" & basket1_dt$Tageszeit == "evening"
+                            ]),
+                            Summe = c(1, 1))
+png("images/coffee_tea_conditional.png", width = 800, height = 300, res = 120)
+grid.arrange(tableGrob(coffee_tea_dt))
+dev.off()
+
+png("images/coffee_tea_mosaic.png", width = 800, height = 600, res = 120)
+basket1_dt$Item[basket1_dt$Item == "Coffee"] <- "Kaffee"
+basket1_dt$Item[basket1_dt$Item == "Tea"] <- "Tee"
+basket1_dt$Tageszeit[basket1_dt$Tageszeit == "morning"] <- "Vormittag"
+basket1_dt$Tageszeit[basket1_dt$Tageszeit == "afternoon"] <- "Nachmittag"
+basket1_dt$Tageszeit[basket1_dt$Tageszeit == "evening"] <- "Abend"
+basket1_dt[,"Zeit_f" := paste0(Tageszeit, ": ", Bedingte_relative_Häufigkeit, "%")]
+treemap_test <- treemap(basket1_dt, index = c("Item", "Zeit_f"), 
+                        vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
+dev.off()
 
 ## Titanic----------------------------------------------------------------------
 titanic_dt <- fread("data/titanic.csv")
@@ -136,13 +173,13 @@ dev.off()
 tree_class <- Node$new("N")
   class1 <- tree_class$AddChild("1. Klasse")
     survived1 <- class1$AddChild(" Überlebt")
-    ceased1 <- class1$AddChild(" Nicht Überlebt")
+    deceased1 <- class1$AddChild(" Nicht Überlebt")
   class2 <- tree_class$AddChild("2. Klasse")
     survived2 <- class2$AddChild("Überlebt ")
-    ceased2 <- class2$AddChild("Nicht Überlebt ")
+    deceased2 <- class2$AddChild("Nicht Überlebt ")
   class3 <- tree_class$AddChild("3. Klasse")
     survived3 <- class3$AddChild("Überlebt")
-    ceased3 <- class3$AddChild("Nicht Überlebt")
+    deceased3 <- class3$AddChild("Nicht Überlebt")
 
 # Customize edges - see "Plot with the data.tree plotting facility" in vignette
 GetEdgeLabel <- function(node) {

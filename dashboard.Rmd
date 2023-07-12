@@ -48,6 +48,10 @@ shiny::tabsetPanel(
       
       <img src='images/drink_daytime_contingency.png'>
       
+      <img src='images/coffee_tea_conditional.png'>
+
+      <img src='images/coffee_tea_mosaic.png'>
+      
       <p>You can also create nested lists:</p>
       
       <ul>
@@ -385,7 +389,43 @@ knitr::include_graphics("images/class_mosaic.png")
 ```{r mpread, echo=FALSE}
 quiz(
   caption = "",
-  question("")
+  question("Was für eine Variable ist die Variable mit dem Wert *überlebt*?",   # add messages!!!
+           answer("unabhängige Variable"),
+           answer("abhängige Variable", correct = TRUE),
+           allow_retry = TRUE),
+  question("Welche Werte nimmt die unabhängige Variable in diesem Beispiel ein?",
+           answer("1. Klasse, 2. Klasse, 3. Klasse", correct = TRUE),
+           answer("überlebt, nicht überlebt"),
+           allow_retry = TRUE),
+  question("Aus welcher Klasse stammte die Mehrheit der Passagiere?",
+           answer("1. Klasse", 
+                  message = "Achte auf die horizontale Achse und die Länge der Rechtecke"),
+           answer("2. Klasse", 
+                  message = "Achte auf die horizontale Achse und die Länge der Rechtecke"),
+           answer("3. Klasse", correct = TRUE,
+                  message = paste0("Schaue dir die Seiten der Rechtecke an, die mit ",
+                  "unterschiedlichen Klassen beschriftet werden. Die längste Seite verrät, ",
+                  "dass es sich dabei um die größte Gruppe aus der nachgefragten Kategorie ",
+                  "geht.")),
+           allow_retry = TRUE),
+  question("In welcher Klasse musste man sein, um die besten Überlebungschancen zu haben?",
+           answer("1. Klasse", correct = TRUE, 
+                  message = paste0("Schaue dir nun die vertikale Achse an. Bei der 1. Klasse ",
+                                   "ist die Seite bei der entsprechenden Beschriftung ",
+                                   "(*überlebt*) am längsten.")),
+           answer("2. Klasse", 
+                  message = "Achte auf die vertikale Achse und die Länge der Rechtecke"),
+           answer("3. Klasse", 
+                  message = "Achte auf die vertikale Achse und die Länge der Rechtecke"),
+           allow_retry = TRUE),
+  question(paste0("Setze den Satz fort: Man hatte die geringsten Chancen zum Überleben, unter ",
+                  "der Bedingung, dass man Passagier der ..."),
+           answer("1. Klasse war."),
+           answer("2. Klasse war."),
+           answer("3. Klasse war.", correct = TRUE, 
+                  message = paste0("Genau dieses Rechteck hat die längste Seite, die mit ",
+                  "*nicht überlebt* beschriftet wird.")),
+           allow_retry = TRUE)
 )
 ```
 
