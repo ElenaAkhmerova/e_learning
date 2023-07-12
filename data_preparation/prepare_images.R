@@ -116,6 +116,13 @@ anteil_cake_weekend <- round(nrow(basket_dt[basket_dt$Item == "Cake"
                              / n_cakes * 100, 2)
 bread_weekday <- nrow(basket_dt[basket_dt$Item == "Bread" 
                                 & basket_dt$weekday_weekend == "weekday"])
+dummy_dt <- data.table(Item = c("Kuchen", "Brot", "Summe"),
+                       Arbeitstag = c("(1)", "(4)", "(7)"),
+                       Wochenende = c("(2)", "(5)", "(8)"),
+                       Summe = c("(3)", "(6)", " "))
+png("images/test_dummy.png", width = 800, height = 300, res = 120)
+grid.arrange(tableGrob(dummy_dt))
+dev.off()
 
 ## Titanic----------------------------------------------------------------------
 titanic_dt <- fread("data/titanic.csv")
