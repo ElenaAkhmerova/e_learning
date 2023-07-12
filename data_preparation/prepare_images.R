@@ -1,5 +1,6 @@
 ### Import libraries------------------------------------------------------------
 library(data.table)
+library(gridExtra)
 library(treemap)
 library(riskyr)
 #library(igraph)
@@ -11,6 +12,18 @@ library(rsvg)
 ### Read and explore data-------------------------------------------------------
 ## Bread basket-----------------------------------------------------------------
 basket_dt <- fread("data/bread_basket.csv")
+
+png("images/drink_daytime_contingency.png", width = 600, height = 300, res = 120)
+basket1 <- table(basket_dt$Item[basket_dt$Item == "Coffee" | basket_dt$Item == "Tea"], 
+                 basket_dt$period_day[basket_dt$Item == "Coffee" | basket_dt$Item == "Tea"]) 
+grid.arrange(tableGrob(addmargins(basket1)))
+dev.off()
+
+png("images/bread_cake_weekday.png", width = 400, height = 300, res = 120)
+basket2 <- table(basket_dt$Item[basket_dt$Item == "Bread" | basket_dt$Item == "Cake"], 
+                 basket_dt$weekday_weekend[basket_dt$Item == "Bread" | basket_dt$Item == "Cake"]) 
+grid.arrange(tableGrob(addmargins(basket2)))
+dev.off()
 
 ## Titanic----------------------------------------------------------------------
 titanic_dt <- fread("data/titanic.csv")

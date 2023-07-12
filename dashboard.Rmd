@@ -46,11 +46,7 @@ shiny::tabsetPanel(
     htmltools::HTML("
       <p>This is the content for Panel 2.</p>
       
-      <ol>
-        <li>First item</li>
-        <li>Second item</li>
-        <li>Third item</li>
-      </ol>
+      <img src='images/drink_daytime_contingency.png'>
       
       <p>You can also create nested lists:</p>
       
@@ -73,6 +69,8 @@ shiny::tabsetPanel(
     value = "panel3",
     htmltools::HTML("
       <p>This is the content for Panel 3.</p>
+      
+      <img src='images/bread_cake_weekday.png'>
       
       <blockquote>
         <p>This is a blockquote.</p>
