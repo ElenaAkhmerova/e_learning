@@ -41,7 +41,7 @@ shiny::tabsetPanel(
   ),
   # Panel 2
   shiny::tabPanel(
-    title = "Zusammenhänge zwischen Produkten",
+    title = "Zusammenhänge zwischen Produkten und Tageszeiten",
     value = "panel2",
     htmltools::HTML("
       <p>This is the content for Panel 2.</p>
@@ -598,13 +598,20 @@ Hier kommt eine Aufgabe, die etwas tricky erscheinen kann, die aber dir zeigen k
 
 Lese eine kurze Beschreibung und versuche daraus eine Kontigenztabelle zu erzeugen, wie im Text beschrieben.
 
-**Zwischen 2016 und 2017 wurden in der Bäckerei 1025 Kuchen und 3325 Brote verkauft. 40.29% der Kuchen wurde am Wochenende verkauft und 2092 Brote haben die Kund/innen an Arbeitstagen gekauft. Wie sehen die relativen Häufigkeiten beider Produkte unter der Bedingung, dass sie an einem bestimmten Wochentag verkauft wurden, aus? Beachte, dass du nur 2 Summen bilden musst, die 2 anderen sind als Platzhalter da.**
+**Zwischen 2016 und 2017 wurden in der Edinburger Bäckerei 1025 Kuchen und 3325 Brote verkauft. 40.29% der Kuchen wurde am Wochenende verkauft und 2092 Brote haben die Kund/innen an Arbeitstagen gekauft. Wie sehen die relativen Häufigkeiten beider Produkte unter der Bedingung, dass sie an einem bestimmten Wochentag verkauft wurden, aus? Beachte, dass du nur 2 Summen bilden musst, die 2 anderen sind als Platzhalter da.**
 
 Für die Berechnungen benutze bitte die folgende Fläche und mache deine Berechnungen in R.
 
 ```{r prog, exercise=TRUE}
 # Mache deine Berechnungen hier
 
+```
+
+```{r quiz8, echo=FALSE}
+question("Sage aber erstmal, was die richtige Notation für diese Häufigkeiten ist.",
+           answer("f(Produkt|Wochentag)", correct = TRUE),
+           answer("f(Wochentag|Produkt)"),
+           allow_retry = TRUE)
 ```
 
 ```{r fig16, echo=FALSE, out.width = "100%"}
@@ -614,11 +621,7 @@ knitr::include_graphics("images/test_dummy.png")
 ```{r quiz7, echo=FALSE}
 quiz(
   caption = "Wähle die passende Antwort bzw. tippe die Zahl im Format 00.00 ein.",
-  question("Sage aber erstmal, was die richtige Notation für diese Häufigkeiten ist.",
-           answer("f(Produkt|Wochentag)", correct = TRUE),
-           answer("f(Wochentag|Produkt)"),
-           allow_retry = TRUE),
-  question_text("(1)",
+  question_text("Was kommt in die Zelle (1)?",
                 answer("59.71", correct = TRUE),
                 answer_fn(function(value) {
                   if (value == "59,71") {
@@ -626,7 +629,7 @@ quiz(
                   }
                 }),
            allow_retry = TRUE),
-  question_text("(2)",
+  question_text("Was kommt in die Zelle (2)?",
                 answer("40.29", correct = TRUE),
                 answer_fn(function(value) {
                   if (value == "40,29") {
@@ -634,11 +637,11 @@ quiz(
                   }
                 }),
            allow_retry = TRUE),
-  question("(3)",
+  question("Was kommt in die Zelle (3)?",
            answer("1", correct = TRUE),
            answer("NA"),
            allow_retry = TRUE),
-  question_text("(4)",
+  question_text("Was kommt in die Zelle (4)?",
                 answer("62.92", correct = TRUE),
                 answer_fn(function(value) {
                   if (value == "62,92") {
@@ -646,7 +649,7 @@ quiz(
                   }
                 }),
            allow_retry = TRUE),
-  question_text("(5)",
+  question_text("Was kommt in die Zelle (5)?",
                 answer("37.08", correct = TRUE),
                 answer_fn(function(value) {
                   if (value == "37,08") {
@@ -654,15 +657,15 @@ quiz(
                   }
                 }),
            allow_retry = TRUE),
-  question("(6)",
+  question("Was kommt in die Zelle (6)?",
            answer("1", correct = TRUE),
            answer("NA"),
            allow_retry = TRUE),
-  question("(7)",
+  question("Was kommt in die Zelle (7)?",
            answer("1"),
            answer("NA", correct = TRUE),
            allow_retry = TRUE),
-  question("(8)",
+  question("Was kommt in die Zelle (8)?",
            answer("1"),
            answer("NA", correct = TRUE),
            allow_retry = TRUE)
@@ -676,7 +679,7 @@ Danke, dass du diese E-Learning Plattform benutzt hast, hoffentlich kannst du da
 
 Damit deine Erfahrung mit der upgradeten Version dieser oder mit einer weiteren Plattform noch besser wird, möchte ich dich bitten, zum Abschluss an einer kleinen Umfrage teilzunehmen. Die Umfrage ist anonym und die erhobenen Daten werden ausschließlich zu Forschungszwecken verwendet.
 
-Die Umfrage befindet sich auf einer externen Webseite. Beim Klick auf **Start** wirst du dahin weitergeleitet.
+Die Umfrage befindet sich auf einer externen Webseite. Beim Klick auf **Start** wirst du dahin weitergeleitet. Zur Teilnahme gib das Passwort "statistics23" ein.
 
 ```{js, echo=FALSE}
 function redirect() {

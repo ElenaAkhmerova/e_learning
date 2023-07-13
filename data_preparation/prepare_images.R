@@ -12,47 +12,56 @@ library(rsvg)
 ### Read and explore data-------------------------------------------------------
 ## Bread basket-----------------------------------------------------------------
 basket_dt <- fread("data/bread_basket.csv")
+basket_dt$Item[basket_dt$Item == "Coffee"] <- "Kaffee"
+basket_dt$Item[basket_dt$Item == "Tea"] <- "Tee"
+basket_dt$Item[basket_dt$Item == "Bread"] <- "Brot"
+basket_dt$Item[basket_dt$Item == "Cake"] <- "Kuchen"
+basket_dt$period_day[basket_dt$period_day == "morning"] <- "Vormittag"
+basket_dt$period_day[basket_dt$period_day == "afternoon"] <- "Nachmittag"
+basket_dt$period_day[basket_dt$period_day == "evening"] <- "Abend"
+basket_dt$weekday_weekend[basket_dt$weekday_weekend == "weekday"] <- "Arbeitstag"
+basket_dt$weekday_weekend[basket_dt$weekday_weekend == "weekend"] <- "Wochenende"
 
 # absolute values
 png("images/drink_daytime_contingency.png", width = 600, height = 300, res = 120)
-basket1 <- table(basket_dt$Item[basket_dt$Item == "Coffee" | basket_dt$Item == "Tea"], 
-                 basket_dt$period_day[basket_dt$Item == "Coffee" | basket_dt$Item == "Tea"]) 
+basket1 <- table(basket_dt$Item[basket_dt$Item == "Kaffee" | basket_dt$Item == "Tee"], 
+                 basket_dt$period_day[basket_dt$Item == "Kaffee" | basket_dt$Item == "Tee"]) 
 grid.arrange(tableGrob(addmargins(basket1)))
 dev.off()
 
 png("images/bread_cake_weekday.png", width = 400, height = 300, res = 120)
-basket2 <- table(basket_dt$Item[basket_dt$Item == "Bread" | basket_dt$Item == "Cake"], 
-                 basket_dt$weekday_weekend[basket_dt$Item == "Bread" | basket_dt$Item == "Cake"]) 
+basket2 <- table(basket_dt$Item[basket_dt$Item == "Brot" | basket_dt$Item == "Kuchen"], 
+                 basket_dt$weekday_weekend[basket_dt$Item == "Brot" | basket_dt$Item == "Kuchen"]) 
 grid.arrange(tableGrob(addmargins(basket2)))
 dev.off()
 
 # conditional relative values - note that prop.table() divides by total N -> unsuitable
 basket1_dt <- data.table(basket1)
 names(basket1_dt) <- c("Item", "Tageszeit", "Anzahl")
-n_coffee <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Coffee"])
-n_tea <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Tea"])
-basket1_dt[, "Summe" := ifelse(Item == "Coffee", n_coffee, NA)]
-basket1_dt[, "Summe" := ifelse(Item == "Tea", n_tea, Summe)]
+n_coffee <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Kaffee"])
+n_tea <- sum(basket1_dt$Anzahl[basket1_dt$Item == "Tee"])
+basket1_dt[, "Summe" := ifelse(Item == "Kaffee", n_coffee, NA)]
+basket1_dt[, "Summe" := ifelse(Item == "Tee", n_tea, Summe)]
 basket1_dt[, "Bedingte_relative_Häufigkeit" := round(basket1_dt$Anzahl 
                                                      / basket1_dt$Summe * 100, 2)]
 coffee_tea_dt <- data.table(Item = c("Kaffee", "Tee"),
                             Vormittag = c(basket1_dt$Bedingte_relative_Häufigkeit[
-                              basket1_dt$Item == "Coffee" & basket1_dt$Tageszeit == "morning"
+                              basket1_dt$Item == "Kaffee" & basket1_dt$Tageszeit == "Vormittag"
                             ],
                             basket1_dt$Bedingte_relative_Häufigkeit[
-                              basket1_dt$Item == "Tea" & basket1_dt$Tageszeit == "morning"
+                              basket1_dt$Item == "Tee" & basket1_dt$Tageszeit == "Vormittag"
                             ]),
                             Nachmittag = c(basket1_dt$Bedingte_relative_Häufigkeit[
-                              basket1_dt$Item == "Coffee" & basket1_dt$Tageszeit == "afternoon"
+                              basket1_dt$Item == "Kaffee" & basket1_dt$Tageszeit == "Nachmittag"
                             ],
                             basket1_dt$Bedingte_relative_Häufigkeit[
-                              basket1_dt$Item == "Tea" & basket1_dt$Tageszeit == "afternoon"
+                              basket1_dt$Item == "Tee" & basket1_dt$Tageszeit == "Nachmittag"
                             ]),
                             Abend = c(basket1_dt$Bedingte_relative_Häufigkeit[
-                              basket1_dt$Item == "Coffee" & basket1_dt$Tageszeit == "evening"
+                              basket1_dt$Item == "Kaffee" & basket1_dt$Tageszeit == "Abend"
                             ],
                             basket1_dt$Bedingte_relative_Häufigkeit[
-                              basket1_dt$Item == "Tea" & basket1_dt$Tageszeit == "evening"
+                              basket1_dt$Item == "Tee" & basket1_dt$Tageszeit == "Abend"
                             ]),
                             Summe = c(1, 1))
 png("images/coffee_tea_conditional.png", width = 800, height = 300, res = 120)
@@ -60,11 +69,6 @@ grid.arrange(tableGrob(coffee_tea_dt))
 dev.off()
 
 png("images/coffee_tea_mosaic.png", width = 800, height = 600, res = 120)
-basket1_dt$Item[basket1_dt$Item == "Coffee"] <- "Kaffee"
-basket1_dt$Item[basket1_dt$Item == "Tea"] <- "Tee"
-basket1_dt$Tageszeit[basket1_dt$Tageszeit == "morning"] <- "Vormittag"
-basket1_dt$Tageszeit[basket1_dt$Tageszeit == "afternoon"] <- "Nachmittag"
-basket1_dt$Tageszeit[basket1_dt$Tageszeit == "evening"] <- "Abend"
 basket1_dt[,"Zeit_f" := paste0(Tageszeit, ": ", Bedingte_relative_Häufigkeit, "%")]
 treemap_test <- treemap(basket1_dt, index = c("Item", "Zeit_f"), 
                         vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
