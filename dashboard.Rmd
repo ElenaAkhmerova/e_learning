@@ -44,49 +44,31 @@ shiny::tabsetPanel(
     title = "Zusammenhänge zwischen Produkten und Tageszeiten",
     value = "panel2",
     htmltools::HTML("
-      <p>This is the content for Panel 2.</p>
+      <p>Eine Sache, die die Mitarbeiter/innen der Bäckerei überprüft haben, war der Zusammenhang zwischen der Tageszeit und den gekauften Produkten uund zwar, ob bestimmte Waren abhängig von der Tageszeit mehr oder weniger nachgefragt waren. So war eine Hypothese, dass der Kaffee meist morgens und der Tee meist nachmittags getrunken wird. Um das zu überprüfen, hat man zuerst eine folgende Kontingenztabelle erstellt.</p>
       
       <img src='images/drink_daytime_contingency.png'>
       
+      <p>Diese Tabelle beinhaltet absolute Häufigkeiten von den Fällen, wann der Kaffee vormittags (2561), der Kaffee nachmittags (2823), der Kaffee abends (87), der Tee vormittags (456), der Tee nachmittags (930) und der Tee abends (49). Und am Rande der Tabelle sind die Randhäufigkeiten aufgeführt - die Summen der jeweiligen Zeilen oder Spalten.</p>
+      
+      <p>Der Kaffee wurde an sich mehr verkauft und die Gruppe sind unterschiedlich groß, also haben die Mitarbeiter/innen die absolute Häufigkeiten für eine bessere Vergleichbarkeit in relative Häufigkeiten überführt. Dabei haben sie die Werte nicht durch die Gesamtsumme geteilt, sondern durch die entsprechende Randhäufigkeit - und somit bedingte relative Häufigkeiten gebildet.</p>
+      
+      <p>Da die Bedingung die Tageszeit war, hat man die absolute Häufigkeiten von einem Produkt pro eine bestimmte Tageszeit durch die Gesamthäufigkeit dieses Produkt geteilt - und so die Verteilung der Käufe vom Produkt über die drei Tageszeiten vernschaulicht. Die entstandene Tabelle kannst du hier unten sehen.</p>
+      
       <img src='images/coffee_tea_conditional.png'>
+      
+      <p>Also man hat den Kaffee doch meist am Nachmittag und nicht am Vormittag bestellt, die Hypothese für den Tee hat sich aber bestätigt, er wurde auch am häufigsten verkauft, wenn es Nachmittag war.</p>
+      
+      <p>Anschließend hat man auch die Ergebnisse visualisiert, um die Erkenntnisse noch sichtbarer zu machen und auch den Kolleg/innen diese zeigen und den Standpunkt klarer machen zu können.</p>
+      
+      <p>So sah die erste Visualisierung aus:</p>
+      
+      <img src='images/coffee_tea_tree.png'>
+      
+      <p>Und so die zweite.</p>
 
       <img src='images/coffee_tea_mosaic.png'>
       
-      <p>You can also create nested lists:</p>
-      
-      <ul>
-        <li>First level
-          <ul>
-            <li>Second level
-              <ul>
-                <li>Third level</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    ")
-  ),
-  # Panel 3
-  shiny::tabPanel(
-    title = "Panel 3",
-    value = "panel3",
-    htmltools::HTML("
-      <p>This is the content for Panel 3.</p>
-      
-      <img src='images/bread_cake_weekday.png'>
-      
-      <blockquote>
-        <p>This is a blockquote.</p>
-      </blockquote>
-      
-      <p>You can include code snippets as well:</p>
-      
-      <pre><code>
-# Example code
-x <- 1:10
-mean(x)
-      </code></pre>
+      <p>In den folgenden Abschnitten lernst du mehr über bedingte relative Häufigkeiten und am Ende wirst du auch solche Grafiken erstellen und lesen können. Klicke also weiter - und es geht los!</p>
     ")
   )
 )

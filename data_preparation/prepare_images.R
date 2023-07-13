@@ -68,6 +68,45 @@ png("images/coffee_tea_conditional.png", width = 800, height = 300, res = 120)
 grid.arrange(tableGrob(coffee_tea_dt))
 dev.off()
 
+tree_drinks <- Node$new("N")
+  drink1 <- tree_drinks$AddChild("Kaffee")
+    morning1 <- drink1$AddChild("Vormittag")
+    afternoon1 <- drink1$AddChild("Nachmittag")
+    evening1 <- drink1$AddChild("Abend")
+  drink2 <- tree_drinks$AddChild("Tee")
+    morning2 <- drink2$AddChild("Vormittag ")
+    afternoon2 <- drink2$AddChild("Nachmittag ")
+    evening2 <- drink2$AddChild("Abend ")
+GetEdgeLabel <- function(node) {
+  if (node$name == "Kaffee") {
+    label = round(n_coffee / (n_coffee + n_tea) * 100, 2)
+  } else if (node$name == "Tee") {
+    label = round(n_tea / (n_coffee + n_tea) * 100, 2)
+  } else if (node$name == "Vormittag") {
+    label = basket1_dt$Bedingte_relative_Häufigkeit[basket1_dt$Item == "Kaffee" 
+                                                    & basket1_dt$Tageszeit == "Vormittag"]
+  } else if (node$name == "Nachmittag"){
+    label = basket1_dt$Bedingte_relative_Häufigkeit[basket1_dt$Item == "Kaffee" 
+                                                    & basket1_dt$Tageszeit == "Nachmittag"]
+  } else if (node$name == "Abend"){
+    label = basket1_dt$Bedingte_relative_Häufigkeit[basket1_dt$Item == "Kaffee" 
+                                                    & basket1_dt$Tageszeit == "Abend"]
+  } else if (node$name == "Vormittag "){
+    label = basket1_dt$Bedingte_relative_Häufigkeit[basket1_dt$Item == "Tee" 
+                                                    & basket1_dt$Tageszeit == "Vormittag"]
+  } else if (node$name == "Nachmittag "){
+    label = basket1_dt$Bedingte_relative_Häufigkeit[basket1_dt$Item == "Tee" 
+                                                    & basket1_dt$Tageszeit == "Nachmittag"]
+  } else if (node$name == "Abend "){
+    label = basket1_dt$Bedingte_relative_Häufigkeit[basket1_dt$Item == "Tee" 
+                                                    & basket1_dt$Tageszeit == "Abend"]
+  }
+  return (label)
+}
+SetEdgeStyle(tree_drinks, fontname = 'helvetica', label = GetEdgeLabel)
+SetGraphStyle(tree_drinks, rankdir = "TB")
+export_graph(ToDiagrammeRGraph(tree_drinks), "images/coffee_tea_tree.png")
+
 png("images/coffee_tea_mosaic.png", width = 800, height = 600, res = 120)
 basket1_dt[,"Zeit_f" := paste0(Tageszeit, ": ", Bedingte_relative_Häufigkeit, "%")]
 treemap_test <- treemap(basket1_dt, index = c("Item", "Zeit_f"), 
