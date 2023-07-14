@@ -13,6 +13,7 @@ runtime: shiny_prerendered
 library(learnr)
 library(graphics)
 library(sortable)
+tutorial_options(exercise.timelimit = 90)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
