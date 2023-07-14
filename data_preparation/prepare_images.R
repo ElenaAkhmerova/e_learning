@@ -29,7 +29,7 @@ basket1 <- table(basket_dt$Item[basket_dt$Item == "Kaffee" | basket_dt$Item == "
 grid.arrange(tableGrob(addmargins(basket1)))
 dev.off()
 
-png("images/bread_cake_weekday.png", width = 400, height = 300, res = 120)
+png("images/bread_cake_weekday.png", width = 300, height = 120, res = 70)
 basket2 <- table(basket_dt$Item[basket_dt$Item == "Brot" | basket_dt$Item == "Kuchen"], 
                  basket_dt$weekday_weekend[basket_dt$Item == "Brot" | basket_dt$Item == "Kuchen"]) 
 grid.arrange(tableGrob(addmargins(basket2)))
@@ -347,58 +347,6 @@ sex_age_treemap <- treemap(sex_age_dt, index = c("Kategorie", "Unterkategorie", 
                            vSize = "Häufigkeit", vColor = "Kategorie")
 dev.off()
 
-## Reading training-------------------------------------------------------------
-# png("images/class_age_treemap.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
-# class_age_dt <- data.table(Kategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-#                            Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen", 
-#                                               "Kind", "Erwachsen", "Kind", "Erwachsen"),
-#                            Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-#                                                    "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-#                            Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
-# class_age_treemap <- treemap(class_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-#                              vSize = "Häufigkeit", vColor = "Kategorie")
-# dev.off()
-
-# Creating exercise-------------------------------------------------------------
-png("images/stop_treemap_gaps.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
-stop_gaps_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                    # ersetzen!!!
-                           Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                           Häufigkeit = c(NA, NA, 10, NA))                       # Zahlen anpassen!!!
-stop_treemap_gaps <- treemap(stop_gaps_dt, index = c("Kategorie", "Unterkategorie"), 
-                             vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
-png("images/stop_treemap.png", width = 800, height = 600, res = 120)             # Zahlen anpassen!!!
-stop_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                         # ersetzen!!!
-                      Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                      Häufigkeit = c(5, 20, 10, 15))                             # Zahlen anpassen!!!
-stop_treemap <- treemap(stop_dt, index = c("Kategorie", "Unterkategorie"), 
-                       vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
-png("images/stop_class_treemap_gaps.png", width = 800, height = 600, res = 120)  # Zahlen anpassen!!!
-stop_class_gaps_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),              # ersetzen!!!
-                                 Unterkategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal", 
-                                                    "1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                                 Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                         "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                                 Häufigkeit = c(NA, NA, 10, NA, 5, 20, NA, NA))                       # Zahlen anpassen!!!
-stop_class_treemap_gaps <- treemap(stop_class_gaps_dt, index = c("Kategorie", "Unterkategorie", 
-                                                                 "Unterunterkategorie"), 
-                             vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
-png("images/stop_class_treemap.png", width = 800, height = 600, res = 120)       # Zahlen anpassen!!!
-stop_class_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                   # ersetzen!!!
-                            Unterkategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal", 
-                                               "1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                            Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                    "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                            Häufigkeit = c(5, 20, 10, 15, 5, 20, 10, 15))        # Zahlen anpassen!!!
-stop_class_treemap <- treemap(stop_class_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-                        vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
 ### Create mosaic plots
 ## Explanation------------------------------------------------------------------
 png("images/sex_mosaic.png", width = 800, height = 600, res = 120)
@@ -432,71 +380,32 @@ tbl4 <- prop.table(table(titanic_dt$Age, titanic_dt$Survived))                  
 mosaicplot(tbl4, color=TRUE, main="Überleben | Alter")
 dev.off()
 
-# Empty branches----------------------------------------------------------------
-png("images/sex_treemap_gaps.png", width = 800, height = 600, res = 120)         # Zahlen anpassen!!!
-sex_gaps_dt <- data.table(Kategorie = c("Männlich", "Weiblich"),
-                          Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                          Häufigkeit = c(NA, 20, 10, NA))                        # Zahlen anpassen!!!
-sex_treemap_gaps <- treemap(sex_gaps_dt, index = c("Kategorie", "Unterkategorie"), 
-                            vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
-png("images/sex_treemap.png", width = 800, height = 600, res = 120)              # Zahlen anpassen!!!
-sex_dt <- data.table(Kategorie = c("Männlich", "Weiblich"),
-                     Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                     Häufigkeit = c(5, 20, 10, 15))                              # Zahlen anpassen!!!
-sex_treemap <- treemap(sex_dt, index = c("Kategorie", "Unterkategorie"), 
-                       vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
-## Quiz-------------------------------------------------------------------------
-# Reading exercise--------------------------------------------------------------
-png("images/sex_age_treemap.png", width = 800, height = 600, res = 120)          # Zahlen anpassen!!!
-sex_age_dt <- data.table(Kategorie = c("Männlich", "Weiblich"),
-                         Unterkategorie = c("Kind", "Erwachsen", "Kind", "Erwachsen"),
-                         Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                 "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                         Häufigkeit = c(20, 15, 10, 5, 20, 15, 10, 5))         # Zahlen anpassen!!!
-sex_age_treemap <- treemap(sex_age_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-                           vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
 # Creating exercise-------------------------------------------------------------
-png("images/stop_treemap_gaps.png", width = 800, height = 600, res = 120)        # Zahlen anpassen!!!
-stop_gaps_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                    # ersetzen!!!
-                           Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                           Häufigkeit = c(NA, NA, 10, NA))                       # Zahlen anpassen!!!
-stop_treemap_gaps <- treemap(stop_gaps_dt, index = c("Kategorie", "Unterkategorie"), 
-                             vSize = "Häufigkeit", vColor = "Kategorie")
+
+png("images/tea_coffee_weekday.png", width = 300, height = 120, res = 70)
+basket4 <- table(basket_dt$Item[basket_dt$Item == "Tee" | basket_dt$Item == "Kaffee"], 
+                 basket_dt$weekday_weekend[basket_dt$Item == "Tee" | basket_dt$Item == "Kaffee"]) 
+grid.arrange(tableGrob(addmargins(basket4)))
 dev.off()
 
-png("images/stop_treemap.png", width = 800, height = 600, res = 120)             # Zahlen anpassen!!!
-stop_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                         # ersetzen!!!
-                      Unterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                      Häufigkeit = c(5, 20, 10, 15))                             # Zahlen anpassen!!!
-stop_treemap <- treemap(stop_dt, index = c("Kategorie", "Unterkategorie"), 
-                        vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
+# mosaic erstellen result
+anteil_kaffee_arbeitstag <- round(nrow(basket_dt[basket_dt$Item == "Kaffee" 
+                                           & basket_dt$weekday_weekend == "Arbeitstag"]
+                                       ) / nrow(basket_dt[basket_dt$Item == "Kaffee"]) * 100, 2)
+anteil_tee_arbeitstag <- round(nrow(basket_dt[basket_dt$Item == "Tee" 
+                                              & basket_dt$weekday_weekend == "Arbeitstag"]
+                                    ) / nrow(basket_dt[basket_dt$Item == "Tee"])* 100, 2)
 
-png("images/stop_class_treemap_gaps.png", width = 800, height = 600, res = 120)  # Zahlen anpassen!!!
-stop_class_gaps_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),              # ersetzen!!!
-                                 Unterkategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal", 
-                                                    "1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                                 Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                         "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                                 Häufigkeit = c(NA, NA, 10, NA, 5, 20, NA, NA))                       # Zahlen anpassen!!!
-stop_class_treemap_gaps <- treemap(stop_class_gaps_dt, index = c("Kategorie", "Unterkategorie", 
-                                                                 "Unterunterkategorie"), 
-                                   vSize = "Häufigkeit", vColor = "Kategorie")
-dev.off()
-
-png("images/stop_class_treemap.png", width = 800, height = 600, res = 120)       # Zahlen anpassen!!!
-stop_class_dt <- data.table(Kategorie = c("Stadt1", "Stadt2"),                   # ersetzen!!!
-                            Unterkategorie = c("1. Klasse", "2. Klasse", "3. Klasse", "Personal", 
-                                               "1. Klasse", "2. Klasse", "3. Klasse", "Personal"),
-                            Unterunterkategorie = c("Überlebt", "Gestorben", "Überlebt", "Gestorben", 
-                                                    "Überlebt", "Gestorben", "Überlebt", "Gestorben"),
-                            Häufigkeit = c(5, 20, 10, 15, 5, 20, 10, 15))        # Zahlen anpassen!!!
-stop_class_treemap <- treemap(stop_class_dt, index = c("Kategorie", "Unterkategorie", "Unterunterkategorie"), 
-                              vSize = "Häufigkeit", vColor = "Kategorie")
+png("images/tea_coffee_day_mosaic.png", width = 800, height = 600, res = 120)
+mosaic_dt <- data.table(Item = c(paste0("Kaffee: ", anteil_kaffee_arbeitstag, "%"), 
+                                 paste0("Kaffee: ", 100 - anteil_kaffee_arbeitstag, "%"),
+                                 paste0("Tee: ", anteil_tee_arbeitstag, "%"),
+                                 paste0("Tee: ", 100 - anteil_tee_arbeitstag, "%")),
+                        Wochentag = c("Arbeitstag", "Wochenende"),
+                        Bedingte_relative_Häufigkeit = c(anteil_kaffee_arbeitstag, 
+                                                         100 - anteil_kaffee_arbeitstag, 
+                                                         anteil_tee_arbeitstag, 
+                                                         100 - anteil_tee_arbeitstag))
+treemap_weekday <- treemap(mosaic_dt, index = c("Wochentag", "Item"), 
+                           vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
 dev.off()

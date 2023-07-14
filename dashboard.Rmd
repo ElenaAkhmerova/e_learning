@@ -362,7 +362,7 @@ Klicke nun weiter, um zu lernen, wie man Häufigkeitsbäume liest.
 
 ## Mosaikplot lesen
 
-Schaue dir ein folgendes Mosaikplot an und probiere, auf die folgenden Fragen zu antworten.
+Schaue dir ein folgendes Mosaikplot an und probiere, auf die folgenden Fragen zu antworten. Es zeigt die relativen Häufigkeiten des Überlebens bzw. Sterbens unter der Bedingung, dass man in einer bestimmten Passagierklasse unterwegs war, nun aber nicht in Form eines Häufigkeitsbaums, sondern als Mosaikdiagramm.
 
 ```{r fig9, echo = FALSE, out.width = "100%"}
 knitr::include_graphics("images/class_mosaic.png")
@@ -415,15 +415,52 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 ## Mosaikplot erstellen
 
-Einleitung
+Im Abschnitt **Häufigkeitsbäume erstellen** hast du die Häufigkeitsverteilung nach Alter untersucht und die Beschriftungen vervollständigt. Wie wäre es nun mit einem entsprechenden Mosaikplot?
 
 ```{r fig10, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
 knitr::include_graphics("images/age_mosaic_gaps.png")
 ```
 
-!!! Exercise!!!
+Entnehme diesmal die Informationen nicht einer Textbeschreibung, sondern dem Häufigkeitsbaum.
 
-Aufgaben
+```{r fig11, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("images/age_tree.png")
+```
+
+```{r mp_write1, echo=FALSE}
+quiz(
+  caption = "",
+  question("1. Was soll in der Lücke *a)______* stehen?",
+           answer("Kind", message = paste0("Diese Seite des Rechtecks sieht länger als die vom ",
+                                           "Rechteck daneben. Schaue dir den oberen Teil des ",
+                                           "Häufigkeitsbaums an. Wer bildete die größere ",
+                                           "Gruppe?")),
+           answer("Erwachsene/r", correct = TRUE),
+           allow_retry = TRUE),
+  question("2. Was soll in der Lücke *b)______* stehen?",
+           answer("Kind", correct = TRUE),
+           answer("Erwachsene/r", message = paste0("Diese Seite des Rechtecks sieht kleiner ",
+                                                   "als die vom Rechteck daneben. Schaue dir ",
+                                                   "den oberen Teil des Häufigkeitsbaums an. ",
+                                                   "Wer bildete die kleinere Gruppe?")),
+           allow_retry = TRUE),
+  question("3. Wöfür steht *0* auf der Y-Achse?",
+           answer("Überlebt", message = paste0("Diese Seite des Rechtecks sieht länger als die ",
+                                               "vom Rechteck unten. Schaue dir den unteren ",
+                                               "Teil des Häufigkeitsbaums an. Wer bildete die ",
+                                               "größere Gruppe unter den Erwachsenen?")),
+           answer("Nicht überlebt", correct = TRUE),
+           allow_retry = TRUE),
+  question("4. Wofür steht *1* auf der Y-Achse?",
+           answer("Überlebt", correct = TRUE),
+           answer("Nicht überlebt", message = paste0("Diese Seite des Rechtecks sieht länger ",
+                                                     "als die vom Rechteck unten. Schaue dir ",
+                                                     "den unteren Teil des Häufigkeitsbaums ",
+                                                     "an. Wer bildete die größere Gruppe ",
+                                                     "unter den Erwachsenen?")),
+           allow_retry = TRUE)
+)
+```
 
 Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
 
@@ -433,31 +470,64 @@ Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
 
 .
 
-```{r fig11, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
+```{r fig12, echo = FALSE, out.width = "100%"}
 knitr::include_graphics("images/age_mosaic.png")
 ```
 
-In dieser Übung wurden nicht alle Segmente beschriftet. Wie wäre es, wenn nicht alle Prozentwerte angegeben werden?
+In der Übung, die du gerade gemacht hast, wurden nicht alle Segmente beschriftet. Wie wäre es, wenn nicht alle Prozentwerte angegeben werden? Diesmal wird die Aufgabe ein Stück komplexer sein, du bekommst aber auch eine Anleitung.
 
-```{r fig12, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik wird wieder die Verteilung nach Geschlecht und die Überlebungsquote gezeigt, aber diesmal ohne einige Angaben zu Häufigkeiten. Kannst du die Lücken ausfüllen?"}
-knitr::include_graphics("images/sex_treemap_gaps.png")
+Kannst du dich noch an die Edinburger Bäckerei erinnern? In der Einleitung hast du gesehen, wie deren Einkaufsteam den Zusammenhang zwischen dem Kauf von Kaffee bzw. Tee und der Tageszeit untersucht hat. Sie haben aber auch eine weitere Hypothese überprüft und zwar, ob man besonders viel Kaffee kaufte, wenn es ein Arbeitstag war, und umgekehrt, ob man besonders viele Tassen Tee am Wochenende kaufte. Schaue dir die Kontingenztabelle an, die das Einkaufsteam erstellt hat.
+
+```{r fig13, echo = FALSE, out.width = "100%", fig.cap="Hier werden alle absoluten Werte aufgeführt, die du brauchst, um das Mosaikplot zu erstellen."}
+knitr::include_graphics("images/tea_coffee_weekday.png")
 ```
 
-Nur wenn du gar nicht weiterkommst, scrolle für die Lösung nach unten.
+Vervollständige nun den folgenden Code, um ein Mosaikplot wie unten angeführt zu erstellen. Beachte, dass hier die bedingten relativen Häufigkeiten *f(Kaffee | Tag)* und *f(Tee | Tag)* zu berechnen sind, also die absoluten Häufigkeiten der jeweiligen Einzelfälle durch die Gesamthäufigkeit der **Produkte** und nicht der Wochentage zu teilen sind.
 
-.
+```{r mp_create, exercise=TRUE}
+library(data.table)
+library(treemap)
 
-.
+# Datei lesen
+basket_dt <- fread("data/bread_basket.csv")
 
-.
+# Bedingte relative Häufigkeiten berechnen
+# Berechnungsbeispiel:
+anteil_kaffee_arbeitstag <- nrow(basket_dt[basket_dt$Item == "Coffee" 
+                                          & basket_dt$weekday_weekend == "weekday"]
+                                 ) / nrow(basket_dt[basket_dt$Item == "Coffee"])
+# es wird also die Anzahl der Reihen, wo Item Kaffee war und am Arbeitstag gekauft wurde,
+# durch die Anzahl der Reihen, wo Item Kaffee war, geteilt
+anteil_kaffee_arbeitstag <- round(anteil_kaffee_arbeitstag * 100, 2) # für ein besseres Format
 
-```{r fig13, echo = FALSE, out.width = "100%", fig.cap = "Lösungserklärung"}
-knitr::include_graphics("images/sex_treemap.png")
+# Folge nun dem Beispiel und ersetze die Nullen mit eigenen Berechnungen
+# Itemnamen sind Coffee und Tea und die Wochentagbezeichnungen sind weekday (Arbeitstag) und
+# weekend (Wochenende):
+
+anteil_kaffee_wochenende <- 0
+anteil_tee_arbeitstag <- 0
+anteil_tee_wochenende <- 0
+
+# Kontingenztabelle erstellen - den restlichen Code kannst du einfach ausführen und das Ergebnis
+# mit der Tabelle unten vergleichen
+mosaic_dt <- data.table(Item = c(paste0("Kaffee: ", anteil_kaffee_arbeitstag, "%"), 
+                                 paste0("Kaffee: ", anteil_kaffee_wochenende, "%"),
+                                 paste0("Tee: ", anteil_tee_arbeitstag, "%"),
+                                 paste0("Tee: ", anteil_tee_wochenende, "%")),
+                        Wochentag = c("Arbeitstag", "Wochenende"),
+                        Bedingte_relative_Häufigkeit = c(anteil_kaffee_arbeitstag, 
+                                                         anteil_kaffee_wochenende, 
+                                                         anteil_tee_arbeitstag, 
+                                                         anteil_tee_wochenende))
+treemap_weekday <- treemap(mosaic_dt, index = c("Wochentag", "Item"), 
+                           vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
 ```
 
-+ R Code
+```{r fig14, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("images/tea_coffee_day_mosaic.png")
+```
 
-## Zusammenfassung
+Man hat also auch am Wochenende viel Kaffee und Tee bestellt, gegeben, dass nur zwei Tage in die Kategorie fallen im Vergleich zu fünf Arbeitstagen.
 
 ## Quiz
 Teste jetzt deine Kenntnisse! Hier findest du kurze Verständnisfragen und im nächsten Abschnitt **Programmieraufgaben** kannst du dann deine praktischen Fähigkeiten unter Beweis stellen.
@@ -533,11 +603,11 @@ question_rank(paste0("**c. Sortiere die Variablentypen in der gleichen ",
 ```
 
 
-```{r fig14, echo = FALSE, out.width = "100%", fig.cap = "(1) Häufigkeitsbaum"}
+```{r fig15, echo = FALSE, out.width = "100%", fig.cap = "(1) Häufigkeitsbaum"}
 knitr::include_graphics("images/item_weekday_tree.png")
 ```
 
-```{r fig15, echo = FALSE, out.width = "100%", fig.cap = "(2) Mosaikdiagramm"}
+```{r fig16, echo = FALSE, out.width = "100%", fig.cap = "(2) Mosaikdiagramm"}
 knitr::include_graphics("images/item_weekday_mosaic.png")
 ```
 
@@ -596,7 +666,7 @@ question("Sage aber erstmal, was die richtige Notation für diese Häufigkeiten 
            allow_retry = TRUE)
 ```
 
-```{r fig16, echo=FALSE, out.width = "100%"}
+```{r fig17, echo=FALSE, out.width = "100%"}
 knitr::include_graphics("images/test_dummy.png")
 ```
 
