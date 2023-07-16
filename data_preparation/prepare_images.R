@@ -118,12 +118,12 @@ basket3_dt <- data.table(basket_dt$Item[basket_dt$Item %in% c("Hot chocolate", "
                          basket_dt$weekday_weekend[basket_dt$Item %in% c("Hot chocolate", 
                                                                          "Sandwich")])
 items_total <- nrow(basket3_dt)
-weekday_total <- nrow(basket3_dt[basket3_dt$V2 == "weekday"])
-weekend_total <- nrow(basket3_dt[basket3_dt$V2 == "weekend"])
+weekday_total <- nrow(basket3_dt[basket3_dt$V2 == "Arbeitstag"])
+weekend_total <- nrow(basket3_dt[basket3_dt$V2 == "Wochenende"])
 sandwich_weekday <- nrow(basket3_dt[basket3_dt$V1 == "Sandwich" 
-                                    & basket3_dt$V2 == "weekday"])
+                                    & basket3_dt$V2 == "Arbeitstag"])
 chocolate_weekend <- nrow(basket3_dt[basket3_dt$V1 == "Hot chocolate" 
-                                   & basket3_dt$V2 == "weekend"])
+                                   & basket3_dt$V2 == "Wochenende"])
 anteil_weekday <- weekday_total / items_total
 anteil_sandwich_weekday <- sandwich_weekday / weekday_total
 anteil_chocolate_weekend <- chocolate_weekend / weekend_total
@@ -152,14 +152,14 @@ treemap_weekday <- treemap(basket3_mosaic_dt, index = c("Wochentag", "Item"),
 dev.off()
 
 # for the programming exercise
-n_cakes <- nrow(basket_dt[basket_dt$Item == "Cake"])
-n_bread <- nrow(basket_dt[basket_dt$Item == "Bread"])
-anteil_cake_weekend <- round(nrow(basket_dt[basket_dt$Item == "Cake" 
-                                            & basket_dt$weekday_weekend == "weekend"]) 
+n_cakes <- nrow(basket_dt[basket_dt$Item == "Kuchen"])
+n_bread <- nrow(basket_dt[basket_dt$Item == "Brot"])
+anteil_cake_weekend <- round(nrow(basket_dt[basket_dt$Item == "Kuchen" 
+                                            & basket_dt$weekday_weekend == "Wochenende"]) 
                              / n_cakes * 100, 2)
 anteil_cake_weekday <- 100 - anteil_cake_weekend
-bread_weekday <- nrow(basket_dt[basket_dt$Item == "Bread" 
-                                & basket_dt$weekday_weekend == "weekday"])
+bread_weekday <- nrow(basket_dt[basket_dt$Item == "Brot" 
+                                & basket_dt$weekday_weekend == "Arbeitstag"])
 anteil_bread_weekday <- round(bread_weekday / n_bread * 100, 2)
 anteil_bread_weekend <- 100 - anteil_bread_weekday
 dummy_dt <- data.table(Item = c("Kuchen", "Brot", "Summe"),
