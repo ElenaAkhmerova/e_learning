@@ -416,7 +416,7 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 ## Mosaikplot erstellen
 
-Im Abschnitt **Häufigkeitsbäume erstellen** hast du die Häufigkeitsverteilung nach Alter untersucht und die Beschriftungen vervollständigt. Wie wäre es nun mit einem entsprechenden Mosaikplot?
+Im Abschnitt **Mosaikplot erstellen** hast du die Häufigkeitsverteilung nach Alter untersucht und die Beschriftungen vervollständigt. Wie wäre es nun mit einem entsprechenden Mosaikplot?
 
 ```{r fig10, echo = FALSE, out.width = "100%", fig.cap = "Auf dieser Grafik werden die Verteilung nach Alter und die Überlebungsquote gezeigt. Was soll laut der Beschreibung oben in den Lücken stehen?"}
 knitr::include_graphics("images/age_mosaic_gaps.png")
