@@ -398,13 +398,13 @@ anteil_tee_arbeitstag <- round(nrow(basket_dt[basket_dt$Item == "Tee"
 
 png("images/tea_coffee_day_mosaic.png", width = 800, height = 600, res = 120)
 mosaic_dt <- data.table(Item = c(paste0("Kaffee: ", anteil_kaffee_arbeitstag, "%"), 
-                                 paste0("Kaffee: ", 100 - anteil_kaffee_arbeitstag, "%"),
-                                 paste0("Tee: ", anteil_tee_arbeitstag, "%"),
+                                 paste0("Kaffee: ", anteil_tee_arbeitstag, "%"),
+                                 paste0("Tee: ", 100 - anteil_kaffee_arbeitstag, "%"),
                                  paste0("Tee: ", 100 - anteil_tee_arbeitstag, "%")),
                         Wochentag = c("Arbeitstag", "Wochenende"),
                         Bedingte_relative_Häufigkeit = c(anteil_kaffee_arbeitstag, 
-                                                         100 - anteil_kaffee_arbeitstag, 
                                                          anteil_tee_arbeitstag, 
+                                                         100 - anteil_kaffee_arbeitstag, 
                                                          100 - anteil_tee_arbeitstag))
 treemap_weekday <- treemap(mosaic_dt, index = c("Wochentag", "Item"), 
                            vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")

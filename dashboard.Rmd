@@ -512,13 +512,13 @@ anteil_tee_wochenende <- 0
 # Kontingenztabelle erstellen - den restlichen Code kannst du einfach ausführen und das Ergebnis
 # mit der Tabelle unten vergleichen
 mosaic_dt <- data.table(Item = c(paste0("Kaffee: ", anteil_kaffee_arbeitstag, "%"), 
-                                 paste0("Kaffee: ", anteil_kaffee_wochenende, "%"),
-                                 paste0("Tee: ", anteil_tee_arbeitstag, "%"),
+                                 paste0("Kaffee: ", anteil_tee_arbeitstag, "%"),
+                                 paste0("Tee: ", anteil_kaffee_wochenende, "%"),
                                  paste0("Tee: ", anteil_tee_wochenende, "%")),
                         Wochentag = c("Arbeitstag", "Wochenende"),
                         Bedingte_relative_Häufigkeit = c(anteil_kaffee_arbeitstag, 
-                                                         anteil_kaffee_wochenende, 
                                                          anteil_tee_arbeitstag, 
+                                                         anteil_kaffee_wochenende, 
                                                          anteil_tee_wochenende))
 treemap_weekday <- treemap(mosaic_dt, index = c("Wochentag", "Item"), 
                            vSize = "Bedingte_relative_Häufigkeit", vColor = "Item")
