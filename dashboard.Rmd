@@ -639,7 +639,7 @@ quiz(
   question("d. Was kommt in die Lücke *d)* rein?",
            answer("Heiße Schokolade: 50.9"),
            answer("Heiße Schokolade: 49.1"),
-           answer("Sandwich: 49.1, correct = TRUE"),
+           answer("Sandwich: 49.1", correct = TRUE),
            answer("Sandwich: 50.9"),
            allow_retry = TRUE)
 )
