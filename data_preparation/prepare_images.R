@@ -137,14 +137,14 @@ item_weekday_tree <- plot_prism(prev = anteil_weekday, sens = anteil_sandwich_we
                        lbl_txt = my_txt, f_lwd = .5, arr_c = 2)
 dev.off()
 # mosaic plot
-basket3_mosaic_dt <- data.table(Item = c("c) ______________", 
-                                         "d) Heiße Schokolade: _______ %", 
-                                         "a) ______________", 
-                                         "b) Sandwich: _______ %"),
-                                Wochentag = c("Arbeitstag", "Wochenende"),
+basket3_mosaic_dt <- data.table(Item = c("d) ______________", 
+                                         "a) Heiße Schokolade: _______ %", 
+                                         "b) ______________", 
+                                         "c) Sandwich: _______ %"),
+                                Wochentag = c("Wochenende", "Arbeitstag"),
                                 Bedingte_relative_Häufigkeit = c(1 - anteil_sandwich_weekday, 
-                                                                 anteil_chocolate_weekend, 
                                                                  anteil_sandwich_weekday, 
+                                                                 anteil_chocolate_weekend, 
                                                                  1 - anteil_chocolate_weekend))
 png("images/item_weekday_mosaic.png", width = 800, height = 600, res = 120)
 treemap_weekday <- treemap(basket3_mosaic_dt, index = c("Wochentag", "Item"), 
