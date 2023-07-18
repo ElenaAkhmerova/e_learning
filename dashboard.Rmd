@@ -163,7 +163,7 @@ Super! Jetzt bleiben nur die Ästebeschriftungen.
 ```{r hblesen2, echo=FALSE}
 quiz(
   caption = "",
-  question("35,2% der Passagiere waren Frauen. Wie viel Prozent der Passagiere waren Männer?",
+  question("35,2% der Passagiere waren Frauen, also f(Frau) = 35,2%. Was ist dann f(Mann) = ...?",
            answer("65,8%"),
            answer("70%"),
            answer("64,8%", correct = TRUE, message = "Auf diese Antwort kannst du kommen, nicht nur indem du von 100% 35,2% extrahierst, sondern wenn du an die Beschriftung vom Pfeil links oben schaust, der von *N* zu *Männlich* geht."),
@@ -172,7 +172,7 @@ quiz(
            answer("relative Häufigkeit", correct = TRUE, message = "Das ist noch der Anteil der Männer an den Passagieren ohne jegliche Bedingung, also es geht um eine relative Häufigkeit."),
            answer("bedingte relative Häufigkeit"),
            allow_retry = TRUE),
-  question("Schaue dir jetzt die Beschriftungen der unteren Ästen an. Achte auf den Weg, über den man zum jeweiligen Endpunkt kommt. Welcher Anteil der Frauen hat überlebt?",
+  question("Schaue dir jetzt die Beschriftungen der unteren Ästen an. Achte auf den Weg, über den man zum jeweiligen Endpunkt kommt. Welcher Anteil der Frauen hat überlebt bzw. was ist f(überlebt | Frau)?",
            answer("25,8%"),
            answer("74,2%", correct = TRUE, message = "So wird der Pfeil zwischen *Weiblich* und *Überlebt* beschriftet."),
            answer("18,9%"),
@@ -184,7 +184,7 @@ quiz(
            answer("18,9%"),
            answer("81,1%"),
            allow_retry = TRUE),
-  question("Welcher Anteil der Passagiere hat überlebt, unter der Bedingung dass sie Männer waren?",
+  question("Welcher Anteil der Passagiere hat überlebt, unter der Bedingung dass sie Männer waren, also was ist f(überlebt | Mann)?",
            answer("25,8%"),
            answer("74,2%"),
            answer("18,9%", correct = TRUE, message = "Siehe die Beschriftung unten ganz links zwischen *Männlich* und *Überlebt*"),
