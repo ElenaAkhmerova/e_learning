@@ -84,9 +84,9 @@ Die Häufigkeitsverteilung spielt in der Statistik eine große Rolle. Du weißt 
 **Bedingte relative Häufigkeiten werden als Verhältnis der Anzahl der Fälle, in denen ein bestimmtes Ereignis $A$ auftritt, unter der Bedingung, dass ein anderes Ereignis $B$ bereits eingetreten ist, zur Gesamtanzahl der Fälle, in denen Ereignis $B$ eingetreten ist, definiert.** Diese Definition lässt sich durch die folgende Formel mathematisch ausdrücken:
 
 \[
-f_X(a_1 \big| b_j) = \frac{h_{1j}}{h_{.j}},...,f_X(a_k \big|b_j) = \frac{h_{kj}}{h_{.j}}
+f(A \big| B) = \frac{f(A, B)}{f(B)} = \frac{h(A, B)}{h(B)}
 \]
-wo $f_X(a_1 \big| b_j)$ für die bedingte relative Häufigkeit von $a_1$ unter der Bedingung $b_j$, $h_{1j}$ für die absolute Häufigkeit der Kombination von $a_i$ und $b_j$ und $h_{.j}$ für die Randhäufigheit von $b_j$ steht.
+wo $f(A \big| B)$ für die bedingte relative Häufigkeit von $A$ unter der Bedingung $B$, $h(A, B)$ für die absolute Häufigkeit der Kombination von $A$ und $B$ und $h(B)$ für die Randhäufigheit von $B$ steht.
 
 Bedingte relative Häufigkeiten werden häufig für die Analyse und Interpretation von Daten verwendet. Sie helfen uns, Beziehungen zwischen Ereignissen zu untersuchen und zu bestimmen, ob bestimmte Faktoren voneinander abhängig sind oder nicht.
 
