@@ -92,11 +92,11 @@ Bedingte relative Häufigkeiten werden häufig für die Analyse und Interpretati
 
 Dies findet eine praktische Anwendung in verschiedenen Bereichen. In der *Medizin* kann z.B. der Effekt einer Behandlung unter Berücksichtigung bestimmter Risikofaktoren eingeschätzt werden und in der *Wirtschaft* kann das Verbraucherverhalten in Bezug auf bestimmte Produkte analysiert werden.
 
-Im nächsten Abschnitt lernst du noch einen Datensatz kennen, bei dem du mithilfe bedingter relativer Häufigkeiten bestimmte Vorhersagen treffen kannst. Dieser Datensatz wird dich auch weiterhin begleiten, als du mehr über graphische Darstellungen von bedingten relativen Häufigkeiten erfährst.
+Im nächsten Abschnitt lernst du noch einen Datensatz kennen, bei dem du mithilfe bedingter relativer Häufigkeiten bestimmte Vorhersagen treffen kannst. Dieser Datensatz wird dich auch weiterhin begleiten, wenn du mehr über graphische Darstellungen von bedingten relativen Häufigkeiten erfährst.
 
 ## Use Case: Titanic
 
-Am 15. April 1912 ist das vermeintlich sicherste Schiff der Epoche *Titanic* auf einen Eisberg gestoßen und demzufolge versunken. Da unzureichend Rettungsboots an Bord waren, sind viele Menschen ums Leben gekommen - 1502 von 2224 Passagieren und Schiffsleuten sind tragisch gestorben.
+Am 15. April 1912 ist das vermeintlich sicherste Schiff der Epoche *Titanic* auf einen Eisberg gestoßen und demzufolge versunken. Da unzureichend Rettungsboote an Bord waren, sind viele Menschen ums Leben gekommen - 1502 von 2224 Passagieren und Schiffsleuten sind tragisch gestorben.
 
 Man kann das Überleben einiger Passagiere zwar mit ihrem Glück verbinden, es konnte aber bestimmte Umstände geben, unter denen die eine oder andere Person mehr Überlebenschancen hatte als andere. Diese Hypothese kann anhand des folgenden Datensatzes überprüft werden.
 
@@ -113,7 +113,7 @@ str(titanic_dt)  # ein Überblick von Spaltennamen und Ausprägungen der Werte
 
 ## Häufigkeitsbäume
 
-Bedingte relative Häufigkeiten lassen sich mit Hilfe von **Häufigkeitsbäumen**, manchmal auch als **Baumdiagramme** oder als **Wahrscheinlichkeitsbäume** genannt, visualisieren.
+Bedingte relative Häufigkeiten lassen sich mit Hilfe von **Häufigkeitsbäumen**, manchmal auch als **Baumdiagramme** oder auch **Wahrscheinlichkeitsbäume** genannt, visualisieren.
 
 Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gibt:
 
@@ -121,7 +121,7 @@ Wie der Name schon verrät, hat diese Visualisierung eine Form vom Baum - es gib
 - **Äste** - Abspaltungen aus den Knotenpunkten, die eine Bedingung oder Entscheidung widerspiegeln, die zu einem bestimmten Ereignis führt,
 - und schließlich **Blätter** - finale Ergebnisse, zu denen eine Reihe von verschiedenen möglichen Ereignissen geführt hat.
 
-Den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Äste werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das eine oder das andere Szenario ist.
+An den Knotenpunkten kann man qualitative Zustände ablesen, die durch vorherige Ereignisse zustande gekommen sind, und die Äste werden mit prozentualen Werten beschriften, die zeigen, wie wahrscheinlich das jeweilige Szenario ist.
 
 ```{r fig1, echo = FALSE, out.width = "100%", fig.cap = "Von den 891 Menschen, die an Bord waren, waren 577 Männer (ca. 64,8%) und 314 Frauen (ca. 35,2%). 81,1% der Männer (468 Menschen) sind ums Leben gekommen, unter Frauen waren das hingegen nur 25,8% (81). Die Überlebensquote von Frauen war also 74,2% (233) und von Männern 18,9% (109)."}
 knitr::include_graphics("images/sex_tree.png")
@@ -146,7 +146,7 @@ quiz(
            answer("N", correct = TRUE, message = "*N* steht für die Gesamtanzahl der Passagiere, die daraufhin in Unterkategorien aufgeteilt wird."),
            answer("überlebt, nicht überlebt"),
            allow_retry = TRUE),
-  question("Gehen wir weiter zu den Knoten. Wie heißen diese?",
+  question("Gehen wir weiter zu den inneren Knoten. Wie heißen diese?",
            answer("männlich, weiblich", correct = TRUE, message = "Die Gesamtanzahl der Passagiere wird erstmals nach Geschlecht aufgeteilt. Bei den Prozentwerten geht es an dieser Stelle noch um relative Häufigkeiten ohne jegliche Bedingung."),
            answer("N"),
            answer("überlebt, nicht überlebt"),
@@ -205,7 +205,7 @@ Nun weißt du, wie man Häufigkeitsbäume lesen und interpretieren kann. Klicke 
 
 Neben Geschlecht und Passagierklasse gab es noch ein Merkmal, das theoretisch bei den Überlebungschancen mitspielen könnte und zwar das Alter. Ob Kinder und Jugendliche als Erste ihre Plätze in den Rettungsbooten finden konnten, werden wir jetzt untersuchen.
 
-Von den 891 Passagieren und Schiffsleuten waren 164 (18,4%) unter 20 Jahren und 727 (81,6%) 20 Jahre alt oder älter. Von der ersten Gruppe haben 48,2% (79 Menschen) überlebt und entsprechend sind 51,8% (85) ums Leben gekommen. Und von den Erwachsenen sind 53,4% (388) am Leben geblieben und 46,6% (339) gestorben. Also hatten die jüngeren Menschen anscheinend fast die gleichen Überlebenschancen wie die älteren, zumindest wenn man die Altersgrenze bei 20 setzt.
+Von den 891 Passagieren und Schiffsleuten waren 164 (18,4%) unter 20 Jahren und 727 (81,6%) 20 Jahre alt oder älter. Von der ersten Gruppe haben 48,2% (79 Menschen) überlebt und entsprechend sind 51,8% (85) ums Leben gekommen. Und von den Erwachsenen sind 38,4% (276) am Leben geblieben und 61,6% (451) gestorben. Also hatten die jüngeren Menschen anscheinend fast die gleichen Überlebenschancen wie die älteren, zumindest wenn man die Altersgrenze bei 20 setzt.
 
 Schauen wir jetzt, wie sich diese Informationen mit einem Häufigkeitsbaum veranschaulichen lassen, und versuchen wir die fehlenden Informationen zu vervollständigen.
 
@@ -730,7 +730,7 @@ Herzlichen Glückwunsch! Du hast eben das Erlernen der Thema *bedingte relative 
 
 Danke, dass du diese E-Learning Plattform benutzt hast, hoffentlich kannst du das Thema bedingte relative Häufigkeiten nun deutlich besser verstehen.
 
-Damit deine Erfahrung mit der upgradeten Version dieser oder mit einer weiteren Plattform noch besser wird, möchte ich dich bitten, zum Abschluss an einer kleinen Umfrage teilzunehmen. Die Umfrage ist anonym und die erhobenen Daten werden ausschließlich zu Forschungszwecken verwendet.
+Damit deine Erfahrung mit der aktualisierten Version dieser oder mit einer weiteren Plattform noch besser wird, möchte ich dich bitten, zum Abschluss an einer kleinen Umfrage teilzunehmen. Die Umfrage ist anonym und die erhobenen Daten werden ausschließlich zu Forschungszwecken verwendet.
 
 Die Umfrage befindet sich auf einer externen Webseite. Beim Klick auf **Start** wirst du dahin weitergeleitet. Zur Teilnahme gib das Passwort "statistics23" ein.
 
